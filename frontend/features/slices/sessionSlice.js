@@ -6,7 +6,7 @@ export const sessionSlice = createSlice({
     id: null,
   },
   reducers: {
-    receiveCurrentUser(state, action) {
+    receiveCurrentUser (state, action) {
       id: action.currentUser.id;
     },
     logoutCurrentUser(state, action) {
