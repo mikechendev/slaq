@@ -5,5 +5,15 @@ export const sessionSlice = createSlice({
   initialState: {
     id: null,
   },
-  reducers: {},
+  reducers: {
+    receiveCurrentUser(state, action) {
+      id: action.currentUser.id;
+    },
+    logoutCurrentUser(state, action) {
+      initialState;
+    },
+  },
 });
+
+export const { receiveCurrentUser, logoutCurrentUser } = sessionSlice.actions;
+export default sessionSlice.reducer;
