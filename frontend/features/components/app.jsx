@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, Redirect, Switch, Link, BrowserRouter } from 'react-router-dom';
+import { Route, Redirect, Link, BrowserRouter } from 'react-router-dom';
 
 const App = () => (
   <div>
