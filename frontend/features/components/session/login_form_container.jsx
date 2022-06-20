@@ -17,7 +17,7 @@ import SessionForm from './session_form';
 // const mDTP = { processForm: (user) => dispatch(login(user)) };
 
 const mSTP = (state) => ({
-  // errors: state.errors.session,
+  errors: state.errors.session,
   formType: 'login',
   navLink: <Link to="/signup">sign up</Link>,
 });
