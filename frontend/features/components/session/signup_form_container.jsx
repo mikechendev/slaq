@@ -1,6 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SessionForm from './session_form';
+import { signup } from '../../../actions/session_actions';
 
 // const mSTP = ({ errors }) => ({
 //   errors: errors.session,
@@ -14,10 +16,14 @@ import { Link } from 'react-router-dom';
 
 const dispatch = useDispatch();
 
-export const mSTP = useSelector((state) => {
-  errors: state.errors.session;
-  formType: 'signup';
-  navLink: <Link to="/login">log in</Link>;
+const mSTP = useSelector((state) => {
+  return {
+    errors: state.errors.session,
+    formType: 'signup',
+    navLink: <Link to="/login">log in</Link>,
+  };
 });
 
-export const mDTP = { processForm: (user) => dispatch(signup(user)) };
+const mDTP = { processForm: (user) => dispatch(signup(user)) };
+
+export default connect(mSTP, mDTP)(SessionForm);
