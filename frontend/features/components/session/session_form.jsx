@@ -23,7 +23,7 @@ const SessionForm = (props) => {
           Email:
           <input
             type="text"
-            onChange={() => update('email')}
+            onChange={update('email')}
             value={session.email}
           />
         </label>
@@ -32,11 +32,13 @@ const SessionForm = (props) => {
           Password:
           <input
             type="text"
-            onChange={() => update('password')}
+            onChange={update('password')}
             value={session.password}
           />
         </label>
-        <button type="submit" onClick={handleSubmit}></button>
+        <button type="submit" onClick={handleSubmit}>
+          {props.formType}
+        </button>
       </form>
     </div>
   );
