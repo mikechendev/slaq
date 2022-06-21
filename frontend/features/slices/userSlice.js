@@ -4,14 +4,10 @@ import { receiveCurrentUser } from '../../actions/session_actions';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {},
-  reducers: {
-    // receiveCurrentUser: (state, action) => {
-    //   state.push(action.payload.data);
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(receiveCurrentUser, (state, action) => {
-      return (state = action.payload.data);
+      return (state = { [action.payload.data.id]: action.payload.data });
     });
   },
 });

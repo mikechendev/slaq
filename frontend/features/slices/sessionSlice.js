@@ -10,27 +10,15 @@ export const sessionSlice = createSlice({
   initialState: {
     id: null,
   },
-  reducers: {
-    // receiveCurrentUser: (state, action) =>
-    //   (state = { id: action.payload.data.id }),
-    // logoutCurrentUser: (state, action) => (state = { id: null }),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(receiveCurrentUser, (state, action) => {
+      return (state = { id: action.payload.data.id });
+    });
+    builder.addCase(logoutCurrentUser, (state, action) => {
+      return (state = { id: null });
+    });
   },
-  extraReducers:
-    // [signup.fulfilled]: (state, action) =>
-    //   (state.session = action.payload.data.id),
-    // [login.fulfilled]: (state, action) =>
-    //   (state.session = action.payload.data.id),
-    // [logout.fulfilled]: (state, action) => {
-    //   state.session = [];
-    // },
-    (builder) => {
-      builder.addCase(receiveCurrentUser, (state, action) => {
-        return (state = { id: action.payload.data.id });
-      });
-      builder.addCase(logoutCurrentUser, (state, action) => {
-        return (state = { id: null });
-      });
-    },
 });
 
 // export const { receiveCurrentUser, logoutCurrentUser } = sessionSlice.actions;
