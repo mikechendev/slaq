@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 const Nav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="session-links">
-      <Link to="/login">Sign in </Link>
-      <Link to="/signup">Try for free</Link>
+      <Link to="/login">
+        <button>Sign in</button>
+      </Link>
+      <Link to="/signup">
+        <button>Try for free</button>
+      </Link>
     </nav>
   );
 

@@ -17,7 +17,7 @@ const SessionForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="session-form">
       <form>
         <label>
           Email:

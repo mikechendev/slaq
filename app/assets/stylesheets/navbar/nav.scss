@@ -1,4 +1,21 @@
 .info-links {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-links li {
+  display: inline;
+}
+
+.session-links {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+
+.session-form {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

@@ -14,11 +14,23 @@ const App = () => (
         <h1>SlaQ</h1>
       </Link>
       <nav className="info-links">
-        <Link to="/">Products </Link>
-        <Link to="/">Solutions </Link>
-        <Link to="/">Enterprise </Link>
-        <Link to="/">Resources </Link>
-        <Link to="/">Pricing </Link>
+        <ul>
+          <li>
+            <Link to="/">Products </Link>
+          </li>
+          <li>
+            <Link to="/">Solutions </Link>
+          </li>
+          <li>
+            <Link to="/">Enterprise </Link>
+          </li>
+          <li>
+            <Link to="/">Resources </Link>
+          </li>
+          <li>
+            <Link to="/">Pricing </Link>
+          </li>
+        </ul>
       </nav>
       <NavContainer />
     </header>
