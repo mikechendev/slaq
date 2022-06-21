@@ -1,12 +1,8 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as APIUtil from '../util/session_api_util';
-import {
-  receiveCurrentUser,
-  logoutCurrentUser,
-} from '../features/slices/sessionSlice';
 
-// export const receiveCurrentUser = createAction('receiveCurrentUser');
-// export const logoutCurrentUser = createAction('logoutCurrentUser');
+export const receiveCurrentUser = createAction('receiveCurrentUser');
+export const logoutCurrentUser = createAction('logoutCurrentUser');
 export const receiveErrors = createAction('receiveSessionErrors');
 
 export const signup = createAsyncThunk(
