@@ -1,4 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Greeting = (props) => {};
+const Splash = () => {
+  return (
+    <div>
+      <h2>HOME PAGE</h2>
+    </div>
+  );
+};
+
+export default Splash;

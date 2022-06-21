@@ -23,7 +23,8 @@ const store = (preloadedState = {}) =>
       session: sessionReducer,
       errors: errorsReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }).concat(logger),
     preloadedState,
   });
 

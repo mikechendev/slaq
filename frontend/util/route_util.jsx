@@ -1,40 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Route, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 
-const Auth = ({ element: Component, path, loggedIn, exact }) => (
-  <Route
-    path={path}
-    exact={exact}
-    render={(props) =>
-      !loggedIn ? <Component {...props} /> : <Redirect to="/" />
-    }
-  />
-);
-
-const Protected = ({ element: Component, path, loggedIn, exact }) => (
-  <Route
-    path={path}
-    exact={exact}
-    render={(props) =>
-      loggedIn ? <Component {...props} /> : <Redirect to="/login" />
-    }
-  />
-);
-
-const withRouter = (Component) => {
-  const ComponentWithRouterProp = (props) => {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return <Component {...props} router={{ location, navigate, params }} />;
-  };
-
-  return ComponentWithRouterProp;
+const Auth = ({ component: Component, path, loggedIn, exact }) => {
+  return (
+    <Route
+      path={path}
+      exact={exact}
+      render={(props) =>
+        !loggedIn ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
+  );
 };
 
-const mapStateToProps = (state) => ({ loggedIn: Boolean(state.session.id) });
+const Protected = ({ component: Component, path, loggedIn, exact }) => {
+  return (
+    <Route
+      path={path}
+      exact={exact}
+      render={(props) =>
+        loggedIn ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
+  );
+};
 
-export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
+const mSTP = (state) => {
+  return {
+    loggedIn: Boolean(state.session.id),
+  };
+};
 
-export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+export const AuthRoute = withRouter(connect(mSTP)(Auth));
+
+export const ProtectedRoute = withRouter(connect(mSTP)(Protected));

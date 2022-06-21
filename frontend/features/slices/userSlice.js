@@ -4,9 +4,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {},
   reducers: {
-    receiveCurrentUser: (state, action) => {
-      state.push({ [action.CurrentUser.id]: action.currentUser });
-    },
+    receiveCurrentUser: (state, action) => (state = action.payload.data),
   },
 });
 

@@ -5,30 +5,20 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState: {
     id: null,
-    status: null,
   },
   reducers: {
-    receiveCurrentUser(state, action) {
-      id: action.currentUser.id;
-    },
-    logoutCurrentUser(state, action) {
-      id: null;
-    },
+    receiveCurrentUser: (state, action) => (state = { id: action.payload.data.id }),
+    logoutCurrentUser: (state, action) => (state = { id: null }),
   },
-  extraReducers: {
-    [signup.fulfilled]: (state, action) => {
-      state.status = 'success';
-      state.session = action.payload;
-    },
-    [login.fulfilled]: (state, action) => {
-      state.status = 'success';
-      state.session = action.payload;
-    },
-    [logout.fulfilled]: (state, action) => {
-      state.status = 'success';
-      state.session = action.payload;
-    },
-  },
+  // extraReducers: {
+  //   [signup.fulfilled]: (state, action) =>
+  //     (state.session = action.payload.data.id),
+  //   [login.fulfilled]: (state, action) =>
+  //     (state.session = action.payload.data.id),
+  //   [logout.fulfilled]: (state, action) => {
+  //     state.session = [];
+  //   },
+  // },
 });
 
 export const { receiveCurrentUser, logoutCurrentUser } = sessionSlice.actions;

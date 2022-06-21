@@ -1,8 +1,12 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as APIUtil from '../util/session_api_util';
+import {
+  receiveCurrentUser,
+  logoutCurrentUser,
+} from '../features/slices/sessionSlice';
 
-export const receiveCurrentUser = createAction('receiveCurrentUser');
-export const logoutCurrentUser = createAction('logoutCurrentUser');
+// export const receiveCurrentUser = createAction('receiveCurrentUser');
+// export const logoutCurrentUser = createAction('logoutCurrentUser');
 export const receiveErrors = createAction('receiveSessionErrors');
 
 export const signup = createAsyncThunk(
@@ -13,12 +17,18 @@ export const signup = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk('user/login', async (user, thunkAPI) => {
-  const response = await APIUtil.login(user);
-  return thunkAPI.dispatch(receiveCurrentUser(response));
-});
+// export const login = createAsyncThunk('user/login', async (user, thunkAPI) => {
+//   const response = await APIUtil.login(user);
+//   return thunkAPI.dispatch(receiveCurrentUser(response));
+// });
 
 export const logout = createAsyncThunk('user/logout', async (thunkAPI) => {
   const response = await APIUtil.logout();
   return thunkAPI.dispatch(logoutCurrentUser(response));
 });
+
+export const login = (user) => (dispatch) =>
+  APIUtil.login(user).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err) => dispatch(receiveErrors(err.responseJSON))
+  );
