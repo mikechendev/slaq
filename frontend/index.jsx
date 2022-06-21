@@ -6,8 +6,24 @@ import { signup } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = ReactDOMClient.createRoot(document.getElementById('root'));
-  const newStore = store;
-  window.store = newStore;
-  window.signup = signup;
+  // let newStore;
+  // debugger;
+  // if (window.currentUser) {
+  //   const { currentUser } = window;
+  //   const { id } = currentUser;
+  //   const preloadedState = {
+  //     entities: {
+  //       user: {
+  //         [id]: currentUser,
+  //       },
+  //     },
+  //     session: { id },
+  //   };
+  //   store = store(preloadedState);
+  //   delete window.currentUser;
+  // } else {
+  //   newStore = store();
+  // }
+  const newStore = store();
   root.render(<Root store={newStore} />);
 });
