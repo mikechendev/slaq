@@ -16,9 +16,20 @@ const SessionForm = (props) => {
     props.processForm(user);
   };
 
+  const renderErrors = () => {
+    return (
+      <ul>
+        {props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div className="session-form">
       <form>
+        {renderErrors()}
         <label>
           Email:
           <input type="text" onChange={update('email')} value={session.email} />
