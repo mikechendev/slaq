@@ -21,5 +21,4 @@ export const sessionSlice = createSlice({
   },
 });
 
-// export const { receiveCurrentUser, logoutCurrentUser } = sessionSlice.actions;
 export default sessionSlice.reducer;

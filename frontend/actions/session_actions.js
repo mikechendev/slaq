@@ -1,15 +1,9 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as APIUtil from '../util/session_api_util';
 
-// export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const receiveCurrentUser = createAction('receiveCurrentUser');
 export const logoutCurrentUser = createAction('logoutCurrentUser');
 export const receiveSessionErrors = createAction('receiveSessionErrors');
-
-// export const receiveSessionErrors = (errors) => ({
-//   type: RECEIVE_SESSION_ERRORS,
-//   errors,
-// });
 
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then(
