@@ -18,13 +18,16 @@ export const signup = createAsyncThunk(
 //   return thunkAPI.dispatch(receiveCurrentUser(response));
 // });
 
-export const logout = createAsyncThunk('user/logout', async (thunkAPI) => {
-  const response = await APIUtil.logout();
-  return thunkAPI.dispatch(logoutCurrentUser(response));
-});
+// export const logout = createAsyncThunk('user/logout', async (thunkAPI) => {
+//   const response = await APIUtil.logout();
+//   return thunkAPI.dispatch(logoutCurrentUser());
+// });
 
 export const login = (user) => (dispatch) =>
   APIUtil.login(user).then(
     (user) => dispatch(receiveCurrentUser(user)),
     (err) => dispatch(receiveErrors(err.responseJSON))
   );
+
+export const logout = () => (dispatch) =>
+  APIUtil.logout().then((user) => dispatch(logoutCurrentUser()));
