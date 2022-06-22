@@ -8,13 +8,13 @@ export const receiveSessionErrors = createAction('receiveSessionErrors');
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then(
     (user) => dispatch(receiveCurrentUser(user)),
-    (err) => dispatch(receiveSessionErrors([err.message]))
+    (err) => dispatch(receiveSessionErrors(err.response.data))
   );
 
 export const login = (user) => (dispatch) => {
   return APIUtil.login(user).then(
     (user) => dispatch(receiveCurrentUser(user)),
-    (err) => dispatch(receiveSessionErrors([err.message]))
+    (err) => dispatch(receiveSessionErrors(err.response.data))
   );
 };
 
