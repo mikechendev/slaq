@@ -26,3 +26,26 @@ const Nav = ({ currentUser, logout }) => {
 };
 
 export default Nav;
+
+{/* <Link to="/" className="header-app">
+        <h1>SlaQ</h1>
+      </Link>
+      <nav className="info-links">
+        <ul>
+          <li>
+            <Link to="/">Products </Link>
+          </li>
+          <li>
+            <Link to="/">Solutions </Link>
+          </li>
+          <li>
+            <Link to="/">Enterprise </Link>
+          </li>
+          <li>
+            <Link to="/">Resources </Link>
+          </li>
+          <li>
+            <Link to="/">Pricing </Link>
+          </li>
+        </ul>
+      </nav> */}
