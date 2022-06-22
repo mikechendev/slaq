@@ -3,15 +3,30 @@ import * as APIUtil from '../util/session_api_util';
 
 export const receiveCurrentUser = createAction('receiveCurrentUser');
 export const logoutCurrentUser = createAction('logoutCurrentUser');
-export const receiveErrors = createAction('receiveSessionErrors');
+export const receiveSessionErrors = createAction('receiveSessionErrors');
 
-export const signup = createAsyncThunk(
-  'user/signup',
-  async (user, thunkAPI) => {
-    const response = await APIUtil.signup(user);
-    return thunkAPI.dispatch(receiveCurrentUser(response));
-  }
-);
+export const signup = (user) => (dispatch) =>
+  APIUtil.signup(user).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err) => dispatch(receiveSessionErrors(err.responseJSON))
+  );
+
+export const login = (user) => (dispatch) =>
+  APIUtil.login(user).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err) => dispatch(receiveSessionErrors(err.responseJSON))
+  );
+
+export const logout = () => (dispatch) =>
+  APIUtil.logout().then((user) => dispatch(logoutCurrentUser()));
+
+// export const signup = createAsyncThunk(
+//   'user/signup',
+//   async (user, thunkAPI) => {
+//     const response = await APIUtil.signup(user);
+//     return thunkAPI.dispatch(receiveCurrentUser(response));
+//   }
+// );
 
 // export const login = createAsyncThunk('user/login', async (user, thunkAPI) => {
 //   const response = await APIUtil.login(user);
@@ -22,12 +37,3 @@ export const signup = createAsyncThunk(
 //   const response = await APIUtil.logout();
 //   return thunkAPI.dispatch(logoutCurrentUser());
 // });
-
-export const login = (user) => (dispatch) =>
-  APIUtil.login(user).then(
-    (user) => dispatch(receiveCurrentUser(user)),
-    (err) => dispatch(receiveErrors(err.responseJSON))
-  );
-
-export const logout = () => (dispatch) =>
-  APIUtil.logout().then((user) => dispatch(logoutCurrentUser()));

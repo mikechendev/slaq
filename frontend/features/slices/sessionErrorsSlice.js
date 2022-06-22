@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  receiveErrors,
+  receiveSessionErrors,
   receiveCurrentUser,
 } from '../../actions/session_actions';
 
@@ -9,11 +9,11 @@ export const sessionErrorsSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(receiveErrors, (state, action) => {
-      return action.errors;
+    builder.addCase(receiveSessionErrors, (state, action) => {
+      return (state = action.payload);
     });
     builder.addCase(receiveCurrentUser, (state, action) => {
-      return [];
+      return (state = []);
     });
   },
 });
