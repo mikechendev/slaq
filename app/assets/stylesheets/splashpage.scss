@@ -4,4 +4,21 @@
   background-color: #541554;
   color: white;
   height: 450px;
+  font-family: 'Montserrat', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:wght@500&display=swap');
+  font-size: 15px;
+  height: 100%;
+}
+
+.billboard-headline {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.yellow-text {
+  color: #ecb22e;
+}
+
+video {
+  max-height: 400px;
 }

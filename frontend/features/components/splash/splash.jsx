@@ -9,13 +9,24 @@ const Splash = (props) => {
         <Nav logout={props.logout} currentUser={props.currentUser} />
       </header>
       <div className="splash-billboard">
-        <h1>Great teamwork starts with a digital HQ</h1>
-        <br />
-        <h3>
-          With all your people, tools and communication in one place, you can
-          work faster and more flexibly than ever before.
-        </h3>
-        <br />
+        <div>
+          <h1 className="billboard-headline">
+            Great teamwork starts with a
+            <span className="yellow-text"> digital HQ</span>
+          </h1>
+          <br />
+          <h3>
+            With all your people, tools and communication in one place, you can
+            work faster and more flexibly than ever before.
+          </h3>
+          <br />
+        </div>
+        <video autoPlay muted loop playsInline>
+          <source
+            src="https://slaq-objects.s3.amazonaws.com/slack-splash-video.webm"
+            type="video/webm"
+          />
+        </video>
         <h2>Slack is free to try for as long as you’d like</h2>
       </div>
     </div>
