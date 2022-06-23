@@ -4,45 +4,46 @@ import { Link } from 'react-router-dom';
 const Nav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <div className="navbar-signed-out">
-      <Link to="/" className="header-app">
-        <h1>SlaQ</h1>
-      </Link>
-      <nav className="info-links">
+      <div className="info-links">
+        <Link to="/" className="header-app">
+          <h1>SlaQ</h1>
+        </Link>
         <ul>
           <li>
-            <Link to="/">Products </Link>
+            <a href="">Portfolio</a>
           </li>
           <li>
-            <Link to="/">Solutions </Link>
+            <a href="">LinkedIn</a>
           </li>
           <li>
-            <Link to="/">Enterprise </Link>
+            <a href="">Github</a>
           </li>
           <li>
-            <Link to="/">Resources </Link>
+            <a href="">Resources</a>
           </li>
           <li>
-            <Link to="/">Pricing </Link>
+            <a href="">Pricing</a>
           </li>
         </ul>
-      </nav>
-      <nav className="session-links">
+      </div>
+      <div className="session-links">
         <Link to="/login">
           <button>Sign in</button>
         </Link>
         <Link to="/signup">
           <button>Try for free</button>
         </Link>
-      </nav>
+      </div>
     </div>
   );
 
   const Greeting = () => (
     <div className="navbar-signed-in">
-      <Link to="/" className="header-app">
-        <h1>SlaQ</h1>
-      </Link>
-      <nav className="info-links">
+      <div className="info-links">
+        <Link to="/" className="header-app">
+          <img src="../../../assets/images/slack.png" alt="slack-logo" />
+          <h1>SlaQ</h1>
+        </Link>
         <ul>
           <li>
             <Link to="/">Products </Link>
@@ -60,13 +61,13 @@ const Nav = ({ currentUser, logout }) => {
             <Link to="/">Pricing </Link>
           </li>
         </ul>
-      </nav>
-      <hgroup className="header-group">
+      </div>
+      <div className="header-group">
         <h2 className="header-name">Hi, {currentUser.email}!</h2>
         <button className="header-button" onClick={logout}>
           Log Out
         </button>
-      </hgroup>
+      </div>
     </div>
   );
 

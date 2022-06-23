@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { login, receiveErrors } from '../../../actions/session_actions';
 import SessionForm from './session_form';
 
-const mSTP = ({errors}) => ({
+const mSTP = ({ errors }) => ({
   errors: errors.session,
   formType: 'login',
   navLink: <Link to="/signup">sign up</Link>,
@@ -12,6 +12,7 @@ const mSTP = ({errors}) => ({
 
 const mDTP = (dispatch) => ({
   processForm: (user) => dispatch(login(user)),
+  login: (user) => dispatch(login(user)),
 });
 
 export default connect(mSTP, mDTP)(SessionForm);

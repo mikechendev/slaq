@@ -26,6 +26,16 @@ const SessionForm = (props) => {
     );
   };
 
+  const handleDemoUser = (e) => {
+    e.preventDefault();
+    const user = {
+      email: 'demouser@demo.demo',
+      password: 'password',
+    };
+    setSession(user);
+    props.login(user);
+  };
+
   return (
     <div className="session-form">
       <form>
@@ -45,6 +55,9 @@ const SessionForm = (props) => {
         </label>
         <button type="submit" onClick={handleSubmit}>
           {props.formType}
+        </button>
+        <button type="submit" onClick={handleDemoUser}>
+          Try as demo user
         </button>
       </form>
     </div>
