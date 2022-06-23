@@ -11,13 +11,13 @@ const Splash = (props) => {
       <div className="splash-billboard">
         <div>
           <h1 className="billboard-headline">
-            Great teamwork starts with a
+            Great teamwork starts <br /> with a
             <span className="yellow-text"> digital HQ</span>
           </h1>
           <br />
-          <h3>
-            With all your people, tools and communication in one place, you can
-            work faster and more flexibly than ever before.
+          <h3 className="billboard-text">
+            With all your people, tools and communication in one place, <br />{' '}
+            you can work faster and more flexibly than ever before.
           </h3>
           <br />
         </div>
@@ -27,7 +27,10 @@ const Splash = (props) => {
             type="video/webm"
           />
         </video>
-        <h2>Slack is free to try for as long as you’d like</h2>
+        <h2 className="billboard-text">
+          <span className="bold-text">Slack is free to try </span> for as long
+          as you’d like
+        </h2>
       </div>
     </div>
   );
