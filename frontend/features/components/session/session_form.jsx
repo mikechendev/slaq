@@ -37,29 +37,36 @@ const SessionForm = (props) => {
   };
 
   return (
-    <div className="session-form">
-      <form>
-        {renderErrors()}
-        <label>
-          Email:
-          <input type="text" onChange={update('email')} value={session.email} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            onChange={update('password')}
-            value={session.password}
-          />
-        </label>
-        <button type="submit" onClick={handleSubmit}>
-          {props.formType}
-        </button>
-        <button type="submit" onClick={handleDemoUser}>
-          Try as demo user
-        </button>
-      </form>
+    <div className="session-form-container">
+      <div className="session-form-box">
+        <form className="session-form">
+          {renderErrors()}
+          <label>
+            Email:
+            <input
+              className="form-email"
+              type="text"
+              onChange={update('email')}
+              value={session.email}
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              className="form-password"
+              type="password"
+              onChange={update('password')}
+              value={session.password}
+            />
+          </label>
+          <button type="submit" onClick={handleSubmit}>
+            {props.formType}
+          </button>
+          <button type="submit" onClick={handleDemoUser}>
+            Try as demo user
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

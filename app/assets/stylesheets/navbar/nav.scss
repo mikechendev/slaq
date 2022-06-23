@@ -29,11 +29,6 @@
   border-radius: 7px;
 }
 
-.session-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .navbar-signed-out {
   background-color: #541554;
@@ -55,4 +50,12 @@
   max-width: 60px;
   max-height: auto;
   left: -400px;
+}
+
+.header-name {
+  margin-right: 5px;
+}
+
+.header-button {
+  margin-left: 5px;
 }

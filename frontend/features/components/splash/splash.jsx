@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './nav';
 
-const Splash = () => {
+const Splash = (props) => {
   return (
     <div className="splash-page-wrapper">
+      <header>
+        <Nav logout={props.logout} currentUser={props.currentUser} />
+      </header>
       <div className="splash-billboard">
         <h1>Great teamwork starts with a digital HQ</h1>
         <br />

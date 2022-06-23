@@ -1,0 +1,20 @@
+.session-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 720px;
+  flex-direction: column;
+}
+
+.session-form {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.form-email {
+  position: relative;
+  left: 23px;
+}
