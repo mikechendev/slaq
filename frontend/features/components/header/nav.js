@@ -5,8 +5,8 @@ const Nav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <div className="navbar-signed-out">
       <div className="info-links">
-        <Link to="/" className="header-app">
-          <h1>SlaQ</h1>
+        <Link to="/" className="header-icon">
+          <img src={window.slackicon} alt="slack-logo" />
         </Link>
         <ul>
           <li>
@@ -40,29 +40,28 @@ const Nav = ({ currentUser, logout }) => {
   const Greeting = () => (
     <div className="navbar-signed-in">
       <div className="info-links">
-        <Link to="/" className="header-app">
-          <img src="../../../assets/images/slack.png" alt="slack-logo" />
-          <h1>SlaQ</h1>
+        <Link to="/" className="header-icon">
+          <img src={window.slackicon} alt="slack-logo" />
         </Link>
         <ul>
           <li>
-            <Link to="/">Products </Link>
+            <a href="">Portfolio</a>
           </li>
           <li>
-            <Link to="/">Solutions </Link>
+            <a href="">LinkedIn</a>
           </li>
           <li>
-            <Link to="/">Enterprise </Link>
+            <a href="">Github</a>
           </li>
           <li>
-            <Link to="/">Resources </Link>
+            <a href="">Resources</a>
           </li>
           <li>
-            <Link to="/">Pricing </Link>
+            <a href="">Pricing</a>
           </li>
         </ul>
       </div>
-      <div className="header-group">
+      <div className="session-links">
         <h2 className="header-name">Hi, {currentUser.email}!</h2>
         <button className="header-button" onClick={logout}>
           Log Out
