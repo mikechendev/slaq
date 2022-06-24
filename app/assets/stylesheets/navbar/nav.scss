@@ -39,6 +39,10 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .navbar-signed-in {
@@ -47,6 +51,10 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .header-icon > img {

@@ -1,10 +1,13 @@
 .splash-page-wrapper {
+  padding-top: 65px;
   font-family: 'Montserrat', sans-serif;
   src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:wght@500&display=swap');
 }
 
 .splash-billboard {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #541554;
   color: white;
   height: 450px;
@@ -16,8 +19,10 @@
 .billboard-headline {
   margin-top: 50px;
   font-size: 4rem;
-  font-weight: 600;
+  font-weight: 700;
   padding-left: 7px;
+  line-height: 1.0625;
+  letter-spacing: -1.5px;
 }
 
 .yellow-text {
@@ -27,6 +32,10 @@
 .billboard-text {
   font-size: 1.25rem;
   padding-left: 7px;
+  font-weight: 400;
+  line-height: 1.333;
+  letter-spacing: -.2px;
+  margin-top: 0;
 }
 
 video {
@@ -48,4 +57,62 @@ video {
 
 .splash-section-bottom {
   background-color: #F4ede4;
+}
+
+.splash-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.splash-section-header {
+  font-size: 3.125rem;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.8px;
+  font-size: 2rem;
+  margin: 10px 10px 10px;
+  margin-bottom: 1rem;
+}
+
+.splash-section-text {
+  margin: 10px 10px 10px 10px;
+  line-height: 1.4444;
+  letter-spacing: -.2px;
+  font-size: 1.125rem;
+}
+
+.splash-footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  background-color: #541554;
+}
+
+.splash-footer-text {
+  padding-top: 75px;
+  padding-bottom: 50px;
+  color: white;
+  font-size: 3.125rem;
+  font-weight: 700;
+}
+
+.splash-footer-ellipse {
+  background: #4a154b;
+  border: none;
+  clip-path: ellipse(75% 100% at center top);
+  height: auto;
+  min-height: 370px;
+}
+
+.disclaimer-text-container {
+  padding-top: 100px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
