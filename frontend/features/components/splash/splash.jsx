@@ -65,10 +65,9 @@ const Splash = (props) => {
               Choose how you <br /> want to work
             </h2>
             <p className="splash-section-text">
-              In Slack, you’ve got all the flexibility to work when, where{' '}
-              <br /> and how it’s best for you. You can easily chat, send audio
-              and <br /> video clips, or hop on a huddle to talk things out
-              live.
+              In SlaQ, you’ve got all the flexibility to work when, where <br />{' '}
+              and how it’s best for you. You can easily chat, send audio and{' '}
+              <br /> video clips, or hop on a huddle to talk things out live.
             </p>
           </div>
           <video autoPlay muted loop playsInline>
