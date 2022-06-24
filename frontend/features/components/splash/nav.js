@@ -62,7 +62,10 @@ const Nav = ({ currentUser, logout }) => {
         </ul>
       </div>
       <div className="session-links">
-        <h2 className="header-name">Hi, {currentUser.email}!</h2>
+        <h2 className="header-name">
+          Logged in as{' '}
+          <span className="nav-current-user">{currentUser.email}</span>
+        </h2>
         <button className="header-button" onClick={logout}>
           Log Out
         </button>
