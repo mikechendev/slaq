@@ -90,6 +90,10 @@ video {
   align-items: center;
   margin-top: 80px;
   background-color: #541554;
+  clip-path: ellipse(75% 100% at center top);
+  height: auto;
+  min-height: 370px;
+  border: none;
 }
 
 .splash-footer-text {
@@ -98,14 +102,6 @@ video {
   color: white;
   font-size: 3.125rem;
   font-weight: 700;
-}
-
-.splash-footer-ellipse {
-  background: #4a154b;
-  border: none;
-  clip-path: ellipse(75% 100% at center top);
-  height: auto;
-  min-height: 370px;
 }
 
 .disclaimer-text-container {

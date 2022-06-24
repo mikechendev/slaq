@@ -104,8 +104,6 @@ const Splash = (props) => {
           <div className="splash-footer-text">
             Welcome to your new digital HQ
           </div>
-          <div className='splash-footer-ellipse'>
-          </div>
         </div>
       </div>
       <div className="disclaimer-text-container">
