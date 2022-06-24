@@ -17,7 +17,13 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+
+.session-form-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .session-form-header {
@@ -37,13 +43,38 @@ img {
   font-size: 1.25rem;
 }
 
+.session-form-errors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #E01E5A;
+  font-size: 17;
+  font-weight: 550;
+}
+
 .session-form {
   display: flex;
   flex-direction: column;
   height: 400px;
 }
 
-.form-email {
-  position: relative;
-  left: 30px;
+.session-form-field {
+  height: 25px;
+  margin-bottom: 10px;
+  width: 98%;
+}
+
+.session-form-button {
+  font-size: 18px;
+  font-weight: 900;
+  height: 44px;
+  min-width: 96px;
+  padding: 0 16px 3px;
+  background-color: #4a154b;
+  border: none;
+  color: #fff;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 3px;
 }

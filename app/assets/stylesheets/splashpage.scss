@@ -1,18 +1,23 @@
+.splash-page-wrapper {
+  font-family: 'Montserrat', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:wght@500&display=swap');
+}
+
 .splash-billboard {
   display: flex;
   background-color: #541554;
   color: white;
   height: 450px;
-  font-family: 'Montserrat', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:wght@500&display=swap');
   font-size: 15px;
   height: 100%;
+  padding-left: 7px;
 }
 
 .billboard-headline {
   margin-top: 50px;
   font-size: 4rem;
   font-weight: 600;
+  padding-left: 7px;
 }
 
 .yellow-text {
@@ -21,6 +26,7 @@
 
 .billboard-text {
   font-size: 1.25rem;
+  padding-left: 7px;
 }
 
 video {
@@ -30,4 +36,16 @@ video {
 
 .bold-text {
   font-weight: 550;
+}
+
+.splash-section-top {
+  background-color: #F4ede4;
+}
+
+.splash-section-mid {
+  background-color: #F4ede4;
+}
+
+.splash-section-bottom {
+  background-color: #F4ede4;
 }

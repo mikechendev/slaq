@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SessionForm = (props) => {
   const [session, setSession] = useState({
@@ -41,7 +42,9 @@ const SessionForm = (props) => {
       <div className="session-form-box">
         <form className="session-form">
           <div className="session-icon-container">
-            <img src={window.slackicon} alt="slack-logo" />
+            <Link to="/">
+              <img src={window.slackicon} alt="slack-logo" />
+            </Link>
           </div>
           <div className="session-form-header">
             <h1>{props.formType} to SlaQ</h1>
@@ -52,29 +55,37 @@ const SessionForm = (props) => {
               <span className="bold-text">email address you use at work. </span>
             </p>
           </div>
-          {renderErrors()}
+          <div className="session-form-errors">{renderErrors()}</div>
           <label>
-            Email:
             <input
-              className="form-email"
+              className="session-form-field"
               type="text"
               onChange={update('email')}
               value={session.email}
+              placeholder="Email"
             />
           </label>
           <label>
-            Password:
             <input
-              className="form-password"
+              className="session-form-field"
               type="password"
               onChange={update('password')}
               value={session.password}
+              placeholder="Password"
             />
           </label>
-          <button type="submit" onClick={handleSubmit}>
+          <button
+            className="session-form-button"
+            type="submit"
+            onClick={handleSubmit}
+          >
             {props.formType}
           </button>
-          <button type="submit" onClick={handleDemoUser}>
+          <button
+            className="session-form-button"
+            type="submit"
+            onClick={handleDemoUser}
+          >
             Try as demo user
           </button>
         </form>

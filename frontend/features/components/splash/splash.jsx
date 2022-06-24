@@ -36,6 +36,9 @@ const Splash = (props) => {
           />
         </video>
       </div>
+      <div className="splash-section-top"></div>
+      <div className="splash-section-mid"></div>
+      <div className="splash-section-bottom"></div>
     </div>
   );
 };
