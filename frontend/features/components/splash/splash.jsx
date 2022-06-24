@@ -18,6 +18,14 @@ const Splash = (props) => {
           <h3 className="billboard-text">
             With all your people, tools and communication in one place, <br />{' '}
             you can work faster and more flexibly than ever before.
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <span className="bold-text">Slack is free to try </span> for as long
+            as you’d like
           </h3>
           <br />
         </div>
@@ -27,10 +35,6 @@ const Splash = (props) => {
             type="video/webm"
           />
         </video>
-        <h2 className="billboard-text">
-          <span className="bold-text">Slack is free to try </span> for as long
-          as you’d like
-        </h2>
       </div>
     </div>
   );

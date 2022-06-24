@@ -1,6 +1,5 @@
 .splash-billboard {
   display: flex;
-  flex-direction: column;
   background-color: #541554;
   color: white;
   height: 450px;
@@ -11,6 +10,7 @@
 }
 
 .billboard-headline {
+  margin-top: 50px;
   font-size: 4rem;
   font-weight: 600;
 }
@@ -25,6 +25,7 @@
 
 video {
   max-height: 400px;
+  margin-top: 50px;
 }
 
 .bold-text {

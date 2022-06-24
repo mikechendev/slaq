@@ -4,17 +4,46 @@
   align-items: center;
   height: 720px;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:wght@500&display=swap');
+}
+
+img {
+  max-width: 60px;
+  max-height: auto;
+}
+
+.session-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.session-form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.session-form-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 1.25rem;
 }
 
 .session-form {
   display: flex;
-  // justify-content: center;
-  // align-items: center;
   flex-direction: column;
   height: 400px;
 }
 
 .form-email {
   position: relative;
-  left: 23px;
+  left: 30px;
 }

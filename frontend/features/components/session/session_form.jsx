@@ -40,6 +40,18 @@ const SessionForm = (props) => {
     <div className="session-form-container">
       <div className="session-form-box">
         <form className="session-form">
+          <div className="session-icon-container">
+            <img src={window.slackicon} alt="slack-logo" />
+          </div>
+          <div className="session-form-header">
+            <h1>{props.formType} to SlaQ</h1>
+          </div>
+          <div className="session-form-text">
+            <p>
+              We suggest using the{' '}
+              <span className="bold-text">email address you use at work. </span>
+            </p>
+          </div>
           {renderErrors()}
           <label>
             Email:
