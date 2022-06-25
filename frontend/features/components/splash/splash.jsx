@@ -5,7 +5,7 @@ import Nav from './nav';
 const Splash = (props) => {
   return (
     <div className="splash-page-wrapper">
-      <header>
+      <header className='splash-nav'>
         <Nav logout={props.logout} currentUser={props.currentUser} />
       </header>
       <div className="splash-billboard">

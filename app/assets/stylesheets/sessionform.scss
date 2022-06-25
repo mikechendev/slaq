@@ -9,6 +9,8 @@
 }
 
 img {
+  padding-top: 30%;
+  margin-top: 30%;
   max-width: 60px;
   max-height: auto;
 }
@@ -33,6 +35,29 @@ img {
   margin-bottom: 25px;
   font-size: 3rem;
   font-weight: 600;
+}
+
+.session-form-right {
+  color: rgba(var(--sk_foreground_max_solid, 97, 96, 97), 1);
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.session-form-right-navlink {
+  padding-top: 10px;
+}
+
+.session-form-right-navlink a {
+  color: #1264a3;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.session-form-right-navlink a:hover {
+  text-decoration: underline;
 }
 
 .session-form-text {

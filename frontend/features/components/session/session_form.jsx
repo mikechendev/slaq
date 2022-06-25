@@ -54,6 +54,8 @@ const SessionForm = (props) => {
 
   let h1Header =
     props.formType === 'Sign up' ? 'Sign up for SlaQ' : 'Sign in to SlaQ';
+  let navlinkHeader =
+    props.formType === 'Sign up' ? 'Already using SlaQ?' : 'New to SlaQ?';
 
   return (
     <div className="session-form-container">
@@ -103,6 +105,10 @@ const SessionForm = (props) => {
           >
             Try as demo user
           </button>
+          <div className="session-form-right">
+            {navlinkHeader}
+            <div className="session-form-right-navlink">{props.navLink}</div>
+          </div>
         </form>
       </div>
     </div>

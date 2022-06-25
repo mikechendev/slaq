@@ -7,7 +7,7 @@ import { signup, login } from '../../../actions/session_actions';
 const mSTP = ({ errors }) => ({
   errors: errors.session,
   formType: 'Sign up',
-  navLink: <Link to="/login">Log In</Link>,
+  navLink: <Link to="/login">Sign into an existing workspace</Link>,
 });
 
 const mDTP = (dispatch) => ({
