@@ -15,7 +15,6 @@
  */
  @import url(reset.css);
  @import url(navbar/nav.scss);
- @import url(header.scss);
  @import url(sessionform.scss);
 
  button {

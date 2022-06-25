@@ -6,6 +6,10 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     before_validation :ensure_session_token
 
+    has_many :user_workspaces
+    has_many :workspaces, through: :user_workspaces
+    has_many :admin_workspaces, class_name: "Workspace", foreign_key: :admin_id
+
     def self.find_by_credentials(email, password)
         @user = User.find_by(email: email)
         return nil if @user.nil?
