@@ -10,4 +10,4 @@ require 'open-uri'
 
 User.destroy_all
 
-demouser = User.create!({email: 'demouser@demo.demo', password: 'password'})
+demouser = User.create!({email: 'demouser@demo.demo', username:'demoUser', password: 'password'})

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import userReducer from './userSlice';
 
 const entitiesReducer = combineReducers({
-  user: userReducer,
+  users: userReducer,
 });
 
 export default entitiesReducer;

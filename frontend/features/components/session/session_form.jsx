@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const SessionForm = (props) => {
   const [session, setSession] = useState({
     email: '',
+    username: '',
     password: '',
   });
 
@@ -31,12 +32,26 @@ const SessionForm = (props) => {
     e.preventDefault();
     const user = {
       email: 'demouser@demo.demo',
+      username: 'demoUser',
       password: 'password',
     };
     setSession(user);
     props.login(user);
   };
 
+  const signUpFields =
+    props.formType === 'Sign up' ? (
+      <input
+        className="session-form-field"
+        type="text"
+        onChange={update('username')}
+        value={session.username}
+        placeholder="Username"
+      />
+    ) : (
+      <div></div>
+    );
+    
   return (
     <div className="session-form-container">
       <div className="session-form-box">
@@ -56,24 +71,21 @@ const SessionForm = (props) => {
             </p>
           </div>
           <div className="session-form-errors">{renderErrors()}</div>
-          <label>
-            <input
-              className="session-form-field"
-              type="text"
-              onChange={update('email')}
-              value={session.email}
-              placeholder="Email"
-            />
-          </label>
-          <label>
-            <input
-              className="session-form-field"
-              type="password"
-              onChange={update('password')}
-              value={session.password}
-              placeholder="Password"
-            />
-          </label>
+          <input
+            className="session-form-field"
+            type="text"
+            onChange={update('email')}
+            value={session.email}
+            placeholder="Email"
+          />
+          {signUpFields}
+          <input
+            className="session-form-field"
+            type="password"
+            onChange={update('password')}
+            value={session.password}
+            placeholder="Password"
+          />
           <button
             className="session-form-button"
             type="submit"

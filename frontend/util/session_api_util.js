@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const signup = (user) =>
   axios({
-    url: '/api/user',
+    url: '/api/users',
     method: 'post',
     data: { user },
   });

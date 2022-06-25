@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Splash from './splash';
 import { logout } from '../../../actions/session_actions';
 
-const mSTP = ({ session, entities: { user } }) => ({
-  currentUser: user[session.id],
+const mSTP = ({ session, entities: { users } }) => ({
+  currentUser: users[session.id],
 });
 
 const mDTP = (dispatch) => ({
