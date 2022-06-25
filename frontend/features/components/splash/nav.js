@@ -16,7 +16,7 @@ const Nav = ({ currentUser, logout }) => {
             <a href="">LinkedIn</a>
           </li>
           <li>
-            <a href="">Github</a>
+            <a href="https://github.com/mikechendev">Github</a>
           </li>
           <li>
             <a href="">Resources</a>
