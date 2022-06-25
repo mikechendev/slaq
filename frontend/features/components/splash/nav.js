@@ -31,7 +31,7 @@ const Nav = ({ currentUser, logout }) => {
           <button>Sign in</button>
         </Link>
         <Link to="/signup">
-          <button>Try for free</button>
+          <button>TRY FOR FREE</button>
         </Link>
       </div>
     </div>
