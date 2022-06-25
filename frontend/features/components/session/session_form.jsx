@@ -51,7 +51,10 @@ const SessionForm = (props) => {
     ) : (
       <div></div>
     );
-    
+
+  let h1Header =
+    props.formType === 'Sign up' ? 'Sign up for SlaQ' : 'Sign in to SlaQ';
+
   return (
     <div className="session-form-container">
       <div className="session-form-box">
@@ -62,7 +65,7 @@ const SessionForm = (props) => {
             </Link>
           </div>
           <div className="session-form-header">
-            <h1>{props.formType} to SlaQ</h1>
+            <h1>{h1Header}</h1>
           </div>
           <div className="session-form-text">
             <p>
