@@ -1,13 +1,17 @@
 .info-links {
   display: flex;
   position: relative;
-  left: 20%;
+  left: 100px;
   align-items: center;
 }
 
 .info-links li {
   display: inline;
   margin: 0 10px;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding: 1rem;
+  font-weight: 700;
 }
 
 .info-links li a {
@@ -21,8 +25,8 @@
 .session-links {
   display: flex;
   position: relative;
-  right: 20%;
   align-items: center;
+  right: 100px;
 }
 
 .session-links button {
