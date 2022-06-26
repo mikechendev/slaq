@@ -1,21 +1,7 @@
 import axios from 'axios';
 
-export const signup = (user) =>
-  axios({
-    url: '/api/users',
-    method: 'post',
-    data: { user },
-  });
+export const signup = (user) => axios.post('/api/users', { user });
 
-export const login = (user) =>
-  axios({
-    url: '/api/session',
-    method: 'post',
-    data: { user },
-  });
+export const login = (user) => axios.post('/api/session', { user });
 
-export const logout = () =>
-  axios({
-    url: '/api/session',
-    method: 'delete',
-  });
+export const logout = () => axios.delete('/api/session');
