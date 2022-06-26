@@ -69,10 +69,19 @@
   font-weight: 600;
 }
 
+.header-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .header-icon > img {
   max-width: 60px;
   max-height: auto;
-  left: -400px;
+  display: inline;
+  margin: 0 10px;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding: 1rem;
 }
 
 .header-name {
