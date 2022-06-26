@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: chats
+#
+#  id           :bigint           not null, primary key
+#  name         :string
+#  description  :string
+#  admin_id     :integer
+#  workspace_id :integer
+#  type         :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 class Chat < ApplicationRecord
   validates_presence_of :type, :workspace_id
   validates :type, inclusion: { in: %w(channel DM group) }

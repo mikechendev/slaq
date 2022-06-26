@@ -19,6 +19,11 @@ class Api::WorkspacesController < ApplicationController
     render 'api/workspaces/show'
   end
 
+  def destroy
+    @workspace = Workspace.find_by(id: params[:id])
+    @workspace.destroy
+  end
+
   private
 
   def workspace_params
