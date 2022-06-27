@@ -4,6 +4,8 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
+      UserWorkspace.create!(user_id: @user.id, workspace_id: 1)
+      UserWorkspace.create!(user_id: @user.id, workspace_id: 2)
       render 'api/users/show'
     else
       render json: @user.errors.full_messages, status: 422
@@ -12,6 +14,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @workspaces = @user.workspaces
     render 'api/users/show'
   end
 

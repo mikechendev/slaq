@@ -8,12 +8,11 @@ import {
 import { logout } from '../../../actions/session_actions';
 import { connect } from 'react-redux';
 
-const mSTP = (state, ownProps) => ({
+const mSTP = (state) => ({
   workspaces: state.entities.workspaces,
   currentUserId: state.session.id,
+  currentUser: state.entities.users[state.session.id],
   currentUserWorkspaces: state.entities.users[state.session.id].workspaces,
-  currentWorkspace:
-    state.entities.workspaces[ownProps.match.params.workspaceId],
 });
 
 const mDTP = (dispatch) => ({
