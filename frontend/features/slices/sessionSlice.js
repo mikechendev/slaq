@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, login, logout } from '../../actions/session_actions';
 import {
   receiveCurrentUser,
   logoutCurrentUser,
@@ -12,12 +11,13 @@ export const sessionSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(receiveCurrentUser, (state, action) => {
-      return (state = { id: action.payload.data.id });
-    });
-    builder.addCase(logoutCurrentUser, (state, action) => {
-      return (state = { id: null });
-    });
+    builder
+      .addCase(receiveCurrentUser, (state, action) => {
+        return (state = { id: action.payload.data.id });
+      })
+      .addCase(logoutCurrentUser, (state, action) => {
+        return (state = { id: null });
+      });
   },
 });
 

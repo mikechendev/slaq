@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const SessionForm = (props) => {
   const [session, setSession] = useState({
@@ -28,6 +29,8 @@ const SessionForm = (props) => {
     );
   };
 
+  let history = useHistory();
+
   const handleDemoUser = (e) => {
     e.preventDefault();
     const user = {
@@ -36,7 +39,7 @@ const SessionForm = (props) => {
       password: 'password',
     };
     setSession(user);
-    props.login(user);
+    props.login(user).then(() => history.push('/workspaces'));
   };
 
   const signUpFields =

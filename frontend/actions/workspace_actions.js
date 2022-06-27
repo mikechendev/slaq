@@ -1,35 +1,50 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import * as APIUtil from '../util/workspace_api_util';
+import * as workspaceAPIUtil from '../util/workspace_api_util';
 
 export const receiveWorkspaces = createAction('receiveWorkspaces');
 export const receiveWorkspace = createAction('receiveWorkspace');
 export const removeWorkspace = createAction('removeWorkspace');
 
-export const fetchWorkspaces = createAsyncThunk(
-  'workspaces/fetch',
-  async (workspaces, thunkAPI) => {
-    const response = await APIUtil.fetchWorkspaces();
-    return thunkAPI.dispatch(receiveWorkspaces(response));
-  }
-);
+// export const fetchWorkspaces = createAsyncThunk(
+//   'workspaces',
+//   async (workspaces, thunkAPI) => {
+//     const response = await workspaceAPIUtil.fetchWorkspaces();
+//     return thunkAPI.dispatch(receiveWorkspaces(response));
+//   }
+// );
 
-export const fetchWorkspace = createAsyncThunk(
-  'workspace/fetch',
-  async (workspace, thunkAPI) => {
-    const response = await APIUtil.fetchWorkspace(workspace);
-    return thunkAPI.dispatch(receiveWorkspace(response));
-  }
-);
+// export const fetchWorkspace = createAsyncThunk(
+//   'fetchWorkspace',
+//   async (workspace, thunkAPI) => {
+//     const response = await workspaceAPIUtil.fetchWorkspace(workspace);
+//     return thunkAPI.dispatch(receiveWorkspace(response));
+//   }
+// );
 
-export const createWorkspace = createAsyncThunk(
-  'workspace/create',
-  async (workspace, thunkAPI) => {
-    const response = await APIUtil.createWorkspace(workspace);
-    return thunkAPI.dispatch(receiveWorkspace(response));
-  }
-);
+// export const createWorkspace = createAsyncThunk(
+//   'createWorkspace',
+//   async (workspace, thunkAPI) => {
+//     const response = await workspaceAPIUtil.createWorkspace(workspace);
+//     return thunkAPI.dispatch(receiveWorkspace(response));
+//   }
+// );
+
+export const fetchWorkspaces = () => (dispatch) =>
+  workspaceAPIUtil
+    .fetchWorkspaces()
+    .then((workspaces) => dispatch(receiveWorkspaces(workspaces)));
+
+export const fetchWorkspace = (workspace) => (dispatch) =>
+  workspaceAPIUtil
+    .fetchWorkspace(workspace)
+    .then((workspace) => dispatch(receiveWorkspace(workspace)));
+
+export const createWorkspace = (workspace) => (dispatch) =>
+  workspaceAPIUtil
+    .createWorkspace(workspace)
+    .then((workspace) => dispatch(receiveWorkspace(workspace)));
 
 export const deleteWorkspace = (workspaceId) => (dispatch) =>
-  APIUtil.deleteWorkspace(workspaceId).then(() =>
-    dispatch(removeWorkspace(workspaceId))
-  );
+  workspaceAPIUtil
+    .deleteWorkspace(workspaceId)
+    .then(() => dispatch(removeWorkspace(workspaceId)));

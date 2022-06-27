@@ -11,3 +11,6 @@ require 'open-uri'
 User.destroy_all
 
 demouser = User.create!({email: 'demouser@demo.demo', username:'demoUser', password: 'password'})
+
+aaworkspace = Workspace.create!({name: '2022-03-28-ny', admin_id: "#{demouser.id}"})
+demouser.workspaces << aaworkspace
