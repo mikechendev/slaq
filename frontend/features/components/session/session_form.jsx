@@ -39,7 +39,7 @@ const SessionForm = (props) => {
       password: 'password',
     };
     setSession(user);
-    props.login(user).then(() => history.push('/workspaces/1'));
+    props.login(user);
   };
 
   const signUpFields =

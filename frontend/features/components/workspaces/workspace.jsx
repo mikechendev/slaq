@@ -17,7 +17,7 @@ const Workspace = (props) => {
 
   let { workspaceId } = useParams();
 
-  console.log(foo);
+  console.log(props.location);
 
   return (
     <div>

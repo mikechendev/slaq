@@ -29,7 +29,7 @@ const Nav = ({ currentUser, logout }) => {
         </div>
         <div className="session-links">
           <Link to="/login">
-            <button>Sign in</button>
+            <button>SIGN IN</button>
           </Link>
           <Link to="/signup">
             <button>TRY FOR FREE</button>
@@ -40,7 +40,7 @@ const Nav = ({ currentUser, logout }) => {
   );
 
   const Greeting = () => (
-    <div className='navbar-container'>
+    <div className="navbar-container">
       <div className="navbar-signed-in">
         <div className="info-links">
           <Link to="/" className="header-icon">
@@ -65,12 +65,11 @@ const Nav = ({ currentUser, logout }) => {
           </ul>
         </div>
         <div className="session-links">
-          <h2 className="header-name">
-            Logged in as{' '}
-            <span className="nav-current-user">{currentUser.email}</span>
-          </h2>
+          <Link to="/get-started">
+            <button className="header-button">CREATE A NEW WORKSPACE</button>
+          </Link>
           <button className="header-button" onClick={logout}>
-            Log Out
+            LOG OUT
           </button>
         </div>
       </div>

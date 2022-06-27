@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import Nav from './nav';
 
 const Splash = (props) => {
-  return (
-    <div className="splash-page-wrapper">
-      <header className='splash-nav'>
-        <Nav logout={props.logout} currentUser={props.currentUser} />
-      </header>
+  console.log(props);
+
+  const billboardLoggedOut = () => {
+    return (
       <div className="splash-billboard">
         <div>
           <h1 className="billboard-headline">
@@ -36,6 +35,86 @@ const Splash = (props) => {
           />
         </video>
       </div>
+    );
+  };
+
+  const billboardLoggedIn = () => {
+    let workspaceListItems = Object.values(props.currentUser.workspaces).map(
+      (workspace) => {
+        return (
+          <li className="workspace-list-items" key={workspace.id}>
+            <div className="workspace-item-container">
+              <div className="workspace-item-name">{workspace.name}</div>
+              <div className="workspace-item-member-count">
+                {workspace.users}
+              </div>
+            </div>
+            <div className="workspace-item-button">
+              <Link to={`/workspaces/${workspace.id}`}>
+                <button>LAUNCH SLAQ</button>
+              </Link>
+            </div>
+          </li>
+        );
+      }
+    );
+    return (
+      <div className="splash-billboard">
+        <div className="billboard-logged-in-container">
+          <div className="billboard-headline-logged-in">
+            <div className="hand">
+              <img src={window.waving_hand} />
+            </div>
+            <span>Welcome back</span>
+          </div>
+          <div className="welcome-container">
+            <div>
+              <div className="welcome-headline">
+                Workspaces for {props.currentUser.email}
+              </div>
+              <div className="splash-workspace-lists">
+                <div className="workspace-list-wrapper">
+                  <ul>{workspaceListItems}</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="logged-in-footer-container">
+            <div className="logged-in-footer-row">
+              <div className="logged-in-footer-img">
+                <img src={window.woman_with_laptop} />
+              </div>
+              <div className="logged-in-footer-text">
+                Want to use SlaQ with a different team?
+              </div>
+              <div className="logged-in-footer-button">
+                <Link to="/get-started">
+                  <button>CREATE A NEW WORKSPACE</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="logged-in-footer-link">
+            Not seeing your workspace?{' '}
+            <Link to="/login" onClick={props.logout}>
+              Try using a different email
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  let billboard = props.currentUser
+    ? billboardLoggedIn()
+    : billboardLoggedOut();
+
+  return (
+    <div className="splash-page-wrapper">
+      <header className="splash-nav">
+        <Nav logout={props.logout} currentUser={props.currentUser} />
+      </header>
+      {billboard}
       <div className="splash-section-top">
         <div className="splash-section-container">
           <video autoPlay muted loop playsInline>
