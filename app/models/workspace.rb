@@ -15,4 +15,8 @@ class Workspace < ApplicationRecord
   has_many :user_workspaces
   has_many :users, through: :user_workspaces
   has_many :chats, dependent: :destroy
+
+  # def self.new_workspace
+  #   Workspace.new(name: "New Workspace")
+  # end
 end

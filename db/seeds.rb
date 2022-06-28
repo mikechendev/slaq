@@ -12,7 +12,7 @@ User.destroy_all
 
 demouser = User.create!({email: 'demouser@demo.demo', username:'demoUser', password: 'password'})
 
-aaworkspace = Workspace.create!({name: '2022-03-28-ny', admin_id: "#{demouser.id}"})
+aaworkspace = Workspace.create!({name: 'App Academy', admin_id: "#{demouser.id}"})
 testworkspace = Workspace.create!({name: 'fake discord', admin_id: "#{demouser.id}"})
 
 demosub = UserWorkspace.create!({user_id: "#{demouser.id}", workspace_id: "#{aaworkspace.id}"})

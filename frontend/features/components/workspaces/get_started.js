@@ -35,8 +35,12 @@ import {
   MediumButton,
 } from '../styles/getstarted.style';
 import { connect } from 'react-redux';
-import { createWorkspace } from '../../../actions/workspace_actions';
+// import { createWorkspace } from '../../../actions/workspace_actions';
 import { logout } from '../../../actions/session_actions';
+import { useHistory } from 'react-router-dom';
+import { createWorkspace } from '../../../util/workspace_api_util';
+import { useDispatch } from 'react-redux';
+import { receiveWorkspace } from '../../../actions/workspace_actions';
 
 const GetStarted = (props) => {
   let workspaceListItems = Object.values(props.currentUser.workspaces).map(
@@ -56,6 +60,19 @@ const GetStarted = (props) => {
       );
     }
   );
+
+  let history = useHistory();
+  let dispatch = useDispatch();
+
+  const handleCreate = async () => {
+    let response = await createWorkspace({
+      name: 'New Workspace',
+      adminId: props.currentUserId,
+    });
+    let res = dispatch(receiveWorkspace(response.data));
+    return history.push(`/client/${res.payload.id}/setup-workspace`);
+  }
+
   return (
     <MainContainer>
       <HeaderContainer>
@@ -68,9 +85,7 @@ const GetStarted = (props) => {
         <FlexEnd>
           <EmailPill>
             Confirmed as <BoldText>{props.currentUser.email}</BoldText>{' '}
-            <Link onClick={props.logout}>
-              <PillLink>Change</PillLink>
-            </Link>
+            <PillLink onClick={props.logout}>Change</PillLink>
           </EmailPill>
         </FlexEnd>
       </HeaderContainer>
@@ -84,7 +99,9 @@ const GetStarted = (props) => {
                 work together. To create a new workspace, click the button
                 below.
               </SubtitleText>
-              <PurpleButton>Create a Workspace</PurpleButton>
+              <PurpleButton onClick={handleCreate}>
+                Create a Workspace
+              </PurpleButton>
               <GettingStartedTerms>
                 By continuing, you’re agreeing to our Customer Terms of Service,
                 User Terms of Service, Privacy Policy, and Cookie Policy.
@@ -136,6 +153,7 @@ const GetStarted = (props) => {
 
 const mSTP = (state) => ({
   currentUser: state.entities.users[state.session.id],
+  currentUserId: state.entities.users[state.session.id].id,
   workspaces: Object.values(state.entities.workspaces),
 });
 
