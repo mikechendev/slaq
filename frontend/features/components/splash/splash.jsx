@@ -58,6 +58,7 @@ const Splash = (props) => {
         );
       }
     );
+
     return (
       <div className="splash-billboard">
         <div className="billboard-logged-in-container">
