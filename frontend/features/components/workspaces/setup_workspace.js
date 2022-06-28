@@ -1,0 +1,87 @@
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchWorkspaces } from '../../../util/workspace_api_util';
+import { receiveWorkspaces } from '../../../actions/workspace_actions';
+import {
+  FontContainer,
+  Div,
+  SetupWorkspaceContainer,
+  TopNav,
+  SetupGrid,
+  SetupSidebar,
+  SetupSidebarHeader,
+  SidebarButton,
+  Dragbar,
+  FormContainer,
+  TitleFont,
+  BodyText,
+  RelativeDiv,
+  FormField,
+  SubmitButton,
+} from '../styles/workspace.style';
+
+const SetupWorkspace = (props) => {
+  const [workspace, setWorkspace] = useState({ name: '' });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    fetchWorkspaces().then((res) => {
+      dispatch(receiveWorkspaces(res.data));
+    });
+  }, []);
+
+  const currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
+
+  const currentWorkspace = useSelector(
+    (state) => state.entities.workspaces[props.match.params.workspaceId]
+  );
+
+  const update = (field) => {
+    return (e) => setWorkspace({ [field]: e.target.value });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    setWorkspace({ ...workspace, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <FontContainer>
+      <Div>
+        <SetupWorkspaceContainer>
+          <TopNav></TopNav>
+          <SetupGrid>
+            <SetupSidebar>
+              <SetupSidebarHeader>
+                <SidebarButton />
+              </SetupSidebarHeader>
+            </SetupSidebar>
+            <Dragbar></Dragbar>
+            <FormContainer>
+              <TitleFont>What’s the name of your company or team?</TitleFont>
+              <BodyText>
+                This will be the name of your SlaQ workspace — choose something
+                that your team will recognize.
+              </BodyText>
+              <div>
+                <RelativeDiv>
+                  <FormField
+                    type="text"
+                    placeholder="Ex: Acme Marketing or Acme Co"
+                    value={workspace.name}
+                    onChange={update('name')}
+                  ></FormField>
+                </RelativeDiv>
+              </div>
+              <SubmitButton onClick={handleUpdate}>Next</SubmitButton>
+            </FormContainer>
+          </SetupGrid>
+        </SetupWorkspaceContainer>
+      </Div>
+    </FontContainer>
+  );
+};
+
+export default SetupWorkspace;

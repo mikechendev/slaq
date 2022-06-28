@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   min-height: 100%;
   font-family: 'Noto Sans', sans-serif;
-  src: url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans&display=swap);
+  src: url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat&family=Noto+Sans&display=swap');
 `;
 
 export const HeaderContainer = styled.div`

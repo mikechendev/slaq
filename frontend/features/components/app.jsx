@@ -6,7 +6,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SplashContainer from './splash/splash_container';
 import GetStarted from './workspaces/get_started';
-import CreateWorkspace from './workspaces/create_workspace';
+import SetupWorkspace from './workspaces/setup_workspace';
 
 const App = () => (
   <div>
@@ -17,7 +17,7 @@ const App = () => (
       <ProtectedRoute path="/get-started" component={GetStarted} />
       <ProtectedRoute
         path="/client/:workspaceId/setup-workspace"
-        component={CreateWorkspace}
+        component={SetupWorkspace}
       />
     </Switch>
   </div>

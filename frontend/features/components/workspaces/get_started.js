@@ -35,7 +35,6 @@ import {
   MediumButton,
 } from '../styles/getstarted.style';
 import { connect } from 'react-redux';
-// import { createWorkspace } from '../../../actions/workspace_actions';
 import { logout } from '../../../actions/session_actions';
 import { useHistory } from 'react-router-dom';
 import { createWorkspace } from '../../../util/workspace_api_util';
@@ -71,7 +70,7 @@ const GetStarted = (props) => {
     });
     let res = dispatch(receiveWorkspace(response.data));
     return history.push(`/client/${res.payload.id}/setup-workspace`);
-  }
+  };
 
   return (
     <MainContainer>

@@ -1,7 +1,7 @@
 .splash-page-wrapper {
   padding-top: 80px;
   font-family: 'Noto Sans', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans&display=swap');
+  src: url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat&family=Noto+Sans&display=swap');
   background-color: #F4ede4;
 }
 
@@ -15,6 +15,18 @@
   height: 100%;
   padding-left: 7px;
   padding-bottom: 100px;
+}
+
+.splash-billboard-logged-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #541554;
+  color: white;
+  font-size: 15px;
+  height: 100%;
+  padding-left: 7px;
+  padding-bottom: 10rem !important;
 }
 
 .billboard-headline {
@@ -46,7 +58,7 @@
   align-items: left;
   width: 55%;
   flex-direction: column;
-  height: 500px;
+  height: auto;
   padding-top: 100px;
 }
 
@@ -232,7 +244,7 @@ video {
   line-height: 1.4444;
   letter-spacing: normal;
   font-size: 1.125rem;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 
 .logged-in-footer-link a {
@@ -266,5 +278,14 @@ video {
   margin-left: 10px;
   margin-right: 10px;
   min-width: 135px;
+}
+
+.logged-in-footer-grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem 7.5%;
+  justify-items: center;
+  display: grid;
+  grid-gap: 1rem 5.5%;
+  grid-template-columns: repeat(3, 1fr);
 }
 

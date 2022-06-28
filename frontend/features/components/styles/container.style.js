@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   height: 720px;
   flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
-  src: url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans&display=swap);
+  src: url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat&family=Noto+Sans&display=swap');
 `;
 
 export const CenteredDiv = styled.div`

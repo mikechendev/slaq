@@ -5,13 +5,13 @@ export const receiveWorkspaces = createAction('receiveWorkspaces');
 export const receiveWorkspace = createAction('receiveWorkspace');
 export const removeWorkspace = createAction('removeWorkspace');
 
-export const fetchWorkspaces = createAsyncThunk(
-  'fetchWorkspaces',
-  async (workspaces, thunkAPI) => {
-    const response = await workspaceAPIUtil.fetchWorkspaces();
-    return thunkAPI.dispatch(receiveWorkspaces(response));
-  }
-);
+// export const fetchWorkspaces = createAsyncThunk(
+//   'fetchWorkspaces',
+//   async (workspaces, thunkAPI) => {
+//     const response = await workspaceAPIUtil.fetchWorkspaces();
+//     return thunkAPI.dispatch(receiveWorkspaces(response));
+//   }
+// );
 
 export const fetchWorkspace = createAsyncThunk(
   'fetchWorkspace',
@@ -29,10 +29,10 @@ export const createWorkspace = createAsyncThunk(
   }
 );
 
-// export const fetchWorkspaces = () => (dispatch) =>
-//   workspaceAPIUtil
-//     .fetchWorkspaces()
-//     .then((workspaces) => dispatch(receiveWorkspaces(workspaces)));
+export const fetchWorkspaces = () => (dispatch) =>
+  workspaceAPIUtil
+    .fetchWorkspaces()
+    .then((workspaces) => dispatch(receiveWorkspaces(workspaces)));
 
 // export const fetchWorkspace = (workspace) => (dispatch) =>
 //   workspaceAPIUtil
