@@ -53,6 +53,14 @@ export const SetupSidebarHeader = styled.div`
   border-color: rgb(82, 38, 83);
 `;
 
+export const TeamName = styled.div`
+  align-items: center;
+  display: flex;
+  margin-left: -4px;
+  max-width: 100%;
+  padding-left: 4px;
+`;
+
 export const SidebarButton = styled.div`
   margin-top: 12px;
   height: 15px;

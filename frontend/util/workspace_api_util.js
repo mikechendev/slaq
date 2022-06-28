@@ -8,5 +8,8 @@ export const fetchWorkspace = (workspaceId) =>
 export const createWorkspace = (workspace) =>
   axios.post('/api/workspaces', { workspace });
 
+export const updateWorkspace = (workspace) =>
+  axios.patch(`/api/workspaces/${workspace.id}`, { workspace });
+
 export const deleteWorkspace = (workspaceId) =>
   axios.delete(`/api/workspaces/${workspaceId}`);

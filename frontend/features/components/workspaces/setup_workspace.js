@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchWorkspaces } from '../../../util/workspace_api_util';
-import { receiveWorkspaces } from '../../../actions/workspace_actions';
+import {
+  receiveWorkspaces,
+  receiveWorkspace,
+} from '../../../actions/workspace_actions';
+import { updateWorkspace } from '../../../util/workspace_api_util';
 import {
   FontContainer,
   Div,
@@ -19,6 +23,7 @@ import {
   RelativeDiv,
   FormField,
   SubmitButton,
+  TeamName,
 } from '../styles/workspace.style';
 
 const SetupWorkspace = (props) => {
@@ -30,10 +35,6 @@ const SetupWorkspace = (props) => {
     });
   }, []);
 
-  const currentUser = useSelector(
-    (state) => state.entities.users[state.session.id]
-  );
-
   const currentWorkspace = useSelector(
     (state) => state.entities.workspaces[props.match.params.workspaceId]
   );
@@ -42,9 +43,12 @@ const SetupWorkspace = (props) => {
     return (e) => setWorkspace({ [field]: e.target.value });
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    setWorkspace({ ...workspace, [e.target.name]: e.target.value });
+    let updated = { ...currentWorkspace, name: workspace.name };
+    let res = await updateWorkspace(updated);
+    let result = dispatch(receiveWorkspace(res.data));
+    return props.history.push(`/client/${result.payload.id}`);
   };
 
   return (
@@ -55,7 +59,11 @@ const SetupWorkspace = (props) => {
           <SetupGrid>
             <SetupSidebar>
               <SetupSidebarHeader>
-                <SidebarButton />
+                {workspace.name === '' ? (
+                  <SidebarButton />
+                ) : (
+                  <TeamName>{workspace.name}</TeamName>
+                )}
               </SetupSidebarHeader>
             </SetupSidebar>
             <Dragbar></Dragbar>

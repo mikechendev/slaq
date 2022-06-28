@@ -51,7 +51,7 @@ const GetStarted = (props) => {
             <div className="workspace-item-member-count">{workspace.users}</div>
           </div>
           <div className="workspace-item-button">
-            <Link to={`/workspaces/${workspace.id}`}>
+            <Link to={`/client/${workspace.id}`}>
               <button>LAUNCH SLAQ</button>
             </Link>
           </div>
