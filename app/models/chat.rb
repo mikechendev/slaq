@@ -12,7 +12,7 @@
 #  updated_at   :datetime         not null
 #
 class Chat < ApplicationRecord
-  validates_presence_of :type, :workspace_id
+  validates_presence_of :chat_type, :workspace_id
   validates :type, inclusion: { in: %w(channel DM group) }
   validates :name, :admin_id, presence: true, if: :is_channel?
   validates :name, uniqueness: {scope: :workspace_id}
@@ -24,6 +24,6 @@ class Chat < ApplicationRecord
 
   #needs admin if type == channel
   def is_channel?
-    self.type == "channel"
+    self.chat_type == "channel"
   end
 end

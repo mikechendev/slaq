@@ -5,7 +5,7 @@ class CreateChats < ActiveRecord::Migration[5.2]
       t.string :description
       t.integer :admin_id
       t.integer :workspace_id
-      t.string :type, null: false
+      t.string :chat_type, null: false
 
       t.timestamps
     end

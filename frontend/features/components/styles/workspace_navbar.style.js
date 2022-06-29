@@ -49,6 +49,7 @@ export const RightDiv = styled.div`
 `;
 
 export const ClockContainer = styled.button`
+  color: rgba(255, 255, 255, 0.8);
   align-items: center;
   background: none;
   border-radius: 4px;

@@ -11,9 +11,14 @@ import {
 import WorkspaceSidebar from './workspace_sidebar';
 import { fetchWorkspaces } from '../../../util/workspace_api_util';
 import { receiveWorkspaces } from '../../../actions/workspace_actions';
+import ChannelModal from '../chats/channel_modal';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
+
+  const [modal, setModal] = useState({
+    isOpen: false,
+  });
 
   useEffect(() => {
     fetchWorkspaces().then((res) => {
@@ -25,11 +30,38 @@ const Workspace = (props) => {
     (state) => state.entities.workspaces[props.match.params.workspaceId]
   );
 
+  let currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
+
+  const openModal = () => {
+    setModal({ isOpen: true });
+  };
+
+  const closeModal = () => {
+    setModal({ isOpen: false });
+  };
+
   return currentWorkspace ? (
     <SetupWorkspaceContainer>
-      <WorkspaceNav currentWorkspace={currentWorkspace} />
+      <WorkspaceNav
+        currentWorkspace={currentWorkspace}
+        currentUser={currentUser}
+      />
       <SetupGrid>
-        <WorkspaceSidebar currentWorkspace={currentWorkspace} />
+        <WorkspaceSidebar
+          currentWorkspace={currentWorkspace}
+          currentUser={currentUser}
+          isOpen={modal.isOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+        />
+        <ChannelModal
+          currentUser={currentUser}
+          currentWorkspace={currentWorkspace}
+          isOpen={modal.isOpen}
+          closeModal={closeModal}
+        />
       </SetupGrid>
     </SetupWorkspaceContainer>
   ) : (
