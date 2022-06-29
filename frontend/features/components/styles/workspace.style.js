@@ -21,6 +21,13 @@ export const TopNav = styled.div`
   grid-column: 1 / -1;
   display: flex;
   height: 2.8rem;
+  box-shadow: 0 1px 0 0 rgb(255 255 255 / 10%);
+  -webkit-app-region: drag;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+  z-index: 203;
 `;
 
 export const SetupGrid = styled.div`

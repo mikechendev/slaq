@@ -35,7 +35,7 @@ const SetupWorkspace = (props) => {
     });
   }, []);
 
-  const currentWorkspace = useSelector(
+  let currentWorkspace = useSelector(
     (state) => state.entities.workspaces[props.match.params.workspaceId]
   );
 
