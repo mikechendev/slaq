@@ -20,7 +20,10 @@ const App = () => (
         path="/client/:workspaceId/setup-workspace"
         component={SetupWorkspace}
       />
-      <ProtectedRoute path="/client/:workspaceId" component={Workspace} />
+      <ProtectedRoute
+        path="/client/:workspaceId/:channelId"
+        component={Workspace}
+      />
     </Switch>
   </div>
 );

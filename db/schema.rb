@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_06_26_001636) do
     t.string "description"
     t.integer "admin_id"
     t.integer "workspace_id"
-    t.string "type", null: false
+    t.string "chat_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

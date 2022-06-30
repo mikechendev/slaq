@@ -7,6 +7,7 @@ class Api::WorkspacesController < ApplicationController
     @workspace.admin_id = current_user.id
     if @workspace.save
       UserWorkspace.create!(user_id: current_user.id, workspace_id: @workspace.id)
+      Chat.create!(name:'General', chat_type: 'channel', admin_id: current_user.id, workspace_id: @workspace.id)
       render 'api/workspaces/show'
     else
       render json: @workspace.errors.full_messages, status: 422

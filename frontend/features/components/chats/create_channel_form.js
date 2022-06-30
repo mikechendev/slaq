@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createChat } from '../../../util/chat_api_util';
 import { receiveChat } from '../../../actions/chat_actions';
 import {
@@ -25,9 +26,10 @@ export const CreateChannelForm = (props) => {
   });
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const update = (field) => {
-    return (e) => setChannel({ [field]: e.target.value });
+    return (e) => setChannel({ ...channel, [field]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -35,15 +37,13 @@ export const CreateChannelForm = (props) => {
     let res = await createChat({
       name: channel.name,
       description: channel.description,
-      type: 'channel',
+      chat_type: 'channel',
       workspace_id: props.currentWorkspace.id,
       admin_id: props.currentUser.id,
     });
     let response = dispatch(receiveChat(res.data));
     props.closeModal();
-    props.history.push(
-      `/client/${currentWorkspace.id}/channels/${response.payload.id}`
-    );
+    history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
 
   return (
@@ -67,24 +67,20 @@ export const CreateChannelForm = (props) => {
                     <div>
                       <NameLabel>Name</NameLabel>
                       <div>
-                        <FormFieldContainer>
-                          <FormField
-                            type="text"
-                            placeholder="e.g. plan-budgeting"
-                            value={channel.name}
-                            onChange={update('name')}
-                          ></FormField>
-                        </FormFieldContainer>
+                        <FormField
+                          type="text"
+                          placeholder="e.g. plan-budgeting"
+                          value={channel.name}
+                          onChange={update('name')}
+                        ></FormField>
                       </div>
                       <NameLabel>Description (optional)</NameLabel>
                       <div>
-                        <FormFieldContainer>
-                          <FormField
-                            type="text"
-                            value={channel.description}
-                            onChange={update('description')}
-                          ></FormField>
-                        </FormFieldContainer>
+                        <FormField
+                          type="text"
+                          value={channel.description}
+                          onChange={update('description')}
+                        ></FormField>
                       </div>
                     </div>
                   </div>

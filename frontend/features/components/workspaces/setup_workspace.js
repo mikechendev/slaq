@@ -48,7 +48,9 @@ const SetupWorkspace = (props) => {
     let updated = { ...currentWorkspace, name: workspace.name };
     let res = await updateWorkspace(updated);
     let result = dispatch(receiveWorkspace(res.data));
-    return props.history.push(`/client/${result.payload.id}`);
+    return props.history.push(
+      `/client/${result.payload.id}/${currentWorkspace.chats[0].id}`
+    );
   };
 
   return (

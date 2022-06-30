@@ -13,7 +13,7 @@
 #
 class Chat < ApplicationRecord
   validates_presence_of :chat_type, :workspace_id
-  validates :type, inclusion: { in: %w(channel DM group) }
+  validates :chat_type, inclusion: { in: %w(channel DM group) }
   validates :name, :admin_id, presence: true, if: :is_channel?
   validates :name, uniqueness: {scope: :workspace_id}
 

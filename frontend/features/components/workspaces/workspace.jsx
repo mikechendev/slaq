@@ -9,9 +9,16 @@ import {
   Div,
 } from '../styles/workspace.style';
 import WorkspaceSidebar from './workspace_sidebar';
-import { fetchWorkspaces } from '../../../util/workspace_api_util';
+import {
+  fetchWorkspaces,
+  fetchWorkspace,
+} from '../../../util/workspace_api_util';
 import { receiveWorkspaces } from '../../../actions/workspace_actions';
 import ChannelModal from '../chats/channel_modal';
+import Chat from '../chats/chat';
+import { fetchChats, fetchChat } from '../../../util/chat_api_util';
+import { receiveChats, receiveChat } from '../../../actions/chat_actions';
+import { useRouteMatch } from 'react-router-dom';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
@@ -25,6 +32,8 @@ const Workspace = (props) => {
       dispatch(receiveWorkspaces(res.data));
     });
   }, []);
+
+  const match = useRouteMatch();
 
   let currentWorkspace = useSelector(
     (state) => state.entities.workspaces[props.match.params.workspaceId]
@@ -50,6 +59,13 @@ const Workspace = (props) => {
       />
       <SetupGrid>
         <WorkspaceSidebar
+          currentWorkspace={currentWorkspace}
+          currentUser={currentUser}
+          isOpen={modal.isOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+        />
+        <Chat
           currentWorkspace={currentWorkspace}
           currentUser={currentUser}
           isOpen={modal.isOpen}

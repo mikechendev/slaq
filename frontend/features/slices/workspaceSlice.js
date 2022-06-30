@@ -16,6 +16,10 @@ export const workspaceSlice = createSlice({
       })
       .addCase(receiveWorkspace, (state, action) => {
         return (state = { ...state, [action.payload.id]: action.payload });
+      })
+      .addCase(removeWorkspace, (state, action) => {
+        delete state[action.payload];
+        return state;
       });
   },
 });
