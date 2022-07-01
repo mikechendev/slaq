@@ -120,7 +120,7 @@ const Splash = (props) => {
               </div>
             </div>
             <div className="workspace-item-button">
-              <Link to={`/client/${workspace.id}`}>
+              <Link to={`/client/${workspace.id}/${workspace.chats[0].id}`}>
                 <button>LAUNCH SLAQ</button>
               </Link>
             </div>

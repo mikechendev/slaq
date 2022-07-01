@@ -27,14 +27,33 @@ import {
   CreateChannelContainer,
   CreateChannelDiv,
   CreateChannelText,
+  ChannelListItemContainer,
+  ChannelListItemDiv,
+  ChannelListPrefix,
+  ChannelListItemName,
 } from '../styles/workspace_sidebar.style';
 import { AiOutlineDown } from 'react-icons/ai';
 import { BsPencilSquare, BsThreeDotsVertical } from 'react-icons/bs';
 import { BiRightArrow } from 'react-icons/bi';
 import { FiPlus } from 'react-icons/fi';
 import ChannelModal from '../chats/channel_modal';
+import { useState, useEffect } from 'react';
 
 const WorkspaceSidebar = (props) => {
+  let channelList = Object.values(props.currentWorkspace.chats).map((chat) => {
+    return (
+      <ChannelListItemDiv key={chat.id}>
+        <ChannelListPrefix>#</ChannelListPrefix>
+        <Link
+          to={`/client/${props.currentWorkspace.id}/${chat.id}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <ChannelListItemName>{chat.name}</ChannelListItemName>
+        </Link>
+      </ChannelListItemDiv>
+    );
+  });
+
   return (
     <SetupSidebar>
       <SideBarContainer>
@@ -110,21 +129,24 @@ const WorkspaceSidebar = (props) => {
                                     </ChannelHeaderTextContainer>
                                   </ChannelExpand>
                                 </ChannelHeaderContainer>
-                                <CreateChannelContainer>
-                                  <div style={{ position: 'relative' }}>
+                                <ChannelListItemContainer>
+                                  {channelList}
+                                  <CreateChannelContainer>
                                     <div style={{ position: 'relative' }}>
-                                      <CreateChannelDiv
-                                        onClick={props.openModal}
-                                      >
-                                        <i className="plus-icon">+</i>
-                                        <br />
-                                        <CreateChannelText>
-                                          Add Channels
-                                        </CreateChannelText>
-                                      </CreateChannelDiv>
+                                      <div style={{ position: 'relative' }}>
+                                        <CreateChannelDiv
+                                          onClick={props.openModal}
+                                        >
+                                          <i className="plus-icon">+</i>
+                                          <br />
+                                          <CreateChannelText>
+                                            Add Channels
+                                          </CreateChannelText>
+                                        </CreateChannelDiv>
+                                      </div>
                                     </div>
-                                  </div>
-                                </CreateChannelContainer>
+                                  </CreateChannelContainer>
+                                </ChannelListItemContainer>
                               </ChannelList>
                             </ScrollMenu>
                           </ScrollContainer>

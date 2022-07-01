@@ -19,9 +19,9 @@ export const HeaderContainer = styled.div`
 `;
 
 export const EmailPill = styled.div`
-  background: rgba(var(--sk_foreground_min, 29, 28, 29), 0.04);
+  background: rgba(var(29, 28, 29), 0.04);
   border-radius: 50px;
-  color: rgba(var(--sk_foreground_max_solid, 97, 96, 97), 1);
+  color: rgba(var(97, 96, 97), 1);
   display: flex;
   font-size: 13px;
   height: 32px;
@@ -57,7 +57,7 @@ export const BoldText = styled.div`
 `;
 
 export const PillLink = styled.a`
-  color: rgba(var(--sk_foreground_max_solid, 97, 96, 97), 1);
+  color: rgba(var(97, 96, 97), 1);
   text-decoration: none;
   margin-left: 4px;
 
@@ -144,13 +144,10 @@ export const LandingViewBottomWrapper = styled.div`
 `;
 
 export const GetStartedWorkspacesContainer = styled.div`
-  ont-size: 15px;
+  font-size: 15px;
   line-height: 1.46668;
   font-weight: initial;
   color: #1d1c1d;
-  font-variant-ligatures: common-ligatures;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
 `;
 
 export const OrDividerContainer = styled.div`
@@ -163,7 +160,7 @@ export const OrDivider = styled.div`
   align-items: center;
   background-color: #fff;
   border-radius: 100%;
-  color: rgba(var(--sk_foreground_max, 29, 28, 29), 0.7);
+  color: rgba(var(29, 28, 29), 0.7);
   display: flex;
   font-weight: 700;
   height: 70px;
@@ -185,16 +182,15 @@ export const GSWorkspacesListContainer = styled.div`
 `;
 
 export const WorkspacesListPanel = styled.div`
-  --saf-0: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
-  border: 1px solid var(--saf-0);
+  --saf-0: rgba(var(221, 221, 221), 1);
+  border: 1px solid;
   border-radius: 4px;
   box-shadow: 0 4px 12px #0000001a;
 `;
 
 export const WorkspacesListPanelTitle = styled.div`
   align-items: center;
-  border-bottom: 1px solid
-    rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+  border-bottom: 1px solid rgba(var(221, 221, 221), 1);
   display: flex;
   height: 55px;
   justify-content: space-between;
@@ -208,7 +204,7 @@ export const WorkspacesListPanelTitleText = styled.div`
 `;
 
 export const ExpandingWorkspacesList = styled.div`
-  --saf-0: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+  --saf-0: rgba(var(221, 221, 221), 1);
   border: 1px solid var(--saf-0);
   border-radius: 4px;
   box-shadow: 0 4px 12px #0000001a;
@@ -239,9 +235,7 @@ export const GSFooterText = styled.div`
 `;
 
 export const MediumButton = styled.button`
-  -webkit-tap-highlight-color: transparent;
   align-items: center;
-  -webkit-appearance: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -250,22 +244,18 @@ export const MediumButton = styled.button`
   outline: none;
   position: relative;
   text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
   margin-left: 16px;
   min-width: auto;
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  color: rgba(var(29, 28, 29), 1);
   font-size: 15px;
   height: 36px;
   min-width: 80px;
   padding: 0 12px 1px;
-  --saf-0: rgba(var(--sk_primary_foreground, 29, 28, 29), 0.3);
-  background: rgba(var(--sk_primary_background, 255, 255, 255), 1);
+  background: rgba(var(255, 255, 255), 1);
   background-clip: padding-box;
-  border: 1px solid var(--saf-0);
+  border: 1px solid;
   font-weight: 700;
   transition: all 80ms linear;
 `;

@@ -16,9 +16,9 @@ import {
 import { receiveWorkspaces } from '../../../actions/workspace_actions';
 import ChannelModal from '../chats/channel_modal';
 import Chat from '../chats/chat';
-import { fetchChats, fetchChat } from '../../../util/chat_api_util';
-import { receiveChats, receiveChat } from '../../../actions/chat_actions';
 import { useRouteMatch } from 'react-router-dom';
+import { fetchChats } from '../../../util/chat_api_util';
+import { receiveChats } from '../../../actions/chat_actions';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
@@ -28,19 +28,24 @@ const Workspace = (props) => {
   });
 
   useEffect(() => {
-    fetchWorkspaces().then((res) => {
-      dispatch(receiveWorkspaces(res.data));
-    });
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    let chats = await fetchChats();
+    dispatch(receiveChats(chats.data));
+    let workspaces = await fetchWorkspaces();
+    dispatch(receiveWorkspaces(workspaces.data));
+  };
 
   const match = useRouteMatch();
 
-  let currentWorkspace = useSelector(
-    (state) => state.entities.workspaces[props.match.params.workspaceId]
-  );
-
   let currentUser = useSelector(
     (state) => state.entities.users[state.session.id]
+  );
+
+  let currentWorkspace = useSelector(
+    (state) => state.entities.workspaces[match.params.workspaceId]
   );
 
   const openModal = () => {
@@ -76,6 +81,7 @@ const Workspace = (props) => {
           currentUser={currentUser}
           currentWorkspace={currentWorkspace}
           isOpen={modal.isOpen}
+          openModal={openModal}
           closeModal={closeModal}
         />
       </SetupGrid>

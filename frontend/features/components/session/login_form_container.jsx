@@ -18,16 +18,16 @@ const mDTP = (dispatch) => ({
 
 export default connect(mSTP, mDTP)(SessionForm);
 
-// const loginFormContainer = () => {
-//   const foo = useSelector((state) => state.session);
-//   const dispatch = useDispatch();
+const loginFormContainer = () => {
+  const foo = useSelector((state) => state.session);
+  const dispatch = useDispatch();
 
-//   const onSubmitHandler = async (user) => {
-//     try {
-//       const res = await dispatch(login(user));
-//       return res
-//     } catch (err) {
-//       dispatch(receiveErrors(err));
-//     }
-//   };
-// };
+  const onSubmitHandler = async (user) => {
+    try {
+      const res = await dispatch(login(user));
+      return res
+    } catch (err) {
+      dispatch(receiveErrors(err));
+    }
+  };
+};

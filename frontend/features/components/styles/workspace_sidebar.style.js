@@ -174,7 +174,6 @@ export const ChannelList = styled.div`
   height: 32px;
   position: absolute;
   width: 100%;
-  box-shadow: 0 1px 0 0 rgb(255 255 255 / 10%);
 `;
 
 export const ChannelHeaderContainer = styled.div`
@@ -219,6 +218,7 @@ export const ChannelHeaderTextContainer = styled.div`
   transition: padding-right 0s ease-in-out 0.3s, color 0.1s ease-out 0s;
   white-space: nowrap;
   font-weight: 500;
+  color: white;
 `;
 
 export const ChannelHeaderText = styled.div`
@@ -229,10 +229,47 @@ export const ChannelHeaderText = styled.div`
   color: white;
 `;
 
+export const ChannelListItemContainer = styled.div`
+  top: 94px;
+  height: 28px;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+export const ChannelListItemDiv = styled.div`
+  height: 28px;
+  line-height: 28px;
+  padding: 0 16px;
+  align-items: center;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+`;
+
+export const ChannelListPrefix = styled.div`
+  opacity: 1;
+  border-radius: 4px;
+  height: 20px;
+  width: 20px;
+  display: grid;
+  margin: 0 8px 0 -4px;
+  place-content: center;
+  color: white;
+`;
+
+export const ChannelListItemName = styled.div`
+  margin-right: 0;
+  opacity: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: white;
+`;
+
 export const CreateChannelContainer = styled.div`
-  top: 178px;
+  top: 20px;
   height: 28px px;
-  position: absolute;
+  position: relative;
   width: 100%;
 `;
 

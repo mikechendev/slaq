@@ -1,7 +1,7 @@
 json.extract! user, :id, :email, :username
 
 json.workspaces do
-  json.array! user.workspaces, :id, :name
+  json.array! user.workspaces, :id, :name, :chats
 end
 
 json.chats do

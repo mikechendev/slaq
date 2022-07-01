@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 export const ChatHeaderContainer = styled.div`
-  background: rgba(var(--sk_primary_background, 255, 255, 255), 1);
+  background: rgba(var(255, 255, 255), 1);
   z-index: 202;
   display: flex;
   flex-shrink: 0;
   height: 49px;
   padding: 0 16px 0 20px;
-  --saf-0: rgba(var(--sk_foreground_low, 29, 28, 29), 0.13);
   align-items: center;
-  box-shadow: 0 1px 0 0 var(--saf-0);
+  box-shadow: 0 1px 0 0;
 `;
 
 export const ChatHeadWrapper = styled.div`

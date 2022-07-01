@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createChat } from '../../../util/chat_api_util';
 import { receiveChat } from '../../../actions/chat_actions';
+import { fetchWorkspaces } from '../../../util/workspace_api_util';
+import { receiveWorkspaces } from '../../../actions/workspace_actions';
 import {
   ModalHeaderContainer,
   ModalHeaderDiv,
@@ -12,7 +14,6 @@ import {
   ModalContentSectionContainer,
   ModalContentSectionText,
   NameLabel,
-  FormFieldContainer,
   FormField,
   ModalFooterContainer,
   CreateButton,
@@ -42,6 +43,8 @@ export const CreateChannelForm = (props) => {
       admin_id: props.currentUser.id,
     });
     let response = dispatch(receiveChat(res.data));
+    let workspaces = await fetchWorkspaces();
+    dispatch(receiveWorkspaces(workspaces.data));
     props.closeModal();
     history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };

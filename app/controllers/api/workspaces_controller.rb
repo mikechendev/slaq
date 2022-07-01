@@ -7,7 +7,11 @@ class Api::WorkspacesController < ApplicationController
     @workspace.admin_id = current_user.id
     if @workspace.save
       UserWorkspace.create!(user_id: current_user.id, workspace_id: @workspace.id)
-      Chat.create!(name:'General', chat_type: 'channel', admin_id: current_user.id, workspace_id: @workspace.id)
+      @general = Chat.create!(name:'General', chat_type: 'channel', 
+        description:'This is the one channel that will always include everyone. 
+        It’s a great spot for announcements and team-wide conversations.', 
+        admin_id: current_user.id, workspace_id: @workspace.id)
+      UserChat.create!(user_id: current_user.id, chat_id: @general.id)
       render 'api/workspaces/show'
     else
       render json: @workspace.errors.full_messages, status: 422

@@ -22,7 +22,6 @@ export const TopNav = styled.div`
   display: flex;
   height: 2.8rem;
   box-shadow: 0 1px 0 0 rgb(255 255 255 / 10%);
-  -webkit-app-region: drag;
   align-items: center;
   justify-content: center;
   min-width: 0;
@@ -110,7 +109,7 @@ export const BodyText = styled.div`
   font-size: 15px;
   line-height: 1.46668;
   font-weight: 400;
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  color: rgba(var(29, 28, 29), 1);
   margin-bottom: 24px;
 `;
 
@@ -121,12 +120,11 @@ export const RelativeDiv = styled.div`
 
 export const FormField = styled.input`
   font-family: 'Lato', sans-serif;
-  --saf-0: rgba(var(--sk_primary_foreground, 29, 28, 29), 0.3);
-  background-color: rgba(var(--sk_primary_background, 255, 255, 255), 1);
-  border: 1px solid var(--saf-0);
+  background-color: rgba(var( 255, 255, 255), 1);
+  border: 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  color: rgba(var(29, 28, 29), 1);
   font-size: 15px;
   line-height: normal;
   margin: 0 0 20px;
@@ -139,19 +137,15 @@ export const FormField = styled.input`
   padding-right: 46px;
 
   &:focus {
-    --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);
-    -webkit-appearance: none;
     border-color: #0000;
     border-radius: 4px;
-    box-shadow: 0 0 0 1px var(--saf-0), 0 0 0 5px #1d9bd14d;
+    box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;
     outline: none;
   }
 `;
 
 export const SubmitButton = styled.button`
-  -webkit-tap-highlight-color: transparent;
   align-items: center;
-  -webkit-appearance: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -160,9 +154,6 @@ export const SubmitButton = styled.button`
   outline: none;
   position: relative;
   text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
   font-size: 18px;
@@ -172,6 +163,6 @@ export const SubmitButton = styled.button`
   width: 30%;
   padding: 0 16px 3px;
   margin-top: 40px;
-  background: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 0.75);
+  background: rgba(var(221, 221, 221), 1);
+  color: rgba(var(29, 28, 29), 0.75);
 `;

@@ -6,9 +6,14 @@ import {
   fetchWorkspace,
 } from '../../../actions/workspace_actions';
 
-const mSTP = ({ session, entities: { users }, entities: { workspaces } }) => ({
+const mSTP = ({
+  session,
+  entities: { users },
+  entities: { workspaces, chats },
+}) => ({
   currentUser: users[session.id],
   workspaces: Object.values(workspaces),
+  chats: Object.values(chats),
 });
 
 const mDTP = (dispatch) => ({

@@ -134,7 +134,6 @@ export const ToolTipButton = styled.button`
   align-items: center;
   background: none;
   border-radius: 4px;
-  color: var(--p-channel_sidebar__top-nav-text);
   display: flex;
   flex-shrink: 0;
   height: 26px;

@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     resources :workspaces, only: [:create, :show, :index, :destroy, :update]
     resources :chats, only: [:create, :show, :index, :update, :destroy]
   end
+  mount ActionCable.server, at: '/cable'
 end

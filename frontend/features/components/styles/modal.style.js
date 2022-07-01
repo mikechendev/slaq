@@ -36,7 +36,7 @@ export const ModalContentSectionContainer = styled.div`
 `;
 
 export const ModalContentSectionText = styled.div`
-  color: rgba(var(--sk_foreground_max_solid, 97, 96, 97), 1);
+  color: rgba(var(97, 96, 97), 1);
   margin-bottom: 24px;
   font-size: 15px;
   font-weight: 400;
@@ -57,12 +57,12 @@ export const FormFieldContainer = styled.form`
 `;
 
 export const FormField = styled.input`
-  --saf-0: rgba(var(--sk_primary_foreground, 29, 28, 29), 0.3);
-  background-color: rgba(var(--sk_primary_background, 255, 255, 255), 1);
-  border: 1px solid var(--saf-0);
+  --saf-0: rgba(var(29, 28, 29), 0.3);
+  background-color: rgba(var(255, 255, 255), 1);
+  border: 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  color: rgba(var( 29, 28, 29), 1);
   font-size: 15px;
   line-height: normal;
   margin: 0 0 20px;
@@ -74,18 +74,18 @@ export const FormField = styled.input`
   padding: 11px 12px 13px;
   padding-right: 46px;
   &:focus {
-    --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);
+    --saf-0: rgba(var(18, 100, 163), 1);
     -webkit-appearance: none;
     border-color: #0000;
     border-radius: 4px;
-    box-shadow: 0 0 0 1px var(--saf-0), 0 0 0 5px #1d9bd14d;
+    box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;
     outline: none;
   }
 `;
 
 export const ModalFooterContainer = styled.div`
   align-items: center;
-  background-color: rgba(var(--sk_primary_background, 255, 255, 255), 1);
+  background-color: rgba(var(255, 255, 255), 1);
   border-radius: 0 0 8px 8px;
   display: flex;
   flex-shrink: 0;
@@ -98,11 +98,11 @@ export const ModalFooterContainer = styled.div`
 `;
 
 export const CreateButton = styled.button`
-  background: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+  background: rgba(var(221, 221, 221), 1);
   background-clip: initial;
-  border-color: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+  border-color: rgba(var(221, 221, 221), 1);
   box-shadow: none;
-  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 0.75);
+  color: rgba(var(9, 28, 29), 0.75);
   cursor: pointer;
   text-shadow: none;
   transition: all 80ms linear;

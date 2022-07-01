@@ -12,6 +12,8 @@ import {
   HeaderTextContainer,
   HeaderText,
 } from '../styles/chat.style';
+import Messages from '../messages/messages';
+import MessageForm from '../messages/message_form';
 
 const Chat = (props) => {
   const dispatch = useDispatch();
@@ -23,14 +25,22 @@ const Chat = (props) => {
     });
   }, []);
 
-  const currentChannel = useSelector((state) => {
-    return state.entities.chats[match.params.channelId];
-  });
+  let currentChannel = useSelector(
+    (state) => state.entities.chats[match.params.channelId]
+  );
 
-  if (currentChannel) console.log(currentChannel);
-
-  return (
+  return currentChannel ? (
     <div>
+      <Messages
+        currentChannel={currentChannel}
+        currentUser={props.currentUser}
+        currentWorkspace={props.currentWorkspace}
+      />
+      <MessageForm
+        currentChannel={currentChannel}
+        currentUser={props.currentUser}
+        currentWorkspace={props.currentWorkspace}
+      />
       <div>
         <div>
           <ChatHeaderContainer>
@@ -54,7 +64,7 @@ const Chat = (props) => {
                         ></path>
                       </svg>
                     </div>
-                    <HeaderText>Hello</HeaderText>
+                    <HeaderText># {currentChannel.name}</HeaderText>
                   </HeaderTextContainer>
                 </ChatHeadTextButton>
               </div>
@@ -63,6 +73,8 @@ const Chat = (props) => {
         </div>
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
