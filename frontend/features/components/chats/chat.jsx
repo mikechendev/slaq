@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { createConsumer } from '@rails/actioncable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { fetchChats, fetchChat } from '../../../util/chat_api_util';
@@ -11,6 +13,7 @@ import {
   ChatHeadTextButton,
   HeaderTextContainer,
   HeaderText,
+  MessagesContainer,
 } from '../styles/chat.style';
 import Messages from '../messages/messages';
 import MessageForm from '../messages/message_form';
@@ -19,28 +22,12 @@ const Chat = (props) => {
   const dispatch = useDispatch();
   const match = useRouteMatch();
 
-  useEffect(() => {
-    fetchChats().then((res) => {
-      dispatch(receiveChats(res.data));
-    });
-  }, []);
-
   let currentChannel = useSelector(
     (state) => state.entities.chats[match.params.channelId]
   );
 
   return currentChannel ? (
     <div>
-      <Messages
-        currentChannel={currentChannel}
-        currentUser={props.currentUser}
-        currentWorkspace={props.currentWorkspace}
-      />
-      <MessageForm
-        currentChannel={currentChannel}
-        currentUser={props.currentUser}
-        currentWorkspace={props.currentWorkspace}
-      />
       <div>
         <div>
           <ChatHeaderContainer>
@@ -70,6 +57,18 @@ const Chat = (props) => {
               </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
+          <MessagesContainer>
+            <Messages
+              currentChannel={currentChannel}
+              currentUser={props.currentUser}
+              currentWorkspace={props.currentWorkspace}
+            />
+            <MessageForm
+              currentChannel={currentChannel}
+              currentUser={props.currentUser}
+              currentWorkspace={props.currentWorkspace}
+            />
+          </MessagesContainer>
         </div>
       </div>
     </div>

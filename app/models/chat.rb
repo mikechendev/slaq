@@ -21,6 +21,7 @@ class Chat < ApplicationRecord
   belongs_to :admin, class_name: "User", foreign_key: :admin_id, optional: true
   has_many :user_chats
   has_many :users, through: :user_chats
+  has_many :messages
 
   #needs admin if type == channel
   def is_channel?

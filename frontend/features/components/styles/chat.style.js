@@ -45,3 +45,11 @@ export const HeaderText = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+
+export const MessagesContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+`;
