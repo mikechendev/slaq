@@ -1,8 +1,7 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    current_user.chats.each do |chat|
-      stream_for chat
-    end
+    chat = Chat.find_by(id: params[:id])
+    stream_for chat
   end
 
   # def speak(data)
