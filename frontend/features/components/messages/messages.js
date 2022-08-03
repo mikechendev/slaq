@@ -26,7 +26,7 @@ const Messages = (props) => {
   }, [channelId]);
 
   const sendMessage = (content) => {
-    const data = { channelId, currentUserId, content };
+    const data = { channelId, currentUserId, body };
     channel.send('new_message', data);
   };
   // const [state, setState] = useState({
