@@ -5,55 +5,77 @@ import {
   MessagesWrapper,
   MessagesFooterContainer,
 } from '../styles/message.style';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Messages = (props) => {
-  const [state, setState] = useState({
-    messages: [],
-  });
-
-  let bottom = useRef();
+  const { channelId } = useParams();
+  const currentUserId = useSelector((state) => state.session.id);
 
   useEffect(() => {
-    App.cable.subscriptions.create(
-      { channel: 'ChatChannel' },
-      {
-        received: (data) => {
-          switch (data.type) {
-            case 'message':
-              setState({
-                messages: state.messages.concat(data.message),
-              });
-              break;
-            case 'messages':
-              setState({ ...state, messages: data.messages });
-              break;
-          }
-        },
-        speak: function (data) {
-          return this.perform('speak', data);
-        },
-        load: function () {
-          return this.perform('load');
-        },
-      }
-    );
-  }, []);
+    const channel = cable.subscriptions.create({
+      channel: 'MessagesChannel',
+      id: channelId,
+    });
 
-  const loadChat = (e) => {
-    e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].load();
+    setChannel(channel);
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [channelId]);
+
+  const sendMessage = (content) => {
+    const data = { channelId, currentUserId, content };
+    channel.send('new_message', data);
   };
+  // const [state, setState] = useState({
+  //   messages: [],
+  // });
 
-  const messageList = state.messages.map((message) => {
-    return (
-      <li key={message.id}>
-        {message}
-        <div ref={bottom} />
-      </li>
-    );
-  });
+  // let bottom = useRef();
 
-  console.log(bottom);
+  // useEffect(() => {
+  //   App.cable.subscriptions.create(
+  //     { channel: 'ChatChannel' },
+  //     {
+  //       received: (data) => {
+  //         switch (data.type) {
+  //           case 'message':
+  //             setState({
+  //               messages: state.messages.concat(data.message),
+  //             });
+  //             break;
+  //           case 'messages':
+  //             setState({ ...state, messages: data.messages });
+  //             break;
+  //         }
+  //       },
+  //       speak: function (data) {
+  //         return this.perform('speak', data);
+  //       },
+  //       load: function () {
+  //         return this.perform('load');
+  //       },
+  //     }
+  //   );
+  // }, []);
+
+  // const loadChat = (e) => {
+  //   e.preventDefault();
+  //   App.cable.subscriptions.subscriptions[0].load();
+  // };
+
+  // const messageList = state.messages.map((message) => {
+  //   return (
+  //     <li key={message.id}>
+  //       {message}
+  //       <div ref={bottom} />
+  //     </li>
+  //   );
+  // });
+
+  // console.log(bottom);
 
   return (
     <div className="chatroom-container">
