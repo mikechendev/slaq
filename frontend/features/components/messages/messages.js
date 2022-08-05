@@ -32,6 +32,10 @@ const Messages = (props) => {
   };
 
   const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
+
+  const renderedMessages = msgs && msgs.map((message) => (
+    <MessageItem key={message.id} message={message} />
+  ))
   // const [state, setState] = useState({
   //   messages: [],
   // });
