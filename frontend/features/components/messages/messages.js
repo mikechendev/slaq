@@ -7,6 +7,7 @@ import {
 } from '../styles/message.style';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectMessagesByChat } from '../../slices/messagesSlice';
 
 const Messages = (props) => {
   const { channelId } = useParams();
@@ -29,6 +30,8 @@ const Messages = (props) => {
     const data = { channelId, currentUserId, body };
     channel.send('new_message', data);
   };
+
+  const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
   // const [state, setState] = useState({
   //   messages: [],
   // });
