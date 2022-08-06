@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import userReducer from './userSlice';
 import workspacesReducer from './workspaceSlice';
 import chatsReducer from './chatSlice';
-import messagesReducer from './messageSlice';
+import messagesReducer from './messagesSlice';
 
 const entitiesReducer = combineReducers({
   users: userReducer,
