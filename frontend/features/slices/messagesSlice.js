@@ -14,7 +14,7 @@ const messagesAdapter = createEntityAdapter();
 
 const initialState = messagesAdapter.getInitialState({});
 
-export const messagesSlice = createSlice({
+const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
