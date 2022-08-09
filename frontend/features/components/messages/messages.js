@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageForm from './message_form';
+import Message from './message';
 import { useState, useEffect, useRef } from 'react';
 import {
   MessagesWrapper,
@@ -35,7 +36,7 @@ const Messages = (props) => {
 
   const renderedMessages =
     msgs &&
-    msgs.map((message) => <MessageItem key={message.id} message={message} />);
+    msgs.map((message) => <Message key={message.id} message={message} />);
   // const [state, setState] = useState({
   //   messages: [],
   // });
@@ -88,11 +89,11 @@ const Messages = (props) => {
     <div className="chatroom-container">
       {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
-      </button>
-      <div className="message-list">{messageList}</div> */}
-      {/* <MessagesFooterContainer>
-        <MessageForm />
-      </MessagesFooterContainer> */}
+      </button> */}
+      <div className="message-list">{renderedMessages}</div>
+      <MessagesFooterContainer>
+        <MessageForm sendMessage={sendMessage} />
+      </MessagesFooterContainer>
     </div>
   );
 };

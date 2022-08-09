@@ -10,18 +10,20 @@ const MessageForm = (props) => {
     return (e) => setState({ [field]: e.currentTarget.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({
-      message: state.body,
-    });
-    App.cable.subscriptions.subscriptions[0].load();
-    setState({ body: '' });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   App.cable.subscriptions.subscriptions[0].speak({
+  //     message: state.body,
+  //   });
+  //   App.cable.subscriptions.subscriptions[0].load();
+  //   setState({ body: '' });
+  // };
+
+  console.log(props);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={props.sendMessage}>
         <input
           type="text"
           value={state.body}
