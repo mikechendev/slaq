@@ -60,7 +60,7 @@ const Chat = (props) => {
               </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
-          <MessagesContainer>
+          {/* <MessagesContainer>
             <Messages
               currentChannel={currentChannel}
               currentUser={props.currentUser}
@@ -71,7 +71,7 @@ const Chat = (props) => {
               currentUser={props.currentUser}
               currentWorkspace={props.currentWorkspace}
             />
-          </MessagesContainer>
+          </MessagesContainer> */}
         </div>
       </div>
     </div>

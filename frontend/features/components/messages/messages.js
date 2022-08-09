@@ -86,10 +86,10 @@ const Messages = (props) => {
 
   return (
     <div className="chatroom-container">
-      <button className="load-button" onClick={loadChat}>
+      {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
       </button>
-      <div className="message-list">{messageList}</div>
+      <div className="message-list">{messageList}</div> */}
       {/* <MessagesFooterContainer>
         <MessageForm />
       </MessagesFooterContainer> */}
