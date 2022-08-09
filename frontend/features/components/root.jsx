@@ -13,7 +13,9 @@ export const ActionCableContext = createContext();
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <App cableApp={CableApp} />
+      <ActionCableContext.Provider value={CableApp.cable}>
+        <App />
+      </ActionCableContext.Provider>
     </HashRouter>
   </Provider>
 );

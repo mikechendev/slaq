@@ -18,25 +18,25 @@ const Messages = (props) => {
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
-  const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
+  const msgs = useSelector((state) => state.entities.messages);
 
-  // useEffect(() => {
-  //   const channel = cable.subscriptions.create({
-  //     channel: 'MessagesChannel',
-  //     id: channelId,
-  //   });
+  useEffect(() => {
+    const channel = cable.subscriptions.create({
+      channel: 'MessagesChannel',
+      id: channelId,
+    });
 
-  //   setChannel(channel);
+    setChannel(channel);
 
-  //   return () => {
-  //     channel.unsubscribe();
-  //   };
-  // }, [channelId]);
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [channelId]);
 
-  // const sendMessage = (body) => {
-  //   const data = { channelId, currentUserId, body };
-  //   channel.send('new_message', data);
-  // };
+  const sendMessage = (body) => {
+    const data = { channelId, currentUserId, body };
+    channel.send('new_message', data);
+  };
 
   // const renderedMessages =
   //   msgs &&
