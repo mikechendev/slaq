@@ -19,8 +19,6 @@ const MessageForm = (props) => {
   //   setState({ body: '' });
   // };
 
-  console.log(props);
-
   return (
     <div>
       <form onSubmit={props.sendMessage}>

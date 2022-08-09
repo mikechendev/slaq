@@ -26,9 +26,6 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
-  console.log(currentChannel);
-  console.log(props);
-
   return currentChannel ? (
     <div>
       <div>
@@ -60,18 +57,18 @@ const Chat = (props) => {
               </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
-          {/* <MessagesContainer>
+          <MessagesContainer>
             <Messages
               currentChannel={currentChannel}
               currentUser={props.currentUser}
               currentWorkspace={props.currentWorkspace}
             />
-            <MessageForm
+            {/* <MessageForm
               currentChannel={currentChannel}
               currentUser={props.currentUser}
               currentWorkspace={props.currentWorkspace}
-            />
-          </MessagesContainer> */}
+            /> */}
+          </MessagesContainer>
         </div>
       </div>
     </div>

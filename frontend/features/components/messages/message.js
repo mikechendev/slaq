@@ -8,3 +8,5 @@ const Message = (props) => {
     </div>
   );
 };
+
+export default Message;

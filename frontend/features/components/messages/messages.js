@@ -1,7 +1,8 @@
 import React from 'react';
 import MessageForm from './message_form';
 import Message from './message';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   MessagesWrapper,
   MessagesFooterContainer,
@@ -9,34 +10,37 @@ import {
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectMessagesByChat } from '../../slices/messagesSlice';
-
+import { ActionCableContext } from '../root';
+//
 const Messages = (props) => {
+  const dispatch = useDispatch();
   const { channelId } = useParams();
-  const currentUserId = useSelector((state) => state.session.id);
-
-  useEffect(() => {
-    const channel = cable.subscriptions.create({
-      channel: 'MessagesChannel',
-      id: channelId,
-    });
-
-    setChannel(channel);
-
-    return () => {
-      channel.unsubscribe();
-    };
-  }, [channelId]);
-
-  const sendMessage = (content) => {
-    const data = { channelId, currentUserId, body };
-    channel.send('new_message', data);
-  };
-
+  const currentUserId = props.currentUser.id;
+  const cable = useContext(ActionCableContext);
+  const [channel, setChannel] = useState(null);
   const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
 
-  const renderedMessages =
-    msgs &&
-    msgs.map((message) => <Message key={message.id} message={message} />);
+  // useEffect(() => {
+  //   const channel = cable.subscriptions.create({
+  //     channel: 'MessagesChannel',
+  //     id: channelId,
+  //   });
+
+  //   setChannel(channel);
+
+  //   return () => {
+  //     channel.unsubscribe();
+  //   };
+  // }, [channelId]);
+
+  // const sendMessage = (body) => {
+  //   const data = { channelId, currentUserId, body };
+  //   channel.send('new_message', data);
+  // };
+
+  // const renderedMessages =
+  //   msgs &&
+  //   msgs.map((message) => <Message key={message.id} message={message} />);
   // const [state, setState] = useState({
   //   messages: [],
   // });
@@ -90,10 +94,10 @@ const Messages = (props) => {
       {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
       </button> */}
-      <div className="message-list">{renderedMessages}</div>
+      {/* <div className="message-list">{renderedMessages}</div>
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
-      </MessagesFooterContainer>
+      </MessagesFooterContainer> */}
     </div>
   );
 };
