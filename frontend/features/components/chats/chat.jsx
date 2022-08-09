@@ -26,6 +26,9 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
+  console.log(currentChannel);
+  console.log(props);
+
   return currentChannel ? (
     <div>
       <div>

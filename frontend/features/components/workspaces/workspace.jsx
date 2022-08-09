@@ -70,13 +70,13 @@ const Workspace = (props) => {
           closeModal={closeModal}
           openModal={openModal}
         />
-        {/* <Chat
+        <Chat
           currentWorkspace={currentWorkspace}
           currentUser={currentUser}
           isOpen={modal.isOpen}
           closeModal={closeModal}
           openModal={openModal}
-        /> */}
+        />
         <ChannelModal
           currentUser={currentUser}
           currentWorkspace={currentWorkspace}
