@@ -21,6 +21,13 @@ const Messages = (props) => {
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
   const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current != null) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [msgs]);
 
   useEffect(() => {
     const channel = cable.subscriptions.create({
@@ -40,9 +47,9 @@ const Messages = (props) => {
     channel.send('new_message', data);
   };
 
-  // const renderedMessages =
-  //   msgs &&
-  //   msgs.map((message) => <Message key={message.id} message={message} />);
+  const renderedMessages =
+    msgs &&
+    msgs.map((message) => <Message key={message.id} message={message} />);
   // const [state, setState] = useState({
   //   messages: [],
   // });
@@ -96,10 +103,10 @@ const Messages = (props) => {
       {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
       </button> */}
-      {/* <div className="message-list">{renderedMessages}</div>
+      <div className="message-list">{renderedMessages}</div>
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
-      </MessagesFooterContainer> */}
+      </MessagesFooterContainer>
     </div>
   );
 };
