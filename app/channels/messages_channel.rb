@@ -1,13 +1,14 @@
 class MessagesChannel < ApplicationCable::Channel
   def subscribed
-    @chat = Chat.find_by(id: params[:id])
+    @chat = Chat.find(params[:id])
     stream_for @chat
   end
 
   def receive(data)
     user = User.find_by(id: data['userId'])
-    message = @chat.messages.create(body: data['body'], user: user)
-    MessagesChannel.broadcast_to(@chat, message: message)
+    chat = Chat.find_by(id: data['chatId'])
+    message = chat.messages.create(body: data['body'], user: user)
+    MessagesChannel.broadcast_to(chat, message: message)
   end
 
   # def speak(data)

@@ -16,7 +16,7 @@ import { ActionCableContext } from '../root';
 const Messages = (props) => {
   const dispatch = useDispatch();
   const match = useRouteMatch();
-  const { channelId } = useParams();
+  const channelId = props.currentChannel.id;
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
@@ -43,9 +43,15 @@ const Messages = (props) => {
   }, [channelId, dispatch, cable.subscriptions]);
 
   const sendMessage = (body) => {
-    const data = { channelId, currentUserId, body };
-    channel.send('new_message', data);
+    channel.send({
+      type: 'message',
+      chatId: channelId,
+      userId: currentUserId,
+      body,
+    });
   };
+
+  console.log(msgs);
 
   const renderedMessages =
     msgs &&

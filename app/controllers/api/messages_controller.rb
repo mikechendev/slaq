@@ -3,14 +3,16 @@ class Api::MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    @channel = Chat.find(@message[:chat_id])
+    @channel = Chat.find_by(id: data['chatId'])
     @message = @channel.messages.new(message_params)
     @message.user_id = current_user.id
+    @message.save
+    render json: @message
 
-    if @message.save
-      ChatChannel.broadcast_to(@channel, @message)
-      render json: @message
-    end
+    # if @message.save
+    #   MessagesChannel.broadcast_to(@channel, @message)
+    #   render json: @message
+    # end
   end
 
   # def show
