@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { createConsumer } from '@rails/actioncable';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,15 +16,30 @@ import {
   MessagesContainer,
 } from '../styles/chat.style';
 import Messages from '../messages/messages';
-import MessageForm from '../messages/message_form';
+import { messageReceived } from '../../slices/messagesSlice';
+import { ActionCableContext } from '../root';
 
 const Chat = (props) => {
   const dispatch = useDispatch();
   const match = useRouteMatch();
+  const cable = useContext(ActionCableContext);
 
   let currentChannel = useSelector(
     (state) => state.entities.chats[match.params.channelId]
   );
+
+  console.log(currentChannel.id);
+
+  useEffect(() => {
+    cable.subscriptions.create(
+      { channel: 'MessagesChannel', id: currentChannel.id },
+      {
+        received: (data) => {
+          dispatch(messageReceived(data));
+        },
+      }
+    );
+  }, [currentChannel, cable.subscriptions, dispatch]);
 
   return currentChannel ? (
     <div>

@@ -12,7 +12,10 @@ import { isAfter, parseISO, subYears } from 'date-fns';
 
 const messagesAdapter = createEntityAdapter();
 
-const initialState = messagesAdapter.getInitialState({});
+const initialState = messagesAdapter.getInitialState({
+  status: 'idle',
+  error: null,
+});
 
 const messagesSlice = createSlice({
   name: 'messages',
