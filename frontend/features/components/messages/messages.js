@@ -40,7 +40,7 @@ const Messages = (props) => {
     return () => {
       channel.unsubscribe();
     };
-  }, [channelId]);
+  }, [channelId, dispatch, cable.subscriptions]);
 
   const sendMessage = (body) => {
     const data = { channelId, currentUserId, body };

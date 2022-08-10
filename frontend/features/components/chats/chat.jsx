@@ -63,11 +63,11 @@ const Chat = (props) => {
               currentUser={props.currentUser}
               currentWorkspace={props.currentWorkspace}
             />
-            {/* <MessageForm
+            <MessageForm
               currentChannel={currentChannel}
               currentUser={props.currentUser}
               currentWorkspace={props.currentWorkspace}
-            /> */}
+            />
           </MessagesContainer>
         </div>
       </div>
