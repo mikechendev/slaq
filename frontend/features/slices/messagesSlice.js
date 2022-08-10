@@ -47,7 +47,7 @@ const messagesSlice = createSlice({
 export const { messageReceived } = messagesSlice.actions;
 
 export const { selectAll: selectAllMessages } = messagesAdapter.getSelectors(
-  (state) => state.messages
+  (state) => state.entities.messages
 );
 
 export const selectMessagesByChat = createSelector(

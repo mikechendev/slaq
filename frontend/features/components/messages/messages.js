@@ -3,6 +3,7 @@ import MessageForm from './message_form';
 import Message from './message';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import {
   MessagesWrapper,
   MessagesFooterContainer,
@@ -14,11 +15,12 @@ import { ActionCableContext } from '../root';
 //
 const Messages = (props) => {
   const dispatch = useDispatch();
+  const match = useRouteMatch();
   const { channelId } = useParams();
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
-  const msgs = useSelector((state) => state.entities.messages);
+  const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
 
   useEffect(() => {
     const channel = cable.subscriptions.create({
