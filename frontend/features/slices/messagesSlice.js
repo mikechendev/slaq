@@ -22,12 +22,13 @@ const messagesSlice = createSlice({
   initialState,
   reducers: {
     messageReceived(state, action) {
-      const data = action.payload.data;
+      const data = action.payload.message;
+      console.log(data);
       const message = {
         id: data.id,
-        ...data.attributes,
-        chatId: data.relationships.chat.data.id,
-        userId: data.relationships.user.data.id,
+        body: data.body,
+        chatId: data.chat_id,
+        userId: data.user_id,
       };
       messagesAdapter.addOne(state, message);
     },

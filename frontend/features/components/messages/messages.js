@@ -51,8 +51,6 @@ const Messages = (props) => {
     });
   };
 
-  console.log(msgs);
-
   const renderedMessages =
     msgs &&
     msgs.map((message) => <Message key={message.id} message={message} />);
