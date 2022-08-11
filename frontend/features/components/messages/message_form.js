@@ -20,8 +20,6 @@ const MessageForm = (props) => {
     // setState({ body: '' });
   };
 
-  console.log(state);
-
   return (
     <div>
       <form onSubmit={handleSubmit}>

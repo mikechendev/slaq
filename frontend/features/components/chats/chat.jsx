@@ -28,8 +28,6 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
-  console.log(currentChannel.id);
-
   useEffect(() => {
     cable.subscriptions.create(
       { channel: 'MessagesChannel', id: currentChannel.id },

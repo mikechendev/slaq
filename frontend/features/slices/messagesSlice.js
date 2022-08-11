@@ -23,7 +23,6 @@ const messagesSlice = createSlice({
   reducers: {
     messageReceived(state, action) {
       const data = action.payload.message;
-      console.log(data);
       const message = {
         id: data.id,
         body: data.body,
