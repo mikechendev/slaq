@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { fetchChats, fetchChat } from '../../../util/chat_api_util';
 import { receiveChats } from '../../../actions/chat_actions';
+import { fetchMessages } from '../../../util/message_api_util';
+import { receiveMessages } from '../../../actions/message_actions';
 import {
   ChatHeaderContainer,
   ChatHeadWrapper,
