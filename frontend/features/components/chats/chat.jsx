@@ -31,6 +31,12 @@ const Chat = (props) => {
   );
 
   useEffect(() => {
+    fetchMessages().then((messages) => {
+      return dispatch(receiveMessages(messages));
+    });
+  });
+
+  useEffect(() => {
     cable.subscriptions.create(
       { channel: 'MessagesChannel', id: currentChannel.id },
       {
