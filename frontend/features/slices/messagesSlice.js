@@ -33,17 +33,17 @@ const messagesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder
-    //   .addCase(receiveMessages, (state, action) => {
-    //     return (state = action.payload);
-    //   })
-    //   .addCase(receiveMessage, (state, action) => {
-    //     return (state = { ...state, [action.payload.id]: action.payload });
-    //   })
-    //   .addCase(removeMessage, (state, action) => {
-    //     delete state[action.payload];
-    //     return state;
-    //   });
+    builder
+      .addCase(receiveMessages, (state, action) => {
+        return (state = action.payload);
+      })
+      .addCase(receiveMessage, (state, action) => {
+        return (state = { ...state, [action.payload.id]: action.payload });
+      })
+      .addCase(removeMessage, (state, action) => {
+        delete state[action.payload];
+        return state;
+      });
   },
 });
 
