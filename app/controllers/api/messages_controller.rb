@@ -17,7 +17,6 @@ class Api::MessagesController < ApplicationController
 
   def index
     @messages = Chat.find_by(id: params[:chat_id]).messages
-    p @messages
   end
 
   def show

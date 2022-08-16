@@ -1,13 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { createConsumer } from '@rails/actioncable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
-import { fetchChats, fetchChat } from '../../../util/chat_api_util';
-import { receiveChats } from '../../../actions/chat_actions';
-import { fetchMessages } from '../../../util/message_api_util';
 import {
   receiveMessages,
   receiveMessage,
@@ -21,7 +15,6 @@ import {
   MessagesContainer,
 } from '../styles/chat.style';
 import Messages from '../messages/messages';
-// import { messageReceived } from '../../slices/messagesSlice';
 import { ActionCableContext } from '../root';
 
 const Chat = (props) => {
@@ -33,20 +26,11 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
-  console.log(currentChannel);
-
-  // useEffect(() => {
-  //   fetchMessages().then((messages) => {
-  //     return dispatch(receiveMessages(messages));
-  //   });
-  // });
-
   useEffect(() => {
     cable.subscriptions.create(
       { channel: 'MessagesChannel', id: currentChannel.id },
       {
         received: (data) => {
-          // dispatch(messageReceived(data));
           dispatch(receiveMessage(data));
         },
       }

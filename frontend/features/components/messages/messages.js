@@ -10,9 +10,8 @@ import {
 } from '../styles/message.style';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectMessagesByChat } from '../../slices/messagesSlice';
 import { ActionCableContext } from '../root';
-import { fetchMessage, fetchMessages } from '../../../util/message_api_util';
+import { fetchMessages } from '../../../util/message_api_util';
 import { receiveMessages } from '../../../actions/message_actions';
 //
 const Messages = (props) => {
@@ -22,14 +21,11 @@ const Messages = (props) => {
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
-  const [messages, setMessages] = useState([]);
-  // const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
   const messagesEndRef = useRef(null);
   const msgs = useSelector((state) => state.entities.messages);
 
   useEffect(() => {
     fetchMessages(channelId).then((messages) => {
-      console.log('useeffect', messages.data);
       dispatch(receiveMessages(messages));
     });
   }, []);
@@ -62,67 +58,12 @@ const Messages = (props) => {
     });
   };
 
-  console.log('msgs', msgs);
-
   const renderedMessages = Object.entries(msgs).map(([id, message]) => (
     <Message key={id} message={message} />
   ));
 
-  console.log(renderedMessages);
-
-  // const [state, setState] = useState({
-  //   messages: [],
-  // });
-
-  // let bottom = useRef();
-
-  // useEffect(() => {
-  //   App.cable.subscriptions.create(
-  //     { channel: 'ChatChannel' },
-  //     {
-  //       received: (data) => {
-  //         switch (data.type) {
-  //           case 'message':
-  //             setState({
-  //               messages: state.messages.concat(data.message),
-  //             });
-  //             break;
-  //           case 'messages':
-  //             setState({ ...state, messages: data.messages });
-  //             break;
-  //         }
-  //       },
-  //       speak: function (data) {
-  //         return this.perform('speak', data);
-  //       },
-  //       load: function () {
-  //         return this.perform('load');
-  //       },
-  //     }
-  //   );
-  // }, []);
-
-  // const loadChat = (e) => {
-  //   e.preventDefault();
-  //   App.cable.subscriptions.subscriptions[0].load();
-  // };
-
-  // const messageList = state.messages.map((message) => {
-  //   return (
-  //     <li key={message.id}>
-  //       {message}
-  //       <div ref={bottom} />
-  //     </li>
-  //   );
-  // });
-
-  // console.log(bottom);
-
   return (
     <div className="chatroom-container">
-      {/* <button className="load-button" onClick={loadChat}>
-        Load Chat History
-      </button> */}
       <div className="message-list">{renderedMessages}</div>
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
