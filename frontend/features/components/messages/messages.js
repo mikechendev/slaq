@@ -12,6 +12,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectMessagesByChat } from '../../slices/messagesSlice';
 import { ActionCableContext } from '../root';
+import { fetchMessage, fetchMessages } from '../../../util/message_api_util';
+import { receiveMessages } from '../../../actions/message_actions';
 //
 const Messages = (props) => {
   const dispatch = useDispatch();
@@ -20,8 +22,17 @@ const Messages = (props) => {
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
   const [channel, setChannel] = useState(null);
-  const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
+  const [messages, setMessages] = useState([]);
+  // const msgs = useSelector((state) => selectMessagesByChat(state, channelId));
   const messagesEndRef = useRef(null);
+  const msgs = useSelector((state) => state.entities.messages);
+
+  useEffect(() => {
+    fetchMessages(channelId).then((messages) => {
+      console.log('test', messages.data);
+      dispatch(receiveMessages(messages));
+    });
+  }, []);
 
   useEffect(() => {
     if (messagesEndRef.current != null) {
@@ -51,9 +62,12 @@ const Messages = (props) => {
     });
   };
 
-  const renderedMessages =
-    msgs &&
-    msgs.map((message) => <Message key={message.id} message={message} />);
+  console.log(msgs);
+
+  // const renderedMessages =
+  //   msgs &&
+  //   msgs.map((message) => <Message key={message.id} message={message} />);
+
   // const [state, setState] = useState({
   //   messages: [],
   // });
@@ -107,7 +121,7 @@ const Messages = (props) => {
       {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
       </button> */}
-      <div className="message-list">{renderedMessages}</div>
+      {/* <div className="message-list">{renderedMessages}</div> */}
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
       </MessagesFooterContainer>

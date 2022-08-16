@@ -15,9 +15,14 @@ class Api::MessagesController < ApplicationController
     # end
   end
 
-  # def show
-  #   @message = Message.find(params[:id])
-  # end
+  def index
+    @messages = Chat.find_by(id: params[:chat_id]).messages
+    p @messages
+  end
+
+  def show
+    @message = Message.find(params[:id])
+  end
 
   private
 

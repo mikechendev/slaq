@@ -8,7 +8,10 @@ import { useRouteMatch } from 'react-router-dom';
 import { fetchChats, fetchChat } from '../../../util/chat_api_util';
 import { receiveChats } from '../../../actions/chat_actions';
 import { fetchMessages } from '../../../util/message_api_util';
-import { receiveMessages } from '../../../actions/message_actions';
+import {
+  receiveMessages,
+  receiveMessage,
+} from '../../../actions/message_actions';
 import {
   ChatHeaderContainer,
   ChatHeadWrapper,
@@ -18,7 +21,7 @@ import {
   MessagesContainer,
 } from '../styles/chat.style';
 import Messages from '../messages/messages';
-import { messageReceived } from '../../slices/messagesSlice';
+// import { messageReceived } from '../../slices/messagesSlice';
 import { ActionCableContext } from '../root';
 
 const Chat = (props) => {
@@ -30,18 +33,21 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
-  useEffect(() => {
-    fetchMessages().then((messages) => {
-      return dispatch(receiveMessages(messages));
-    });
-  });
+  console.log(currentChannel);
+
+  // useEffect(() => {
+  //   fetchMessages().then((messages) => {
+  //     return dispatch(receiveMessages(messages));
+  //   });
+  // });
 
   useEffect(() => {
     cable.subscriptions.create(
       { channel: 'MessagesChannel', id: currentChannel.id },
       {
         received: (data) => {
-          dispatch(messageReceived(data));
+          // dispatch(messageReceived(data));
+          dispatch(receiveMessage(data));
         },
       }
     );

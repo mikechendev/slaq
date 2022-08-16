@@ -19,14 +19,14 @@ const initialState = messagesAdapter.getInitialState({
 
 const messagesSlice = createSlice({
   name: 'messages',
-  initialState,
+  initialState: {},
   reducers: {
     messageReceived(state, action) {
       const data = action.payload.message;
       const message = {
         id: data.id,
         body: data.body,
-        chatId: data.chat_id,
+        // chatId: data.chat_id,
         userId: data.user_id,
       };
       messagesAdapter.addOne(state, message);
@@ -35,10 +35,14 @@ const messagesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(receiveMessages, (state, action) => {
-        return (state = action.payload);
+        return (state = action.payload['data']);
       })
       .addCase(receiveMessage, (state, action) => {
-        return (state = { ...state, [action.payload.id]: action.payload });
+        console.log('rm', action.payload);
+        return (state = {
+          ...state,
+          [action.payload.id]: { ...action.payload },
+        });
       })
       .addCase(removeMessage, (state, action) => {
         delete state[action.payload];
