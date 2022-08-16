@@ -29,7 +29,7 @@ const Messages = (props) => {
 
   useEffect(() => {
     fetchMessages(channelId).then((messages) => {
-      console.log('test', messages.data);
+      console.log('useeffect', messages.data);
       dispatch(receiveMessages(messages));
     });
   }, []);
@@ -62,11 +62,13 @@ const Messages = (props) => {
     });
   };
 
-  console.log(msgs);
+  console.log('msgs', msgs);
 
-  // const renderedMessages =
-  //   msgs &&
-  //   msgs.map((message) => <Message key={message.id} message={message} />);
+  const renderedMessages = Object.entries(msgs).map(([id, message]) => (
+    <Message key={id} message={message} />
+  ));
+
+  console.log(renderedMessages);
 
   // const [state, setState] = useState({
   //   messages: [],
@@ -121,7 +123,7 @@ const Messages = (props) => {
       {/* <button className="load-button" onClick={loadChat}>
         Load Chat History
       </button> */}
-      {/* <div className="message-list">{renderedMessages}</div> */}
+      <div className="message-list">{renderedMessages}</div>
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
       </MessagesFooterContainer>

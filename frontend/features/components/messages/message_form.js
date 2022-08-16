@@ -13,6 +13,7 @@ const MessageForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.sendMessage(state.body);
+    setState({ body: '' });
     // App.cable.subscriptions.subscriptions[0].speak({
     //   message: state.body,
     // });
