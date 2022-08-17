@@ -8,7 +8,6 @@ import {
   MessagesWrapper,
   MessagesFooterContainer,
 } from '../styles/message.style';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ActionCableContext } from '../root';
 import { fetchMessages } from '../../../util/message_api_util';
@@ -16,7 +15,6 @@ import { receiveMessages } from '../../../actions/message_actions';
 //
 const Messages = (props) => {
   const dispatch = useDispatch();
-  const match = useRouteMatch();
   const channelId = props.currentChannel.id;
   const currentUserId = props.currentUser.id;
   const cable = useContext(ActionCableContext);
