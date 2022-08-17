@@ -3,7 +3,6 @@ import MessageForm from './message_form';
 import Message from './message';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
 import {
   MessagesWrapper,
   MessagesFooterContainer,
