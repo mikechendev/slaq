@@ -36,6 +36,8 @@ const Messages = (props) => {
     }
   }, [msgs]);
 
+  console.log('test', messagesEndRef);
+
   useEffect(() => {
     const channel = cable.subscriptions.create({
       channel: 'MessagesChannel',
@@ -64,7 +66,10 @@ const Messages = (props) => {
 
   return (
     <div className="chatroom-container">
-      <div className="message-list">{renderedMessages}</div>
+      <div className="message-list">
+        {renderedMessages}
+        <div ref={messagesEndRef} />
+      </div>
       <MessagesFooterContainer>
         <MessageForm sendMessage={sendMessage} />
       </MessagesFooterContainer>
