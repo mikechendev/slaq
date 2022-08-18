@@ -16,3 +16,5 @@ export const MessagesFooterContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
 `;
+
+export const MessageDiv = styled.div``;
