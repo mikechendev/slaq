@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { MessageDiv } from '../styles/message.style';
 
 const Message = (props) => {
   console.log(props.message);
   return (
-    <div>
+    <MessageDiv>
       <p>{props.message.body}</p>
-    </div>
+    </MessageDiv>
   );
 };
 
