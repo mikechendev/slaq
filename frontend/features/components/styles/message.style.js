@@ -17,4 +17,11 @@ export const MessagesFooterContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export const MessageDiv = styled.div``;
+export const MessageDiv = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: -12px -8px -16px -16px;
+  min-width: 0;
+  padding: 8px 8px 8px 16px;
+`;
