@@ -25,3 +25,10 @@ export const MessageDiv = styled.div`
   min-width: 0;
   padding: 8px 8px 8px 16px;
 `;
+
+export const MessageBody = styled.div`
+  display: inline;
+  margin: 0;
+  line-height: 1.46668;
+  text-align: left;
+`;
