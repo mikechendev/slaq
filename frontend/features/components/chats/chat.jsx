@@ -16,6 +16,8 @@ import {
 } from '../styles/chat.style';
 import Messages from '../messages/messages';
 import { ActionCableContext } from '../root';
+import { fetchUsers } from '../../../util/user_api_util';
+import { receiveUsers } from '../../../actions/user_actions';
 
 const Chat = (props) => {
   const dispatch = useDispatch();
@@ -25,6 +27,12 @@ const Chat = (props) => {
   let currentChannel = useSelector(
     (state) => state.entities.chats[match.params.channelId]
   );
+
+  useEffect(() => {
+    fetchUsers().then((users) => {
+      dispatch(receiveUsers(users));
+    });
+  }, []);
 
   useEffect(() => {
     cable.subscriptions.create(
