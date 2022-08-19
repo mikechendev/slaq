@@ -11,7 +11,7 @@ const Message = (props) => {
 
   return (
     <MessageDiv>
-      <p>{user.username}</p>
+      <div style={{ 'font-weight': '900' }}>{user.username}</div>
       <MessageBody>{props.message.body}</MessageBody>
     </MessageDiv>
   );
