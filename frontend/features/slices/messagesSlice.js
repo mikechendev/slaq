@@ -1,21 +1,10 @@
-import {
-  createSlice,
-  createEntityAdapter,
-  createSelector,
-} from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import {
   receiveMessage,
   receiveMessages,
   removeMessage,
 } from '../../actions/message_actions';
 import { isAfter, parseISO, subYears } from 'date-fns';
-
-const messagesAdapter = createEntityAdapter();
-
-const initialState = messagesAdapter.getInitialState({
-  status: 'idle',
-  error: null,
-});
 
 const messagesSlice = createSlice({
   name: 'messages',
@@ -38,8 +27,6 @@ const messagesSlice = createSlice({
         return (state = action.payload['data']);
       })
       .addCase(receiveMessage, (state, action) => {
-        console.log('rm', action.payload);
-        console.log(action.payload.id);
         return (state = {
           ...state,
           [action.payload.message.id]: action.payload.message,
@@ -51,16 +38,5 @@ const messagesSlice = createSlice({
       });
   },
 });
-
-export const { messageReceived } = messagesSlice.actions;
-
-export const { selectAll: selectAllMessages } = messagesAdapter.getSelectors(
-  (state) => state.entities.messages
-);
-
-export const selectMessagesByChat = createSelector(
-  [selectAllMessages, (state, chatId) => chatId],
-  (messages, chatId) => messages.filter((message) => message.chatId === chatId)
-);
 
 export default messagesSlice.reducer;

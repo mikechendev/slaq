@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import userReducer from './userSlice';
+import usersReducer from './userSlice';
 import workspacesReducer from './workspaceSlice';
 import chatsReducer from './chatSlice';
 import messagesReducer from './messagesSlice';
 
 const entitiesReducer = combineReducers({
-  users: userReducer,
+  users: usersReducer,
   workspaces: workspacesReducer,
   chats: chatsReducer,
   messages: messagesReducer,
