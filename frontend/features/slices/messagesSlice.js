@@ -4,7 +4,6 @@ import {
   receiveMessages,
   removeMessage,
 } from '../../actions/message_actions';
-import { isAfter, parseISO, subYears } from 'date-fns';
 
 const messagesSlice = createSlice({
   name: 'messages',
