@@ -33,8 +33,6 @@ const Messages = (props) => {
     }
   }, [msgs]);
 
-  console.log('test', messagesEndRef);
-
   useEffect(() => {
     const channel = cable.subscriptions.create({
       channel: 'MessagesChannel',
