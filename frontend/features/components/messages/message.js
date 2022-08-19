@@ -21,8 +21,26 @@ const Message = (props) => {
 
   return (
     <MessageDiv>
-      <div style={{ fontWeight: '900' }}>{user.username}</div>
-      <div>{messageTime}</div>
+      <div style={{ display: 'flex', paddingBottom: '4px' }}>
+        <div
+          style={{
+            fontWeight: '900',
+            flexDirection: 'flex-start',
+            paddingRight: '5px',
+          }}
+        >
+          {user.username}
+        </div>
+        <div
+          style={{
+            flexDirection: 'flex-start',
+            paddingLeft: '5px',
+            fontSize: '12px',
+          }}
+        >
+          {messageTime}
+        </div>
+      </div>
       <MessageBody>{props.message.body}</MessageBody>
     </MessageDiv>
   );

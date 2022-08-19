@@ -23,11 +23,11 @@ export const MessageDiv = styled.div`
   flex-shrink: 1;
   margin: -12px -8px -16px -16px;
   min-width: 0;
-  padding: 8px 8px 8px 16px;
+  padding: 8px 8px 16px 16px;
 `;
 
 export const MessageBody = styled.div`
-  display: inline;
+  /* display: inline; */
   margin: 0;
   line-height: 1.46668;
   text-align: left;
