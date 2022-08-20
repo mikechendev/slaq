@@ -22,10 +22,10 @@ const MessageForm = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: '5%' }}>
       <form onSubmit={handleSubmit}>
         <input
-          style={{ width: '90%', alignContent: 'center' }}
+          style={{ width: '90%', alignContent: 'center', height: '40px' }}
           type="text"
           value={state.body}
           onChange={update('body')}

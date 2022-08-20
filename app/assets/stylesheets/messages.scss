@@ -19,6 +19,7 @@ li {
 .message-list {
   overflow-y: scroll;
   width: 90%;
+  max-height: 80vh;
 }
 
 .load-button {
