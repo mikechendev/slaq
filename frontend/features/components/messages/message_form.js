@@ -1,10 +1,15 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const MessageForm = (props) => {
   const [state, setState] = useState({
     body: '',
   });
+
+  const currentChannel = useSelector(
+    (state) => state.entities.chats[props.channelId]
+  );
 
   const update = (field) => {
     return (e) => setState({ [field]: e.currentTarget.value });
@@ -24,9 +29,8 @@ const MessageForm = (props) => {
           type="text"
           value={state.body}
           onChange={update('body')}
-          // placeholder={`Message # ${props.currentChannel.name}`}
+          placeholder={`Message # ${currentChannel.name}`}
         />
-        {/* <input type="submit" /> */}
       </form>
     </div>
   );

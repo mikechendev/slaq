@@ -27,7 +27,7 @@ class Api::ChatsController < ApplicationController
   end
 
   def index
-    @chats = current_user.chats
+    @chats = Chat.all
     render 'api/chats/index'
   end
 
