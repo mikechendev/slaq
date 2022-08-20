@@ -14,23 +14,19 @@ const MessageForm = (props) => {
     e.preventDefault();
     props.sendMessage(state.body);
     setState({ body: '' });
-    // App.cable.subscriptions.subscriptions[0].speak({
-    //   message: state.body,
-    // });
-    // App.cable.subscriptions.subscriptions[0].load();
-    // setState({ body: '' });
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          style={{ width: '90%', alignContent: 'center' }}
           type="text"
           value={state.body}
           onChange={update('body')}
           // placeholder={`Message # ${props.currentChannel.name}`}
         />
-        <input type="submit" />
+        {/* <input type="submit" /> */}
       </form>
     </div>
   );
