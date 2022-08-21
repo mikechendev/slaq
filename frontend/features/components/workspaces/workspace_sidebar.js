@@ -38,6 +38,7 @@ import { BiRightArrow } from 'react-icons/bi';
 import { FiPlus } from 'react-icons/fi';
 import ChannelModal from '../chats/channel_modal';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const WorkspaceSidebar = (props) => {
   let channelList = Object.values(props.currentWorkspace.chats).map((chat) => {
@@ -53,6 +54,13 @@ const WorkspaceSidebar = (props) => {
       </ChannelListItemDiv>
     );
   });
+
+  const channels = Object.values(useSelector((state) => state.entities.chats));
+  const channelsList = channels.filter((chat) => {
+    chat.chat_type !== 'channel';
+  });
+
+  console.log(channelsList);
 
   return (
     <SetupSidebar>

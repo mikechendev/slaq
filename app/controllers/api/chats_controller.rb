@@ -6,7 +6,7 @@ class Api::ChatsController < ApplicationController
     
     @chat = Chat.new(chat_params)
 
-    if @chat.chat_type != channel
+    if @chat.chat_type != 'channel'
       @chat.name = SecureRandom::urlsafe_base64
       @chat.description = SecureRandom::urlsafe_base64
     end
