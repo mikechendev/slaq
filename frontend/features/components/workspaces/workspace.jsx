@@ -22,6 +22,7 @@ import { receiveChats } from '../../../actions/chat_actions';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
+  const match = useRouteMatch();
 
   const [modal, setModal] = useState({
     isOpen: false,
@@ -29,7 +30,7 @@ const Workspace = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [match.params.channelId]);
 
   const fetchData = async () => {
     let chats = await fetchChats();
@@ -37,8 +38,6 @@ const Workspace = (props) => {
     let workspaces = await fetchWorkspaces();
     dispatch(receiveWorkspaces(workspaces.data));
   };
-
-  const match = useRouteMatch();
 
   let currentUser = useSelector(
     (state) => state.entities.users[state.session.id]

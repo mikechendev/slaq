@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { ActionCableContext } from '../root';
 import { fetchMessages } from '../../../util/message_api_util';
 import { receiveMessages } from '../../../actions/message_actions';
+import { useRouteMatch } from 'react-router-dom';
 //
 const Messages = (props) => {
   const dispatch = useDispatch();
@@ -20,12 +21,13 @@ const Messages = (props) => {
   const [channel, setChannel] = useState(null);
   const messagesEndRef = useRef(null);
   const msgs = useSelector((state) => state.entities.messages);
+  const match = useRouteMatch();
 
   useEffect(() => {
     fetchMessages(channelId).then((messages) => {
       dispatch(receiveMessages(messages));
     });
-  }, []);
+  }, [match.params.channelId]);
 
   useEffect(() => {
     if (messagesEndRef.current != null) {
@@ -66,7 +68,7 @@ const Messages = (props) => {
         <div ref={messagesEndRef} />
       </div>
       <MessagesFooterContainer>
-        <MessageForm sendMessage={sendMessage} channelId={channelId}/>
+        <MessageForm sendMessage={sendMessage} channelId={channelId} />
       </MessagesFooterContainer>
     </div>
   );
