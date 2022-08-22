@@ -10,6 +10,13 @@ const Message = (props) => {
   const user = usersArr.find((user) => user.id === props.message.user_id);
   const time = parseISO(props.message.created_at);
   const messageTime = time.toLocaleTimeString('en-US');
+  let username;
+
+  if (user) {
+    username = user.username;
+  } else {
+    username = <div></div>;
+  }
 
   return (
     <MessageDiv>
@@ -27,7 +34,7 @@ const Message = (props) => {
             paddingRight: '5px',
           }}
         >
-          {user.username}
+          {username}
         </div>
         <div
           style={{
