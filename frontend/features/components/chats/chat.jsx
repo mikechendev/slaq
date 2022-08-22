@@ -28,8 +28,10 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
+  let chatUsers = useSelector((state) => Object.values(state.entities.users));
+
   useEffect(() => {
-    fetchUsers().then((users) => {
+    fetchUsers(currentChannel.id).then((users) => {
       dispatch(receiveUsers(users));
     });
   }, []);
