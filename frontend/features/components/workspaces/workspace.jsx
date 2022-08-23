@@ -19,6 +19,7 @@ import Chat from '../chats/chat';
 import { useRouteMatch } from 'react-router-dom';
 import { fetchChats } from '../../../util/chat_api_util';
 import { receiveChats } from '../../../actions/chat_actions';
+import ChatUsersModal from '../chats/chat_users_modal';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
@@ -77,6 +78,13 @@ const Workspace = (props) => {
           openModal={openModal}
         />
         <ChannelModal
+          currentUser={currentUser}
+          currentWorkspace={currentWorkspace}
+          isOpen={modal.isOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+        <UserChatsModal
           currentUser={currentUser}
           currentWorkspace={currentWorkspace}
           isOpen={modal.isOpen}
