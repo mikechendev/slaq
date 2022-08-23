@@ -18,6 +18,7 @@ import Messages from '../messages/messages';
 import { ActionCableContext } from '../root';
 import { fetchUsers } from '../../../util/user_api_util';
 import { receiveUsers } from '../../../actions/user_actions';
+import ChatUsersModal from './chat_users_modal';
 
 const Chat = (props) => {
   const dispatch = useDispatch();
@@ -29,6 +30,18 @@ const Chat = (props) => {
   );
 
   let chatUsers = useSelector((state) => Object.values(state.entities.users));
+
+  const [modal, setModal] = useState({
+    isOpen: false,
+  });
+
+  const openModal = () => {
+    setModal({ isOpen: true });
+  };
+
+  const closeModal = () => {
+    setModal({ isOpen: false });
+  };
 
   useEffect(() => {
     fetchUsers(currentChannel.id).then((users) => {
@@ -76,6 +89,9 @@ const Chat = (props) => {
                   </HeaderTextContainer>
                 </ChatHeadTextButton>
               </div>
+              <div>
+                <p onClick={openModal}>Channel Members</p>
+              </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
           <MessagesContainer>
@@ -87,6 +103,11 @@ const Chat = (props) => {
           </MessagesContainer>
         </div>
       </div>
+      <ChatUsersModal
+        isOpen={modal.isOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+      ></ChatUsersModal>
     </div>
   ) : (
     <div></div>

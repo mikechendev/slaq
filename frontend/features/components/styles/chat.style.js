@@ -16,6 +16,7 @@ export const ChatHeadWrapper = styled.div`
   display: flex;
   flex: 1 1 0;
   min-width: 0;
+  justify-content: space-between;
 `;
 
 export const ChatHeadTextButton = styled.button`

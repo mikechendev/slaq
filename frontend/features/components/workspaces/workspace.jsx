@@ -84,13 +84,6 @@ const Workspace = (props) => {
           openModal={openModal}
           closeModal={closeModal}
         />
-        <UserChatsModal
-          currentUser={currentUser}
-          currentWorkspace={currentWorkspace}
-          isOpen={modal.isOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
       </SetupGrid>
     </SetupWorkspaceContainer>
   ) : (
