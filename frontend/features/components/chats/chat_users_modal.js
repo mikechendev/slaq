@@ -1,11 +1,22 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import { useSelector } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createChat } from '../../../util/chat_api_util';
+import { receiveChat } from '../../../actions/chat_actions';
 
 const ChatUsersModal = (props) => {
   const users = props.users.map((user) => (
-    <li key={user.id}>{user.username}</li>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingBottom: '2%',
+      }}
+    >
+      <li key={user.id}>{user.username}</li>
+      <button style={{ marginRight: '2%' }}>Message</button>
+    </div>
   ));
 
   return (
