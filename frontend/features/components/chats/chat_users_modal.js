@@ -16,22 +16,8 @@ const ChatUsersModal = (props) => {
     dmUsers: [props.currentUser],
   });
 
-  const users = props.users.map((user) => (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingBottom: '2%',
-        fontSize: '18px',
-      }}
-    >
-      <li key={user.id}>{user.username}</li>
-      <button style={{ marginRight: '2%' }}>Message</button>
-    </div>
-  ));
-
   const addUser = (user) => {
-    setDm({ dmUsers: [...dm, user] });
+    setDm({ dmUsers: dm.dmUsers.concat(user) });
   };
 
   const handleSubmit = async (e) => {
@@ -51,6 +37,26 @@ const ChatUsersModal = (props) => {
     closeModal();
     history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
+
+  const usersList = props.users.map((user) => (
+    <div
+      key={user.id}
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingBottom: '2%',
+        fontSize: '18px',
+      }}
+    >
+      <li>{user.username}</li>
+      <button
+        onClick={handleSubmit}
+        style={{ marginRight: '2%' }}
+      >
+        Message
+      </button>
+    </div>
+  ));
 
   return (
     <ReactModal
@@ -74,7 +80,7 @@ const ChatUsersModal = (props) => {
             paddingLeft: '5%',
           }}
         >
-          <ul>{users}</ul>
+          <ul>{usersList}</ul>
         </div>
       </div>
     </ReactModal>
