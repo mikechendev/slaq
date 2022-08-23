@@ -108,6 +108,8 @@ const Chat = (props) => {
         openModal={openModal}
         closeModal={closeModal}
         users={chatUsers}
+        currentWorkspace={props.currentWorkspace}
+        currentUser={props.currentUser}
         currentChannel={currentChannel}
       ></ChatUsersModal>
     </div>

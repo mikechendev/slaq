@@ -4,20 +4,39 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createChat } from '../../../util/chat_api_util';
 import { receiveChat } from '../../../actions/chat_actions';
+import { fetchWorkspaces } from '../../../util/workspace_api_util';
+import { receiveWorkspaces } from '../../../actions/workspace_actions';
 
 const ChatUsersModal = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const users = props.users.map((user) => (
     <div
       style={{
         display: 'flex',
         justifyContent: 'space-between',
         paddingBottom: '2%',
+        fontSize: '18px',
       }}
     >
       <li key={user.id}>{user.username}</li>
       <button style={{ marginRight: '2%' }}>Message</button>
     </div>
   ));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await createChat({
+      chat_type: 'dm',
+      workspace_id: props.currentWorkspace.id,
+    });
+    let response = dispatch(receiveChat(res.data));
+    let workspaces = await fetchWorkspaces();
+    dispatch(receiveWorkspaces(workspaces.data));
+    closeModal();
+    history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
+  };
 
   return (
     <ReactModal
