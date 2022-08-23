@@ -18,16 +18,17 @@ li {
 
 .message-list {
   padding-top: 10px;
+  margin-top: 10px;
   padding-bottom: 10px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   min-width: 90%;
   min-height: 80vh;
   max-height: 80vh;
 }
 
-.message-list::-webkit-scrollbar {
-  display: none;
+.message-list:hover {
+  overflow-y: scroll;
 }
 
 .load-button {
