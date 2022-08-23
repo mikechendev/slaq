@@ -26,6 +26,10 @@ li {
   max-height: 80vh;
 }
 
+.message-list::-webkit-scrollbar {
+  display: none;
+}
+
 .load-button {
   position: absolute;
   top: 5px;
