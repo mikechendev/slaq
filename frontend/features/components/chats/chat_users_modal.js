@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 const ChatUsersModal = (props) => {
   return (
     <ReactModal
-      className="chat-users-modal"
+      className="chat-modal"
       isOpen={props.isOpen}
       onRequestClose={props.closeModal}
       closetimeMS={100}
