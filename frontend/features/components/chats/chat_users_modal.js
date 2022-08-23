@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createChat } from '../../../util/chat_api_util';
@@ -10,6 +11,10 @@ import { receiveWorkspaces } from '../../../actions/workspace_actions';
 const ChatUsersModal = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [dm, setDm] = useState({
+    dmUsers: [props.currentUser],
+  });
 
   const users = props.users.map((user) => (
     <div
@@ -25,8 +30,17 @@ const ChatUsersModal = (props) => {
     </div>
   ));
 
+  const addUser = (user) => {
+    setDm({ dmUsers: [...dm, user] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let newChat = {};
+    newChat.users = {};
+    dm.dmUsers.forEach((user) => {
+      newChat.users[user.id] = user;
+    });
     let res = await createChat({
       chat_type: 'dm',
       workspace_id: props.currentWorkspace.id,
