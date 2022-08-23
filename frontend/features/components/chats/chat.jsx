@@ -107,6 +107,8 @@ const Chat = (props) => {
         isOpen={modal.isOpen}
         openModal={openModal}
         closeModal={closeModal}
+        users={chatUsers}
+        currentChannel={currentChannel}
       ></ChatUsersModal>
     </div>
   ) : (
