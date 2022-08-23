@@ -17,7 +17,7 @@ const ChatUsersModal = (props) => {
   });
 
   const addUser = (user) => {
-    setDm({ dmUsers: dm.dmUsers.concat(user) });
+    setDm({ dmUsers: dm.dmUsers.push(user) });
   };
 
   const handleSubmit = async (e) => {
@@ -27,10 +27,10 @@ const ChatUsersModal = (props) => {
     dm.dmUsers.forEach((user) => {
       newChat.users[user.id] = user;
     });
-    let res = await createChat({
-      chat_type: 'dm',
-      workspace_id: props.currentWorkspace.id,
-    });
+    newChat.chat_type = 'dm';
+    newChat.workspace_id = props.currentWorkspace.id;
+    newChat.admin_id = props.currentUser.id;
+    let res = createChat(newChat);
     let response = dispatch(receiveChat(res.data));
     let workspaces = await fetchWorkspaces();
     dispatch(receiveWorkspaces(workspaces.data));
@@ -50,7 +50,9 @@ const ChatUsersModal = (props) => {
     >
       <li>{user.username}</li>
       <button
-        onClick={handleSubmit}
+        onClick={(e) => {
+          addUser(user);
+        }}
         style={{ marginRight: '2%' }}
       >
         Message
