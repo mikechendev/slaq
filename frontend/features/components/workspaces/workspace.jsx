@@ -20,6 +20,8 @@ import { useRouteMatch } from 'react-router-dom';
 import { fetchChats } from '../../../util/chat_api_util';
 import { receiveChats } from '../../../actions/chat_actions';
 import ChatUsersModal from '../chats/chat_users_modal';
+import { fetchUsers } from '../../../util/user_api_util';
+import { receiveUsers } from '../../../actions/user_actions';
 
 const Workspace = (props) => {
   const dispatch = useDispatch();
@@ -38,6 +40,8 @@ const Workspace = (props) => {
     dispatch(receiveChats(chats.data));
     let workspaces = await fetchWorkspaces();
     dispatch(receiveWorkspaces(workspaces.data));
+    let chatUsers = await fetchUsers(match.params.channelId);
+    dispatch(receiveUsers(chatUsers.data));
   };
 
   let currentUser = useSelector(
