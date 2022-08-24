@@ -30,12 +30,14 @@ const ChatUsersModal = (props) => {
     newChat.chat_type = 'dm';
     newChat.workspace_id = props.currentWorkspace.id;
     newChat.admin_id = props.currentUser.id;
+    console.log(newChat);
     let res = createChat(newChat);
-    let response = dispatch(receiveChat(res.data));
-    let workspaces = await fetchWorkspaces();
-    dispatch(receiveWorkspaces(workspaces.data));
-    closeModal();
-    history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
+    console.log(res);
+    // let response = dispatch(receiveChat(res.data));
+    // let workspaces = await fetchWorkspaces();
+    // dispatch(receiveWorkspaces(workspaces.data));
+    // closeModal();
+    // history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
 
   const usersList = props.users.map((user) => (
@@ -52,6 +54,7 @@ const ChatUsersModal = (props) => {
       <button
         onClick={(e) => {
           addUser(user);
+          handleSubmit(e);
         }}
         style={{ marginRight: '2%' }}
       >
