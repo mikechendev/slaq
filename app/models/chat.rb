@@ -19,7 +19,7 @@ class Chat < ApplicationRecord
 
   belongs_to :workspace, class_name: "Workspace", foreign_key: :workspace_id, optional: true
   belongs_to :admin, class_name: "User", foreign_key: :admin_id, optional: true
-  has_many :user_chats
+  has_many :user_chats, dependent: :destroy
   has_many :users, through: :user_chats
   has_many :messages
 
