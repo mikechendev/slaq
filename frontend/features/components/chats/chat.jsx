@@ -43,11 +43,11 @@ const Chat = (props) => {
     setModal({ isOpen: false });
   };
 
-  useEffect(() => {
-    fetchUsers(currentChannel.id).then((users) => {
-      dispatch(receiveUsers(users));
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers(currentChannel.id).then((users) => {
+  //     dispatch(receiveUsers(users));
+  //   });
+  // }, []);
 
   useEffect(() => {
     cable.subscriptions.create(
