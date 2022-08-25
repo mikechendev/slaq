@@ -27,16 +27,17 @@ const ChatUsersModal = (props) => {
     dm.dmUsers.forEach((user) => {
       newChat.users[user.id] = user;
     });
+    console.log(dm.dmUsers);
     newChat.chat_type = 'dm';
     newChat.workspace_id = props.currentWorkspace.id;
     newChat.admin_id = props.currentUser.id;
     console.log(newChat);
     let res = createChat(newChat);
     console.log(res);
-    // let response = dispatch(receiveChat(res.data));
+    // let response = dispatch(receiveChat(res));
     // let workspaces = await fetchWorkspaces();
     // dispatch(receiveWorkspaces(workspaces.data));
-    // closeModal();
+    // props.closeModal();
     // history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
 

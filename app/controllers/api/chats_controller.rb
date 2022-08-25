@@ -15,6 +15,7 @@ class Api::ChatsController < ApplicationController
       if @chat.chat_type == 'channel'
         UserChat.create!(chat_id: @chat.id, user_id: current_user.id)
       else
+        # p params['chat']['users']
         params['chat']['users'].each do |user|
           UserChat.create!(chat_id: @chat.id, user_id: user.id)
         end
