@@ -19,8 +19,8 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @chat = Chat.find_by(id: params[:chat_id])
-    @users = @chat.users
+    @workspace = Workspace.find_by(id: params[:workspace_id])
+    @users = @workspace.users
     render :index
   end
 
