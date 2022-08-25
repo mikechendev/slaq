@@ -12,7 +12,7 @@ export const userSlice = createSlice({
         return (state = { [action.payload.data.id]: action.payload.data });
       })
       .addCase(receiveUsers, (state, action) => {
-        return (state = action.payload['data']);
+        return (state = action.payload);
       });
   },
 });

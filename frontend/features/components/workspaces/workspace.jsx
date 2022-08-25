@@ -41,6 +41,7 @@ const Workspace = (props) => {
     let workspaces = await fetchWorkspaces();
     dispatch(receiveWorkspaces(workspaces.data));
     let chatUsers = await fetchUsers(match.params.channelId);
+    console.log(chatUsers);
     dispatch(receiveUsers(chatUsers.data));
   };
 
