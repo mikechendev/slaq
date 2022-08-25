@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_22_032130) do
+ActiveRecord::Schema.define(version: 2022_06_26_001636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(version: 2022_08_22_032130) do
     t.integer "admin_id"
     t.integer "workspace_id"
     t.string "chat_type", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "direct_messages", force: :cascade do |t|
-    t.integer "admin_id", null: false
-    t.text "body", null: false
-    t.integer "chat_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
