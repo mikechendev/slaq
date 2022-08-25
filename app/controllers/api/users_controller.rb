@@ -6,6 +6,8 @@ class Api::UsersController < ApplicationController
       login!(@user)
       UserWorkspace.create!(user_id: @user.id, workspace_id: 1)
       UserWorkspace.create!(user_id: @user.id, workspace_id: 2)
+      UserChat.create!(user_id: @user.id, chat_id: 1)
+      UserChat.create!(user_id: @user.id, chat_id: 2)
       render 'api/users/show'
     else
       render json: @user.errors.full_messages, status: 422
