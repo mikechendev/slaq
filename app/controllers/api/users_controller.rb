@@ -19,8 +19,9 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
-    render 'api/users/index'
+    @chat = Chat.find_by(id: params[:chat_id])
+    @users = @chat.users
+    render :index
   end
 
   def update
