@@ -244,6 +244,9 @@ export const ChannelListItemDiv = styled.div`
   border-radius: 0;
   cursor: pointer;
   display: flex;
+  &:active {
+    background-color: #1164a3;
+  }
 `;
 
 export const ChannelListPrefix = styled.div`

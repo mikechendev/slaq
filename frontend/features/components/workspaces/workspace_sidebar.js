@@ -41,7 +41,11 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const WorkspaceSidebar = (props) => {
-  let channelList = Object.values(props.currentWorkspace.chats).map((chat) => {
+  const channels = Object.values(props.currentWorkspace.chats);
+  const channelsList = channels.filter((chat) => {
+    return chat.chat_type == 'channel';
+  });
+  let channelList = channelsList.map((chat) => {
     return (
       <ChannelListItemDiv key={chat.id}>
         <ChannelListPrefix>#</ChannelListPrefix>
@@ -55,12 +59,11 @@ const WorkspaceSidebar = (props) => {
     );
   });
 
-  const channels = Object.values(useSelector((state) => state.entities.chats));
-  const channelsList = channels.filter((chat) => {
-    chat.chat_type !== 'channel';
+  const dmList = channels.filter((chat) => {
+    return chat.chat_type != 'channel';
   });
 
-  console.log(channelsList);
+  console.log(dmList);
 
   return (
     <SetupSidebar>
