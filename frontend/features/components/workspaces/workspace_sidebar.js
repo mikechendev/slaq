@@ -31,6 +31,7 @@ import {
   ChannelListItemDiv,
   ChannelListPrefix,
   ChannelListItemName,
+  DmListItemDiv,
 } from '../styles/workspace_sidebar.style';
 import { AiOutlineDown } from 'react-icons/ai';
 import { BsPencilSquare, BsThreeDotsVertical } from 'react-icons/bs';
@@ -177,7 +178,9 @@ const WorkspaceSidebar = (props) => {
                                       </ChannelHeaderTextContainer>
                                     </ChannelExpand>
                                   </div>
-                                  <div style={{ top: '50px', height:'32px', }}></div>
+                                  <div
+                                    style={{ top: '50px', height: '32px' }}
+                                  ></div>
                                 </ChannelListItemContainer>
                               </ChannelList>
                             </ScrollMenu>
