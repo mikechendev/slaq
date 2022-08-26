@@ -157,6 +157,27 @@ const WorkspaceSidebar = (props) => {
                                       </div>
                                     </div>
                                   </CreateChannelContainer>
+                                  <div
+                                    style={{
+                                      top: '50px',
+                                      height: '32px',
+                                      lineHeight: '28px',
+                                      position: 'relative',
+                                      padding: '0px 16px',
+                                    }}
+                                  >
+                                    <ChannelExpand>
+                                      <ChannelExpandIcon>
+                                        <BiRightArrow color="white"></BiRightArrow>
+                                      </ChannelExpandIcon>
+                                      <ChannelHeaderTextContainer>
+                                        <ChannelHeaderText>
+                                          Direct messages
+                                        </ChannelHeaderText>
+                                      </ChannelHeaderTextContainer>
+                                    </ChannelExpand>
+                                  </div>
+                                  <div style={{ top: '50px', height:'32px', }}></div>
                                 </ChannelListItemContainer>
                               </ChannelList>
                             </ScrollMenu>
