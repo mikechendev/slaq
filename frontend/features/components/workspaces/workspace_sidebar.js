@@ -64,7 +64,7 @@ const WorkspaceSidebar = (props) => {
     return chat.chat_type != 'channel';
   });
 
-  let dmList = dmsList.map((dm) => {
+  const dmList = dmsList.map((dm) => {
     return (
       <DmListItemDiv key={dm.id}>
         <Link
