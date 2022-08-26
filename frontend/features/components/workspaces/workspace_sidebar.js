@@ -60,11 +60,22 @@ const WorkspaceSidebar = (props) => {
     );
   });
 
-  const dmList = channels.filter((chat) => {
+  const dmsList = channels.filter((chat) => {
     return chat.chat_type != 'channel';
   });
 
-  console.log(dmList);
+  let dmList = dmsList.map((dm) => {
+    return (
+      <DmListItemDiv key={dm.id}>
+        <Link
+          to={`/client/${props.currentWorkspace.id}/${dm.id}`}
+          style={{ textDecoration: 'none', top: '50px', position: 'relative' }}
+        >
+          <ChannelListItemName>{dm.name}</ChannelListItemName>
+        </Link>
+      </DmListItemDiv>
+    );
+  });
 
   return (
     <SetupSidebar>
@@ -178,9 +189,7 @@ const WorkspaceSidebar = (props) => {
                                       </ChannelHeaderTextContainer>
                                     </ChannelExpand>
                                   </div>
-                                  <div
-                                    style={{ top: '50px', height: '32px' }}
-                                  ></div>
+                                  {dmList}
                                 </ChannelListItemContainer>
                               </ChannelList>
                             </ScrollMenu>
