@@ -31,19 +31,6 @@ const Workspace = (props) => {
     isOpen: false,
   });
 
-  useEffect(() => {
-    fetchData();
-  }, [match.params.channelId]);
-
-  const fetchData = async () => {
-    let chats = await fetchChats();
-    dispatch(receiveChats(chats.data));
-    let workspaces = await fetchWorkspaces();
-    dispatch(receiveWorkspaces(workspaces.data));
-    let chatUsers = await fetchUsers(match.params.channelId);
-    dispatch(receiveUsers(chatUsers.data));
-  };
-
   let currentUser = useSelector(
     (state) => state.entities.users[state.session.id]
   );
@@ -51,6 +38,21 @@ const Workspace = (props) => {
   let currentWorkspace = useSelector(
     (state) => state.entities.workspaces[match.params.workspaceId]
   );
+
+  useEffect(() => {
+    fetchData();
+  }, [match.params.channelId]);
+
+  console.log(match.params.workspaceId);
+
+  const fetchData = async () => {
+    let chats = await fetchChats(match.params.workspaceId);
+    dispatch(receiveChats(chats.data));
+    let workspaces = await fetchWorkspaces();
+    dispatch(receiveWorkspaces(workspaces.data));
+    let chatUsers = await fetchUsers(match.params.channelId);
+    dispatch(receiveUsers(chatUsers.data));
+  };
 
   const openModal = () => {
     setModal({ isOpen: true });

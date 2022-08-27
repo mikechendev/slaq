@@ -31,8 +31,9 @@ class Api::ChatsController < ApplicationController
   end
 
   def index
-    @chats = Chat.all
-    render 'api/chats/index'
+    @workspace = Workspace.find_by(id: params[:workspace_id])
+    @chats = @workspace.chats
+    render :index
   end
 
   def show

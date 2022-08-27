@@ -23,8 +23,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create, :show]
     resource :session, only: [:create, :destroy]
-    resources :workspaces, only: [:create, :show, :index, :destroy, :update]
-    resources :chats, only: [:create, :show, :index, :update, :destroy] do
+    resources :workspaces, only: [:create, :show, :index, :destroy, :update] do
+      resources :chats, only: [:index]
+    end
+    resources :chats, only: [:create, :show, :update, :destroy] do
       resources :messages, only: [:create, :index, :update, :destroy]
       resources :users, only: [:index]
     end
