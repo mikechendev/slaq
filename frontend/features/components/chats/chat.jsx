@@ -29,7 +29,15 @@ const Chat = (props) => {
     (state) => state.entities.chats[match.params.channelId]
   );
 
-  let chatUsers = useSelector((state) => Object.values(state.entities.users));
+  const chatUsers = useSelector((state) => Object.values(state.entities.users));
+
+  const recipient = chatUsers.find((user) => user.id !== props.currentUser.id);
+
+  let channelName = () => {
+    return currentChannel.chat_type == 'channel'
+      ? currentChannel.name
+      : recipient && recipient.username;
+  };
 
   const [modal, setModal] = useState({
     isOpen: false,
@@ -42,12 +50,6 @@ const Chat = (props) => {
   const closeModal = () => {
     setModal({ isOpen: false });
   };
-
-  // useEffect(() => {
-  //   fetchUsers(currentChannel.id).then((users) => {
-  //     dispatch(receiveUsers(users));
-  //   });
-  // }, []);
 
   useEffect(() => {
     cable.subscriptions.create(
@@ -85,7 +87,7 @@ const Chat = (props) => {
                         ></path>
                       </svg>
                     </div>
-                    <HeaderText># {currentChannel.name}</HeaderText>
+                    <HeaderText># {channelName() && channelName()}</HeaderText>
                   </HeaderTextContainer>
                 </ChatHeadTextButton>
               </div>
