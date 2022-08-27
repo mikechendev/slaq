@@ -42,7 +42,8 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const WorkspaceSidebar = (props) => {
-  const channels = Object.values(props.currentWorkspace.chats);
+  const channelsObj = useSelector((state) => state.entities.chats);
+  const channels = Object.values(channelsObj);
   const channelsList = channels.filter((chat) => {
     return chat.chat_type == 'channel';
   });
