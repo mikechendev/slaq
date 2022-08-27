@@ -68,7 +68,11 @@ const Messages = (props) => {
         <div ref={messagesEndRef} />
       </div>
       <MessagesFooterContainer>
-        <MessageForm sendMessage={sendMessage} channelId={channelId} />
+        <MessageForm
+          sendMessage={sendMessage}
+          channelId={channelId}
+          currentUser={props.currentUser}
+        />
       </MessagesFooterContainer>
     </div>
   );

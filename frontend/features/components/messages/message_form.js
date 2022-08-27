@@ -11,6 +11,16 @@ const MessageForm = (props) => {
     (state) => state.entities.chats[props.channelId]
   );
 
+  const chatUsers = useSelector((state) => Object.values(state.entities.users));
+
+  const recipient = chatUsers.find((user) => user.id !== props.currentUser.id);
+
+  let channelName = () => {
+    return currentChannel.chat_type == 'channel'
+      ? currentChannel.name
+      : recipient && recipient.username;
+  };
+
   const update = (field) => {
     return (e) => setState({ [field]: e.currentTarget.value });
   };
@@ -22,14 +32,14 @@ const MessageForm = (props) => {
   };
 
   return (
-    <div style={{ marginLeft: '5%' }}>
+    <div style={{ marginLeft: '5%', paddingBottom: '2%' }}>
       <form onSubmit={handleSubmit}>
         <input
           style={{ width: '90%', alignContent: 'center', height: '40px' }}
           type="text"
           value={state.body}
           onChange={update('body')}
-          placeholder={`Message # ${currentChannel.name}`}
+          placeholder={`Message # ${channelName() && channelName()}`}
         />
       </form>
     </div>
