@@ -66,13 +66,14 @@ const WorkspaceSidebar = (props) => {
   });
 
   const dmList = dmsList.map((dm) => {
+    let recipient = dm.users.find((user) => user.id !== props.currentUser.id);
     return (
       <DmListItemDiv key={dm.id}>
         <Link
           to={`/client/${props.currentWorkspace.id}/${dm.id}`}
           style={{ textDecoration: 'none', top: '50px', position: 'relative' }}
         >
-          <ChannelListItemName>{dm.name}</ChannelListItemName>
+          <ChannelListItemName>{recipient.username}</ChannelListItemName>
         </Link>
       </DmListItemDiv>
     );
