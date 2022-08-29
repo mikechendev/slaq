@@ -20,7 +20,6 @@ const Message = (props) => {
   }
 
   const [isHovering, setIsHovering] = useState(false);
-  const [messageEdit, setMessageEdit] = useState(false);
 
   const handleMouseOver = () => {
     setIsHovering(true);
