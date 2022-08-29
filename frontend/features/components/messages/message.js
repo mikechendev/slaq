@@ -33,14 +33,6 @@ const Message = (props) => {
     setIsHovering(false);
   };
 
-  const messageEdit = () => {
-    return (
-      <div>
-        <form></form>
-      </div>
-    );
-  };
-
   const handleSubmit = () => {};
 
   return (
