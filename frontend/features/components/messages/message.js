@@ -18,6 +18,8 @@ const Message = (props) => {
     username = <div></div>;
   }
 
+  const [body, setBody] = useState(props.message.body);
+
   return (
     <MessageDiv>
       <div
