@@ -28,6 +28,10 @@ const Message = (props) => {
     );
   };
 
+  const handleSubmit = () => {
+
+  }
+
   return (
     <MessageDiv>
       <div
