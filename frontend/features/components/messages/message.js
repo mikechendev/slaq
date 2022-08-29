@@ -20,6 +20,14 @@ const Message = (props) => {
 
   const [body, setBody] = useState(props.message.body);
 
+  const messageEdit = () => {
+    return (
+      <div>
+        <form></form>
+      </div>
+    );
+  };
+
   return (
     <MessageDiv>
       <div
