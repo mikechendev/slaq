@@ -8,11 +8,6 @@ class Api::MessagesController < ApplicationController
     @message.user_id = current_user.id
     @message.save
     render json: @message
-
-    # if @message.save
-    #   MessagesChannel.broadcast_to(@channel, @message)
-    #   render json: @message
-    # end
   end
 
   def index
@@ -21,6 +16,21 @@ class Api::MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    render :show
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    if @message.save
+      render :show
+    else
+      render json: @message.errors.full_messages, status: 401
+    end
+  end
+
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
   end
 
   private
