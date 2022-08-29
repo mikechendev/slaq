@@ -61,7 +61,10 @@ const Message = (props) => {
           {messageTime}
         </div>
       </div>
-      <MessageBody>{props.message.body}</MessageBody>
+      <MessageBody>
+        <div>{props.message.body}</div>
+        {props.currentUser.id === props.message.user_id && <div>Edit</div>}
+      </MessageBody>
     </MessageDiv>
   );
 };

@@ -29,6 +29,8 @@ export const MessageDiv = styled.div`
 
 export const MessageBody = styled.div`
   /* display: inline; */
+  display: flex;
+  justify-content: space-between;
   margin: 0;
   line-height: 1.46668;
   text-align: left;

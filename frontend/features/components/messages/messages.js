@@ -58,7 +58,7 @@ const Messages = (props) => {
   };
 
   const renderedMessages = Object.entries(msgs).map(([id, message]) => (
-    <Message key={id} message={message} />
+    <Message key={id} message={message} currentUser={props.currentUser} />
   ));
 
   return (
