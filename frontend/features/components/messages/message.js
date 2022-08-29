@@ -23,6 +23,7 @@ const Message = (props) => {
 
   const [body, setBody] = useState(props.message.body);
   const [isHovering, setIsHovering] = useState(false);
+  const [messageEdit, setMessageEdit] = useState(false);
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -73,7 +74,7 @@ const Message = (props) => {
       <MessageBody>
         <div>{props.message.body}</div>
         {isHovering && props.currentUser.id === props.message.user_id && (
-          <div>Edit</div>
+          <div onClick={setMessageEdit(true)}>Edit</div>
         )}
       </MessageBody>
     </MessageDiv>
