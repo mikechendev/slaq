@@ -22,6 +22,15 @@ const Message = (props) => {
   }
 
   const [body, setBody] = useState(props.message.body);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
 
   const messageEdit = () => {
     return (
@@ -34,7 +43,7 @@ const Message = (props) => {
   const handleSubmit = () => {};
 
   return (
-    <MessageDiv>
+    <MessageDiv onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div
         style={{
           display: 'flex',
@@ -63,7 +72,9 @@ const Message = (props) => {
       </div>
       <MessageBody>
         <div>{props.message.body}</div>
-        {props.currentUser.id === props.message.user_id && <div>Edit</div>}
+        {isHovering && props.currentUser.id === props.message.user_id && (
+          <div>Edit</div>
+        )}
       </MessageBody>
     </MessageDiv>
   );
