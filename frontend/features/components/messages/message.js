@@ -60,9 +60,11 @@ const Message = (props) => {
       </div>
       <MessageBody>
         <div>{props.message.body}</div>
-        {isHovering && props.currentUser.id === props.message.user_id && (
-          <div onClick={setMessageEdit(true)}>Edit</div>
-        )}
+        {isHovering &&
+          props.currentUser.id === props.message.user_id &&
+          {
+            /* <div onClick={setMessageEdit(true)}>Edit</div> */
+          }}
       </MessageBody>
     </MessageDiv>
   );

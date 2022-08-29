@@ -18,7 +18,13 @@ const EditMessage = (props) => {
     dispatch(updateMessage(message));
   };
 
-  return {};
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={state.body} onChange={(e) => updateText(e)} />
+      </form>
+    </div>
+  );
 };
 
 export default EditMessage;
