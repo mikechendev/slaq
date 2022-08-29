@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { MessageDiv, MessageBody } from '../styles/message.style';
 import { useSelector } from 'react-redux';
 import { parseISO } from 'date-fns';
+import { useDispatch } from 'react-redux';
+import { updateMessage, removeMessage } from '../../../util/message_api_util';
 
 const Message = (props) => {
   const users = useSelector((state) => state.entities.users);
@@ -10,6 +12,7 @@ const Message = (props) => {
   const user = usersArr.find((user) => user.id === props.message.user_id);
   const time = parseISO(props.message.created_at);
   const messageTime = time.toLocaleTimeString('en-US');
+  const dispatch = useDispatch();
   let username;
 
   if (user) {
@@ -28,9 +31,7 @@ const Message = (props) => {
     );
   };
 
-  const handleSubmit = () => {
-
-  }
+  const handleSubmit = () => {};
 
   return (
     <MessageDiv>
