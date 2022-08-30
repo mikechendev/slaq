@@ -2,7 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { updateChat, removeChat } from '../../../util/chat_api_util';
 import { receiveChat } from '../../../actions/chat_actions';
 import {
@@ -20,9 +20,14 @@ import {
 } from '../styles/modal.style';
 
 const EditChannelModal = (props) => {
+  const match = useRouteMatch();
+  const currentChannel = useSelector(
+    (state) => state.entities.chats[match.params.channelId]
+  );
+
   const [channel, setChannel] = useState({
-    name: '',
-    description: '',
+    name: currentChannel.name,
+    description: currentChannel.description,
   });
 
   const dispatch = useDispatch();
@@ -34,14 +39,15 @@ const EditChannelModal = (props) => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    let res = await updateChat({
-      name: channel.name,
-      description: channel.description,
-      chat_type: 'channel',
-    });
-    let response = dispatch(receiveChat(res.data));
+    let res = await updateChat(
+      Object.assign({}, currentChannel, {
+        name: channel.name,
+        description: channel.description,
+      })
+    );
+    dispatch(receiveChat(res.data));
     props.closeModal();
-    history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
+    history.push(0);
   };
 
   return (
@@ -54,7 +60,7 @@ const EditChannelModal = (props) => {
     >
       <ModalHeaderContainer>
         <ModalHeaderDiv>
-          <ModalHeaderText>Create a channel</ModalHeaderText>
+          <ModalHeaderText>Edit channel</ModalHeaderText>
         </ModalHeaderDiv>
         <ModalContentContainer>
           <form>

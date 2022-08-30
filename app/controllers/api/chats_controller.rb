@@ -34,13 +34,13 @@ class Api::ChatsController < ApplicationController
 
   def show
     @chat = Chat.find_by(id: params[:id])
-    render 'api/chats/show'
+    render :show
   end
 
   def update
     @chat = Chat.find_by(id: params[:id])
-    if @chat.update
-      render 'api/chats/show'
+    if @chat.update(chat_params)
+      render :show
     else
       render json: @chat.errors.full_messages, status: 401
     end

@@ -1,4 +1,5 @@
 import React from 'react';
+import EditChannelModal from './edit_channel_modal';
 import { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
@@ -51,6 +52,18 @@ const Chat = (props) => {
     setModal({ isOpen: false });
   };
 
+  const [edit, setEdit] = useState({
+    isOpen: false,
+  });
+
+  const openEdit = () => {
+    setEdit({ isOpen: true });
+  };
+
+  const closeEdit = () => {
+    setEdit({ isOpen: false });
+  };
+
   useEffect(() => {
     cable.subscriptions.create(
       { channel: 'MessagesChannel', id: currentChannel.id },
@@ -70,7 +83,7 @@ const Chat = (props) => {
             <ChatHeadWrapper>
               <div style={{ flex: '0 1 auto' }}>
                 <ChatHeadTextButton>
-                  <HeaderTextContainer>
+                  <HeaderTextContainer onClick={openEdit}>
                     <div
                       style={{
                         marginRight: '2px',
@@ -113,7 +126,13 @@ const Chat = (props) => {
         currentWorkspace={props.currentWorkspace}
         currentUser={props.currentUser}
         currentChannel={currentChannel}
-      ></ChatUsersModal>
+      />
+      <EditChannelModal
+        isOpen={edit.isOpen}
+        openModal={openEdit}
+        closeModal={closeEdit}
+        currentWorkspace={props.currentWorkspace}
+      />
     </div>
   ) : (
     <div></div>

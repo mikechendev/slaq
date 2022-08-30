@@ -18,18 +18,13 @@ const EditMessageForm = (props) => {
     setBody(e.target.value);
   };
 
-  let msg = Object.assign({}, props.message, { body: body });
-  console.log('msg', msg);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // let message = props.message;
-    // message.body = body;
     let updated = await updateMessage(
       Object.assign({}, props.message, { body: body })
     );
-    console.log('update', updated.data);
     dispatch(receiveMessage(updated.data));
+    history.go(0);
   };
 
   const handleDelete = async (e) => {
