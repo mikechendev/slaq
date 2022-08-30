@@ -1,4 +1,5 @@
 import React from 'react';
+import EditMessageForm from './edit_message_form';
 import { useState, useEffect } from 'react';
 import { MessageDiv, MessageBody } from '../styles/message.style';
 import { useSelector } from 'react-redux';
@@ -20,6 +21,7 @@ const Message = (props) => {
   }
 
   const [isHovering, setIsHovering] = useState(false);
+  const [messageEdit, setMessageEdit] = useState(false);
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -58,12 +60,14 @@ const Message = (props) => {
         </div>
       </div>
       <MessageBody>
-        <div>{props.message.body}</div>
-        {isHovering &&
-          props.currentUser.id === props.message.user_id &&
-          {
-            /* <div onClick={setMessageEdit(true)}>Edit</div> */
-          }}
+        {messageEdit ? (
+          <EditMessageForm message={props.message} />
+        ) : (
+          props.message.body
+        )}
+        {isHovering && props.currentUser.id === props.message.user_id && (
+          <div onClick={() => setMessageEdit(!messageEdit)}>Edit</div>
+        )}
       </MessageBody>
     </MessageDiv>
   );

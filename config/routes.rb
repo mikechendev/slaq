@@ -27,9 +27,10 @@ Rails.application.routes.draw do
       resources :chats, only: [:index]
     end
     resources :chats, only: [:create, :show, :update, :destroy] do
-      resources :messages, only: [:create, :index, :update, :destroy]
+      resources :messages, only: [:create, :index]
       resources :users, only: [:index]
     end
+    resources :messages, only: [:update, :destroy]
   end
   mount ActionCable.server, at: '/cable'
 end
