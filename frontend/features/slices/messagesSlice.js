@@ -17,7 +17,7 @@ const messagesSlice = createSlice({
       .addCase(receiveMessage, (state, action) => {
         return (state = {
           ...state,
-          [action.payload.message.id]: action.payload.message,
+          [action.payload.id]: action.payload,
         });
       })
       .addCase(removeMessage, (state, action) => {

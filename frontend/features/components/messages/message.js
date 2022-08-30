@@ -61,7 +61,10 @@ const Message = (props) => {
       </div>
       <MessageBody>
         {messageEdit ? (
-          <EditMessageForm message={props.message} />
+          <EditMessageForm
+            message={props.message}
+            currentChannel={props.currentChannel}
+          />
         ) : (
           props.message.body
         )}

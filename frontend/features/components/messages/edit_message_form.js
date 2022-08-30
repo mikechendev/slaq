@@ -7,22 +7,28 @@ import {
   receiveMessage,
   removeMessage,
 } from '../../../actions/message_actions';
+import { useHistory } from 'react-router-dom';
 
 const EditMessageForm = (props) => {
-  const [state, setState] = useState({ body: props.message.body });
+  const [body, setBody] = useState(props.message.body);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const updateText = (e) => {
-    setState({ body: e.target.value });
+    setBody(e.target.value);
   };
 
-  console.log(props);
+  let msg = Object.assign({}, props.message, { body: body });
+  console.log('msg', msg);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let message = props.message;
-    message.body = state.body;
-    let updated = await updateMessage(message);
+    // let message = props.message;
+    // message.body = body;
+    let updated = await updateMessage(
+      Object.assign({}, props.message, { body: body })
+    );
+    console.log('update', updated.data);
     dispatch(receiveMessage(updated.data));
   };
 
@@ -30,12 +36,13 @@ const EditMessageForm = (props) => {
     let messageId = props.message.id;
     let deleted = await deleteMessage(messageId);
     dispatch(removeMessage(deleted.data));
+    history.go(0);
   };
 
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" value={state.body} onChange={(e) => updateText(e)} />
+        <input type="text" value={body} onChange={(e) => updateText(e)} />
       </form>
       <button onClick={handleDelete}>DELETE</button>
     </div>
