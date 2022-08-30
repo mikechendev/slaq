@@ -3,7 +3,8 @@ import ReactModal from 'react-modal';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { updateChat, removeChat } from '../../../util/chat_api_util';
+import { updateChat, deleteChat } from '../../../util/chat_api_util';
+import { removeChat } from '../../../actions/chat_actions';
 import { receiveChat } from '../../../actions/chat_actions';
 import {
   ModalHeaderContainer,
@@ -47,7 +48,16 @@ const EditChannelModal = (props) => {
     );
     dispatch(receiveChat(res.data));
     props.closeModal();
-    history.push(0);
+    history.go(0);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    let chatId = currentChannel.id;
+    let deleted = await deleteChat(chatId);
+    dispatch(removeChat(deleted.data));
+    props.closeModal();
+    history.go(0);
   };
 
   return (
@@ -101,6 +111,7 @@ const EditChannelModal = (props) => {
                     <div>
                       <div></div>
                       <CreateButton onClick={handleUpdate}>Update</CreateButton>
+                      <CreateButton onClick={handleDelete}>DELETE</CreateButton>
                     </div>
                   </ModalFooterContainer>
                 </div>

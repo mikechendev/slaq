@@ -3,6 +3,7 @@ import {
   receiveMessage,
   receiveMessages,
   removeMessage,
+  receiveUpdatedMessage,
 } from '../../actions/message_actions';
 
 const messagesSlice = createSlice({
@@ -15,6 +16,12 @@ const messagesSlice = createSlice({
         return (state = action.payload['data']);
       })
       .addCase(receiveMessage, (state, action) => {
+        return (state = {
+          ...state,
+          [action.payload.message.id]: action.payload.message,
+        });
+      })
+      .addCase(receiveUpdatedMessage, (state, action) => {
         return (state = {
           ...state,
           [action.payload.id]: action.payload,

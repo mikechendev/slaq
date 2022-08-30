@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { updateMessage, deleteMessage } from '../../../util/message_api_util';
 import {
-  receiveMessage,
+  receiveUpdatedMessage,
   removeMessage,
 } from '../../../actions/message_actions';
 import { useHistory } from 'react-router-dom';
@@ -23,7 +23,7 @@ const EditMessageForm = (props) => {
     let updated = await updateMessage(
       Object.assign({}, props.message, { body: body })
     );
-    dispatch(receiveMessage(updated.data));
+    dispatch(receiveUpdatedMessage(updated.data));
     history.go(0);
   };
 
