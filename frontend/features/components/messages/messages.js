@@ -27,7 +27,7 @@ const Messages = (props) => {
     fetchMessages(channelId).then((messages) => {
       dispatch(receiveMessages(messages));
     });
-  }, [match.params.channelId]);
+  }, [match.params.channelId, dispatch]);
 
   useEffect(() => {
     if (messagesEndRef.current != null) {

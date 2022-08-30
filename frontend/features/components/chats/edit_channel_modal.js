@@ -48,7 +48,6 @@ const EditChannelModal = (props) => {
     );
     dispatch(receiveChat(res.data));
     props.closeModal();
-    history.go(0);
   };
 
   const handleDelete = async (e) => {
@@ -57,7 +56,6 @@ const EditChannelModal = (props) => {
     let deleted = await deleteChat(chatId);
     dispatch(removeChat(deleted.data));
     props.closeModal();
-    history.go(0);
   };
 
   return (

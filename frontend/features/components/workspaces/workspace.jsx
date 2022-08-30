@@ -41,7 +41,7 @@ const Workspace = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, [match.params.channelId]);
+  }, [match.params.channelId, dispatch]);
 
   const fetchData = async () => {
     let chats = await fetchChats(match.params.workspaceId);
