@@ -31,14 +31,32 @@ const EditMessageForm = (props) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        width: '80%',
+      }}
+    >
       <form
         onSubmit={(e) => handleSubmit(e)}
         style={{
-          paddingBottom: '10%',
+          paddingBottom: '10px',
+          paddingTop: '10px',
         }}
       >
-        <input type="text" value={body} onChange={(e) => updateText(e)} />
+        <input
+          type="text"
+          value={body}
+          onChange={(e) => updateText(e)}
+          style={{
+            width: '80%',
+            alignContent: 'center',
+            height: '40px',
+            fontSize: '15px',
+          }}
+        />
       </form>
       <button
         onClick={handleDelete}
@@ -51,7 +69,7 @@ const EditMessageForm = (props) => {
           fontSize: '15px',
           fontWeight: '500',
           height: '36px',
-          minWidth: '80px',
+          maxWidth: '80px',
         }}
       >
         DELETE
