@@ -26,6 +26,7 @@ const EditChannelModal = (props) => {
   const currentChannel = useSelector(
     (state) => state.entities.chats[match.params.channelId]
   );
+  const chats = useSelector((state) => Object.values(state.entities.chats));
 
   const [channel, setChannel] = useState({
     name: currentChannel.name,
