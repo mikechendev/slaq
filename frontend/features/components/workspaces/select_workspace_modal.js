@@ -14,6 +14,21 @@ const SelectWorkspaceModal = (props) => {
     (state) => state.entities.workspaces[match.params.workspaceId]
   );
 
+  const workspacesList = workspaces.map((workspace) => (
+    <div
+      key={workspace.id}
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingBottom: '2%',
+        fontSize: '18px',
+      }}
+    >
+      <li>{workspace.name}</li>
+      <button style={{ marginRight: '2%' }}>Switch</button>
+    </div>
+  ));
+
   return (
     <ReactModal
       className="chat-modal"
