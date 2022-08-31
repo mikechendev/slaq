@@ -71,7 +71,12 @@ const Message = (props) => {
           props.message.body
         )}
         {isHovering && props.currentUser.id === props.message.user_id && (
-          <div onClick={() => setMessageEdit(!messageEdit)}>Edit</div>
+          <div
+            onClick={() => setMessageEdit(!messageEdit)}
+            style={{ marginRight: '5%' }}
+          >
+            Edit
+          </div>
         )}
       </MessageBody>
     </MessageDiv>

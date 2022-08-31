@@ -72,15 +72,26 @@ const ChatUsersModal = (props) => {
       closetimeMS={100}
       ariaHideApp={false}
     >
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div
           style={{
             fontSize: '22px',
             fontWeight: '900',
             lineHeight: '1.36365',
-            padding: '2% 2% 2% 2%',
+            padding: '2% 2% 3% 2%',
           }}
-        >{`${props.currentChannel.name}`}</div>
+        >
+          #{`${props.currentChannel.name}`}
+        </div>
+        <div
+          style={{
+            padding: '2% 2% 2% 2%',
+            fontSize: '15px',
+            fontWeight: '800',
+          }}
+        >
+          members
+        </div>
         <div
           style={{
             paddingLeft: '5%',
