@@ -20,6 +20,7 @@ import {
   DeleteButton,
   CloseButton,
 } from '../styles/modal.style';
+import { useEffect } from 'react';
 
 const EditChannelModal = (props) => {
   const match = useRouteMatch();
@@ -34,6 +35,13 @@ const EditChannelModal = (props) => {
     name: currentChannel.name,
     description: currentChannel.description,
   });
+
+  useEffect(() => {
+    setChannel({
+      name: currentChannel.name,
+      description: currentChannel.description,
+    });
+  }, [match.params.channelId]);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,6 +68,7 @@ const EditChannelModal = (props) => {
     let deleted = await deleteChat(chatId);
     dispatch(removeChat(deleted.data));
     props.closeModal();
+    history.push(`/client/${props.currentWorkspace.id}/${chats[nextIndex].id}`);
   };
 
   return (
