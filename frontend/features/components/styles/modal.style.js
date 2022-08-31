@@ -125,7 +125,7 @@ export const DeleteButton = styled.button`
   text-shadow: none;
   transition: all 80ms linear;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 800;
   height: 36px;
   min-width: 80px;
   padding: 0 12px 1px;

@@ -67,7 +67,7 @@ const EditMessageForm = (props) => {
           boxShadow: 'none',
           borderRadius: '4px',
           fontSize: '15px',
-          fontWeight: '500',
+          fontWeight: '800',
           height: '36px',
           maxWidth: '80px',
         }}
