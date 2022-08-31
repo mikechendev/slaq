@@ -98,7 +98,7 @@ const WorkspaceSidebar = (props) => {
           <SideBarHeaderDiv>
             <div>
               <SideBarTeamName>
-                <SideBarTeamNameText>
+                <SideBarTeamNameText onClick={openWsModal}>
                   {props.currentWorkspace.name}
                 </SideBarTeamNameText>
                 <div>
