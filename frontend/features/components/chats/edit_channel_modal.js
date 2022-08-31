@@ -17,6 +17,7 @@ import {
   FormField,
   ModalFooterContainer,
   CreateButton,
+  DeleteButton,
   CloseButton,
 } from '../styles/modal.style';
 
@@ -109,7 +110,7 @@ const EditChannelModal = (props) => {
                     <div>
                       <div></div>
                       <CreateButton onClick={handleUpdate}>Update</CreateButton>
-                      <CreateButton onClick={handleDelete}>DELETE</CreateButton>
+                      <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
                     </div>
                   </ModalFooterContainer>
                 </div>

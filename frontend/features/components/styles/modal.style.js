@@ -62,7 +62,7 @@ export const FormField = styled.input`
   border: 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
-  color: rgba(var( 29, 28, 29), 1);
+  color: rgba(var(29, 28, 29), 1);
   font-size: 15px;
   line-height: normal;
   margin: 0 0 20px;
@@ -103,6 +103,24 @@ export const CreateButton = styled.button`
   border-color: rgba(var(221, 221, 221), 1);
   box-shadow: none;
   color: rgba(var(9, 28, 29), 0.75);
+  cursor: pointer;
+  text-shadow: none;
+  transition: all 80ms linear;
+  font-size: 15px;
+  font-weight: 500;
+  height: 36px;
+  min-width: 80px;
+  padding: 0 12px 1px;
+  font-family: 'Lato', sans-serif;
+  border-radius: 4px;
+`;
+
+export const DeleteButton = styled.button`
+  background: red;
+  background-clip: initial;
+  border-color: rgba(var(221, 221, 221), 1);
+  box-shadow: none;
+  color: white;
   cursor: pointer;
   text-shadow: none;
   transition: all 80ms linear;

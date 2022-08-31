@@ -32,10 +32,30 @@ const EditMessageForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        style={{
+          paddingBottom: '10%',
+        }}
+      >
         <input type="text" value={body} onChange={(e) => updateText(e)} />
       </form>
-      <button onClick={handleDelete}>DELETE</button>
+      <button
+        onClick={handleDelete}
+        style={{
+          background: 'red',
+          color: 'white',
+          borderColor: 'red',
+          boxShadow: 'none',
+          borderRadius: '4px',
+          fontSize: '15px',
+          fontWeight: '500',
+          height: '36px',
+          minWidth: '80px',
+        }}
+      >
+        DELETE
+      </button>
     </div>
   );
 };
