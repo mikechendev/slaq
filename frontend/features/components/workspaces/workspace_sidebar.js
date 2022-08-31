@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SetupSidebar } from '../styles/workspace.style';
+import SelectWorkspaceModal from './select_workspace_modal';
 import {
   SideBarContainer,
   SideBarHeaderContainer,
@@ -42,6 +43,18 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const WorkspaceSidebar = (props) => {
+  const [wsModal, setWsModal] = useState({
+    isOpen: false,
+  });
+
+  const openWsModal = () => {
+    setWsModal({ isOpen: true });
+  };
+
+  const closeWsModal = () => {
+    setWsModal({ isOpen: false });
+  };
+
   const channels = useSelector((state) => Object.values(state.entities.chats));
   const channelsList = channels.filter((chat) => {
     return chat.chat_type == 'channel';
@@ -205,6 +218,11 @@ const WorkspaceSidebar = (props) => {
           </WorkspaceChannelSidebarGroup>
         </div>
       </SideBarContainer>
+      <SelectWorkspaceModal
+        isOpen={wsModal.isOpen}
+        openModal={openWsModal}
+        closeModal={closeWsModal}
+      />
     </SetupSidebar>
   );
 };

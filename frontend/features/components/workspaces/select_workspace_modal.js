@@ -13,8 +13,11 @@ const SelectWorkspaceModal = (props) => {
   const currentWorkspace = useSelector(
     (state) => state.entities.workspaces[match.params.workspaceId]
   );
+  const otherWorkspaces = workspaces.filter(
+    (workspace) => workspace.id !== currentWorkspace.id
+  );
 
-  const workspacesList = workspaces.map((workspace) => (
+  const workspacesList = otherWorkspaces.map((workspace) => (
     <div
       key={workspace.id}
       style={{
@@ -37,7 +40,36 @@ const SelectWorkspaceModal = (props) => {
       closetimeMS={100}
       ariaHideApp={false}
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}></div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div
+          style={{
+            fontSize: '22px',
+            fontWeight: '900',
+            lineHeight: '1.36365',
+            padding: '2% 2% 3% 2%',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          {currentWorkspace.name}
+        </div>
+        <div
+          style={{
+            padding: '2% 2% 2% 2%',
+            fontSize: '15px',
+            fontWeight: '800',
+          }}
+        >
+          workspaces
+        </div>
+        <div
+          style={{
+            paddingLeft: '5%',
+          }}
+        >
+          <ul>{workspacesList}</ul>
+        </div>
+      </div>
     </ReactModal>
   );
 };
