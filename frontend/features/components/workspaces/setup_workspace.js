@@ -51,9 +51,6 @@ const SetupWorkspace = (props) => {
     (state) => state.entities.workspaces[match.params.workspaceId]
   );
 
-  console.log(currentWorkspace);
-  console.log(currentWorkspace.chats);
-
   const update = (field) => {
     return (e) => setWorkspace({ [field]: e.target.value });
   };

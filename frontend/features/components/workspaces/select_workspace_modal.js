@@ -32,7 +32,7 @@ const SelectWorkspaceModal = (props) => {
   const handleDelete = async (e) => {
     let deleted = await deleteWorkspace(currentWorkspace.id);
     dispatch(removeWorkspace(deleted.data));
-    return history.go('/');
+    return history.push('/');
   };
 
   const workspacesList = otherWorkspaces.map((workspace) => {
