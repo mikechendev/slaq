@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import {
   MainContainer,
   HeaderContainer,
@@ -38,7 +41,6 @@ import { connect } from 'react-redux';
 import { logout } from '../../../actions/session_actions';
 import { useHistory } from 'react-router-dom';
 import { createWorkspace } from '../../../util/workspace_api_util';
-import { useDispatch } from 'react-redux';
 import { receiveWorkspace } from '../../../actions/workspace_actions';
 
 const GetStarted = (props) => {
@@ -51,7 +53,7 @@ const GetStarted = (props) => {
             <div className="workspace-item-member-count">{workspace.users}</div>
           </div>
           <div className="workspace-item-button">
-            <Link to={`/client/${workspace.id}`}>
+            <Link to={`/client/${workspace.id}/${workspace.chats[0].id}`}>
               <button>LAUNCH SLAQ</button>
             </Link>
           </div>
@@ -60,8 +62,8 @@ const GetStarted = (props) => {
     }
   );
 
+  const dispatch = useDispatch();
   let history = useHistory();
-  let dispatch = useDispatch();
 
   const handleCreate = async () => {
     let response = await createWorkspace({

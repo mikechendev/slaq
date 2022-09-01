@@ -25,19 +25,34 @@ import {
   SubmitButton,
   TeamName,
 } from '../styles/workspace.style';
+import { useRouteMatch } from 'react-router-dom';
+import { fetchChats } from '../../../util/chat_api_util';
+import { receiveChats } from '../../../actions/chat_actions';
+import { fetchUsers } from '../../../util/user_api_util';
+import { receiveUsers } from '../../../actions/user_actions';
 
 const SetupWorkspace = (props) => {
   const [workspace, setWorkspace] = useState({ name: '' });
+  const match = useRouteMatch();
   const dispatch = useDispatch();
+
+  const fetchData = async () => {
+    let chats = await fetchChats(match.params.workspaceId);
+    dispatch(receiveChats(chats.data));
+    let workspaces = await fetchWorkspaces();
+    dispatch(receiveWorkspaces(workspaces.data));
+  };
+
   useEffect(() => {
-    fetchWorkspaces().then((res) => {
-      dispatch(receiveWorkspaces(res.data));
-    });
-  }, []);
+    fetchData();
+  }, [match.params, dispatch]);
 
   let currentWorkspace = useSelector(
-    (state) => state.entities.workspaces[props.match.params.workspaceId]
+    (state) => state.entities.workspaces[match.params.workspaceId]
   );
+
+  console.log(currentWorkspace);
+  console.log(currentWorkspace.chats);
 
   const update = (field) => {
     return (e) => setWorkspace({ [field]: e.target.value });
