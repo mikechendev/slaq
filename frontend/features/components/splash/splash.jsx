@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './nav';
+import { useDispatch } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { fetchWorkspaces } from '../../../util/workspace_api_util';
+import { receiveWorkspaces } from '../../../actions/workspace_actions';
 
 const Splash = (props) => {
   const billboardLoggedOut = () => {
@@ -109,6 +115,22 @@ const Splash = (props) => {
   };
 
   const billboardLoggedIn = () => {
+    const dispatch = useDispatch();
+    const match = useRouteMatch();
+
+    useEffect(() => {
+      fetchWorkspaces().then((workspaces) => {
+        dispatch(receiveWorkspaces(workspaces.data));
+      });
+    }, [match.params, dispatch]);
+
+    const workspaces = useSelector((state) =>
+      Object.values(state.entities.workspaces)
+    );
+
+    console.log(workspaces);
+    console.log('props', Object.values(props.currentUser.workspaces));
+
     let workspaceListItems = Object.values(props.currentUser.workspaces).map(
       (workspace) => {
         return (
