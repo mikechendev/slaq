@@ -3,19 +3,37 @@ import ReactModal from 'react-modal';
 import { useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { useEffect } from 'react';
+import { CreateButton, DeleteButton } from '../styles/modal.style';
+import { deleteWorkspace } from '../../../util/workspace_api_util';
+import { removeWorkspace } from '../../../actions/workspace_actions';
+import { useDispatch } from 'react-redux';
 
 const SelectWorkspaceModal = (props) => {
   const history = useHistory();
   const match = useRouteMatch();
+  const dispatch = useDispatch();
+
   const workspaces = useSelector((state) =>
     Object.values(state.entities.workspaces)
   );
+
   const currentWorkspace = useSelector(
     (state) => state.entities.workspaces[match.params.workspaceId]
   );
+
   const otherWorkspaces = workspaces.filter(
     (workspace) => workspace.id !== currentWorkspace.id
   );
+
+  const handleEdit = () => {
+    return history.push(`/client/${currentWorkspace.id}/setup-workspace`);
+  };
+
+  const handleDelete = async (e) => {
+    let deleted = await deleteWorkspace(currentWorkspace.id);
+    dispatch(removeWorkspace(deleted.data));
+    return history.go('/');
+  };
 
   const workspacesList = otherWorkspaces.map((workspace) => {
     let wsChats = Object.values(workspace.chats);
@@ -60,6 +78,10 @@ const SelectWorkspaceModal = (props) => {
           }}
         >
           {currentWorkspace.name}
+          <div>
+            <CreateButton onClick={handleEdit}>Edit</CreateButton>
+            <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
+          </div>
         </div>
         <div
           style={{

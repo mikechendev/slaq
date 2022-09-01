@@ -113,6 +113,7 @@ export const CreateButton = styled.button`
   padding: 0 12px 1px;
   font-family: 'Lato', sans-serif;
   border-radius: 4px;
+  margin: 3px;
 `;
 
 export const DeleteButton = styled.button`
@@ -131,6 +132,7 @@ export const DeleteButton = styled.button`
   padding: 0 12px 1px;
   font-family: 'Lato', sans-serif;
   border-radius: 4px;
+  margin: 3px;
 `;
 
 export const CloseButton = styled.div`
