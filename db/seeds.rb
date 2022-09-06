@@ -45,7 +45,9 @@ user5sub = UserWorkspace.create!({user_id: "#{user5.id}", workspace_id: "#{aawor
 UserChat.create!({user_id: "#{user5.id}", chat_id: "#{aageneral.id}"})
 user5sub2 = UserWorkspace.create!({user_id: "#{user5.id}", workspace_id: "#{testworkspace.id}"})
 
-aageneral.messages.create!({user_id: 2, chat_id: aageneral.id, body:"does this actually work?"})
-aageneral.messages.create!({user_id: 3, chat_id: aageneral.id, body:"of course it does!"})
-aageneral.messages.create!({user_id: 4, chat_id: aageneral.id, body:"wow"})
-aageneral.messages.create!({user_id: 5, chat_id: aageneral.id, body:"you can't see me"})
+aageneral.messages.create!({user_id: user2.id, chat_id: aageneral.id, body:"does this actually work?"})
+aageneral.messages.create!({user_id: user3.id, chat_id: aageneral.id, body:"of course it does!"})
+aageneral.messages.create!({user_id: user4.id, chat_id: aageneral.id, body:"wow"})
+aageneral.messages.create!({user_id: user5.id, chat_id: aageneral.id, body:"you can't see me"})
+
+twgeneral.messages.create!({user_id: user2.id, chat_id: aageneral.id, body:"html is the best programming language"})
