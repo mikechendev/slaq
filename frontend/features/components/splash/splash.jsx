@@ -131,25 +131,23 @@ const Splash = (props) => {
     console.log(workspaces);
     console.log('props', Object.values(props.currentUser.workspaces));
 
-    let workspaceListItems = Object.values(props.currentUser.workspaces).map(
-      (workspace) => {
-        return (
-          <li className="workspace-list-items" key={workspace.id}>
-            <div className="workspace-item-container">
-              <div className="workspace-item-name">{workspace.name}</div>
-              <div className="workspace-item-member-count">
-                {workspace.users}
-              </div>
+    let workspaceListItems = workspaces.map((workspace) => {
+      return (
+        <li className="workspace-list-items" key={workspace.id}>
+          <div className="workspace-item-container">
+            <div className="workspace-item-name">{workspace.name}</div>
+            <div className="workspace-item-member-count">
+              {workspace.users.length}
             </div>
-            <div className="workspace-item-button">
-              <Link to={`/client/${workspace.id}/${workspace.chats[0].id}`}>
-                <button>LAUNCH SLAQ</button>
-              </Link>
-            </div>
-          </li>
-        );
-      }
-    );
+          </div>
+          <div className="workspace-item-button">
+            <Link to={`/client/${workspace.id}/${workspace.chats[0].id}`}>
+              <button>LAUNCH SLAQ</button>
+            </Link>
+          </div>
+        </li>
+      );
+    });
 
     return (
       <div className="splash-billboard-logged-in">

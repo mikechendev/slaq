@@ -11,16 +11,18 @@ const Nav = ({ currentUser, logout }) => {
           </Link>
           <ul>
             <li>
-              <a href="">Portfolio</a>
+              <a href="https://mikechendev.github.io/">Portfolio</a>
             </li>
             <li>
-              <a href="">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/michael-chen-74b973117/">
+                LinkedIn
+              </a>
             </li>
             <li>
               <a href="https://github.com/mikechendev">Github</a>
             </li>
             <li>
-              <a href="">Resources</a>
+              <a href="https://angel.co/u/michael-chen-157">AngelList</a>
             </li>
             <li>
               <a href="">Pricing</a>
