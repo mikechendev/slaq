@@ -7,7 +7,9 @@ import { createContext } from 'react';
 
 const CableApp = {};
 
-CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable');
+CableApp.cable = actionCable.createConsumer(
+  'wss://slaq-mc.herokuapp.com/cable'
+);
 export const ActionCableContext = createContext();
 
 const Root = ({ store }) => (
