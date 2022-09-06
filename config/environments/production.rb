@@ -89,9 +89,10 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_cable.mount_path = '/cable'
-  config.action_cable.url = 'wss://localhost:3000/cable'
-  config.action_cable.allowed_request_origins = [ /http:\/\/localhost:*/ ]
+  # config.action_cable.mount_path = '/cable'
+  config.web_socket_server_url = 'wss://slaq-mc.herokuapp.com/cable'
+  config.action_cable.url = 'wss://slaq-mc.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://slaq-mc.herokuapp.com/', 'http://slaq-mc.herokuapp.com/' ]
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
