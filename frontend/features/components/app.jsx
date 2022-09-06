@@ -8,9 +8,11 @@ import SplashContainer from './splash/splash_container';
 import GetStarted from './workspaces/get_started';
 import SetupWorkspace from './workspaces/setup_workspace';
 import Workspace from './workspaces/workspace';
+import Favicon from 'react-favicon';
 
 const App = () => (
   <div>
+    <Favicon url="https://cdn-icons-png.flaticon.com/512/732/732245.png" />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
