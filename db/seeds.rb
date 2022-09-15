@@ -29,25 +29,30 @@ user2 = User.create!({email: 'testuser1@test.test', username:'Kin Ka', password:
 user2sub = UserWorkspace.create!({user_id: "#{user2.id}", workspace_id: "#{aaworkspace.id}"})
 UserChat.create!({user_id: "#{user2.id}", chat_id: "#{aageneral.id}"})
 user2sub2 = UserWorkspace.create!({user_id: "#{user2.id}", workspace_id: "#{testworkspace.id}"})
+UserChat.create!({user_id: "#{user2.id}", chat_id: "#{twgeneral.id}"})
 
 user3 = User.create!({email: 'testuser2@test.test', username:'Ayce', password: 'password'})
 user3sub = UserWorkspace.create!({user_id: "#{user3.id}", workspace_id: "#{aaworkspace.id}"})
 UserChat.create!({user_id: "#{user3.id}", chat_id: "#{aageneral.id}"})
 user3sub2 = UserWorkspace.create!({user_id: "#{user3.id}", workspace_id: "#{testworkspace.id}"})
+UserChat.create!({user_id: "#{user3.id}", chat_id: "#{twgeneral.id}"})
 
 user4 = User.create!({email: 'testuser3@test.test', username:'Spencer', password: 'password'})
 user4sub = UserWorkspace.create!({user_id: "#{user4.id}", workspace_id: "#{aaworkspace.id}"})
 UserChat.create!({user_id: "#{user4.id}", chat_id: "#{aageneral.id}"})
 user4sub2 = UserWorkspace.create!({user_id: "#{user4.id}", workspace_id: "#{testworkspace.id}"})
+UserChat.create!({user_id: "#{user4.id}", chat_id: "#{twgeneral.id}"})
 
 user5 = User.create!({email: 'testuser4@test.test', username:'John', password: 'password'})
 user5sub = UserWorkspace.create!({user_id: "#{user5.id}", workspace_id: "#{aaworkspace.id}"})
 UserChat.create!({user_id: "#{user5.id}", chat_id: "#{aageneral.id}"})
 user5sub2 = UserWorkspace.create!({user_id: "#{user5.id}", workspace_id: "#{testworkspace.id}"})
+UserChat.create!({user_id: "#{user5.id}", chat_id: "#{twgeneral.id}"})
 
 aageneral.messages.create!({user_id: user2.id, chat_id: aageneral.id, body:"does this actually work?"})
 aageneral.messages.create!({user_id: user3.id, chat_id: aageneral.id, body:"of course it does!"})
 aageneral.messages.create!({user_id: user4.id, chat_id: aageneral.id, body:"wow"})
 aageneral.messages.create!({user_id: user5.id, chat_id: aageneral.id, body:"you can't see me"})
 
-twgeneral.messages.create!({user_id: user2.id, chat_id: aageneral.id, body:"html is the best programming language"})
+twgeneral.messages.create!({user_id: user2.id, chat_id: twgeneral.id, body:"html is the best programming language"})
+twgeneral.messages.create!({user_id: demouser.id, chat_id: twgeneral.id, body:"lol"})
