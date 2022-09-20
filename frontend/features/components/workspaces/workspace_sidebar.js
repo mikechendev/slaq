@@ -101,7 +101,7 @@ const WorkspaceSidebar = (props) => {
                 <SideBarTeamNameText onClick={openWsModal}>
                   {props.currentWorkspace.name}
                 </SideBarTeamNameText>
-                <div>
+                {/* <div>
                   <AiOutlineDown
                     style={{
                       color: 'white',
@@ -109,7 +109,7 @@ const WorkspaceSidebar = (props) => {
                       height: '18px',
                     }}
                   />
-                </div>
+                </div> */}
               </SideBarTeamName>
             </div>
             <SideBarCompose>
@@ -142,7 +142,7 @@ const WorkspaceSidebar = (props) => {
                         <div style={{ width: '260px', height: '652px' }}>
                           <ScrollContainer>
                             <ScrollMenu>
-                              <BrowseContainer>
+                              {/* <BrowseContainer>
                                 <PageDrawer>
                                   <BsThreeDotsVertical
                                     stroke="white"
@@ -151,7 +151,7 @@ const WorkspaceSidebar = (props) => {
                                   ></BsThreeDotsVertical>
                                 </PageDrawer>
                                 <BrowseText>Browse SlaQ</BrowseText>
-                              </BrowseContainer>
+                              </BrowseContainer> */}
                               <BrowseDivider></BrowseDivider>
                               <ChannelList>
                                 <ChannelHeaderContainer>
