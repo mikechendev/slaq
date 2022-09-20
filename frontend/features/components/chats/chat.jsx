@@ -105,7 +105,7 @@ const Chat = (props) => {
                 </ChatHeadTextButton>
               </div>
               <div>
-                <p onClick={openModal}>Channel Members</p>
+                <button onClick={openModal}>Channel Members</button>
               </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>

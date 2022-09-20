@@ -24,9 +24,7 @@ const Nav = ({ currentUser, logout }) => {
             <li>
               <a href="https://angel.co/u/michael-chen-157">AngelList</a>
             </li>
-            <li>
-              {/* <a href="">Pricing</a> */}
-            </li>
+            <li></li>
           </ul>
         </div>
         <div className="session-links">
@@ -63,9 +61,7 @@ const Nav = ({ currentUser, logout }) => {
             <li>
               <a href="https://angel.co/u/michael-chen-157">Resources</a>
             </li>
-            <li>
-              {/* <a href="">Pricing</a> */}
-            </li>
+            <li></li>
           </ul>
         </div>
         <div className="session-links">
