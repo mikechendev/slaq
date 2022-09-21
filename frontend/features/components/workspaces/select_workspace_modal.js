@@ -50,9 +50,7 @@ const SelectWorkspaceModal = (props) => {
         }}
       >
         <li style={{ listStyleType: 'none' }}>{workspace.name}</li>
-        <button style={{ marginRight: '2%' }} onClick={wsLink}>
-          Switch
-        </button>
+        <button onClick={wsLink}>Switch</button>
       </div>
     );
   });
@@ -83,10 +81,6 @@ const SelectWorkspaceModal = (props) => {
           }}
         >
           {currentWorkspace.name}
-          <div>
-            <CreateButton onClick={handleEdit}>Edit</CreateButton>
-            <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
-          </div>
         </div>
         <div
           style={{
@@ -102,9 +96,27 @@ const SelectWorkspaceModal = (props) => {
         <div
           style={{
             padding: '2% 2% 2% 2%',
+            minHeight: '225px',
           }}
         >
           <ul>{workspacesList}</ul>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div></div>
+          <div
+            style={{
+              justifyContent: 'flex-end',
+            }}
+          >
+            <CreateButton onClick={handleEdit}>Edit</CreateButton>
+            <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
+          </div>
         </div>
       </div>
     </ReactModal>
