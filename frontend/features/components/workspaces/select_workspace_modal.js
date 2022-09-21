@@ -49,7 +49,7 @@ const SelectWorkspaceModal = (props) => {
           fontSize: '18px',
         }}
       >
-        <li>{workspace.name}</li>
+        <li style={{ listStyleType: 'none' }}>{workspace.name}</li>
         <button style={{ marginRight: '2%' }} onClick={wsLink}>
           Switch
         </button>
@@ -99,7 +99,7 @@ const SelectWorkspaceModal = (props) => {
         </div>
         <div
           style={{
-            paddingLeft: '5%',
+            padding: '2% 2% 2% 2%',
           }}
         >
           <ul>{workspacesList}</ul>

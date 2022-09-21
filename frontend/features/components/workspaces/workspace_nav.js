@@ -13,6 +13,8 @@ import {
   ToolTipButton,
   UserButton,
 } from '../styles/workspace_navbar.style';
+import ReactTooltip from 'react-tooltip';
+import { useSelector } from 'react-redux';
 
 const WorkspaceNav = (props) => {
   return (
@@ -76,8 +78,11 @@ const WorkspaceNav = (props) => {
             </ToolTipButton>
           </ToolTipContainer> */}
         </div>
-        <UserButton>
+        <UserButton data-tip data-for="userIcon">
           <img src={window.user} width={'26px'} height={'26px'} />
+          <ReactTooltip id="userIcon" place="bottom" effect="solid">
+            testing
+          </ReactTooltip>
         </UserButton>
       </RightDiv>
     </TopNav>

@@ -129,7 +129,7 @@ const WorkspaceSidebar = (props) => {
                   ></path>
                 </g>
               </svg>
-              <ReactTooltip id="composeMessage" place="right" effect="solid">
+              <ReactTooltip id="composeMessage" place="bottom" effect="solid">
                 To be updated!
               </ReactTooltip>
             </SideBarCompose>

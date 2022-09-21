@@ -53,7 +53,7 @@ const ChatUsersModal = (props) => {
         fontSize: '18px',
       }}
     >
-      <li>{user.username}</li>
+      <li style={{ listStyleType: 'none' }}>{user.username}</li>
       <button
         onClick={(e) => {
           addUser(user);
@@ -86,14 +86,14 @@ const ChatUsersModal = (props) => {
             fontSize: '22px',
             fontWeight: '900',
             lineHeight: '1.36365',
-            // padding: '2% 2% 3% 2%',
+            padding: '2% 2% 3% 2%',
           }}
         >
           #{`${props.currentChannel.name}`}
         </div>
         <div
           style={{
-            // padding: '2% 2% 2% 2%',
+            padding: '2% 2% 2% 2%',
             fontSize: '15px',
             fontWeight: '800',
             marginTop: '5px',
@@ -104,7 +104,7 @@ const ChatUsersModal = (props) => {
         </div>
         <div
           style={{
-            paddingLeft: '20px',
+            padding: '2% 2% 2% 2%',
           }}
         >
           <ul>{usersList}</ul>
