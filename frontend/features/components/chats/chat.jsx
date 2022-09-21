@@ -76,8 +76,8 @@ const Chat = (props) => {
     );
   }, [currentChannel, cable.subscriptions, dispatch]);
 
-  const channelMembersButton =
-    currentChannel.chat_type == 'channel' ? (
+  const channelMembersButton = () => {
+    return currentChannel.chat_type == 'channel' ? (
       <button
         onClick={openModal}
         style={{
@@ -99,6 +99,7 @@ const Chat = (props) => {
     ) : (
       <div></div>
     );
+  };
 
   return currentChannel ? (
     <div>
@@ -138,7 +139,7 @@ const Chat = (props) => {
                   </HeaderTextContainer>
                 </ChatHeadTextButton>
               </div>
-              <div>{channelMembersButton}</div>
+              <div>{channelMembersButton() && channelMembersButton()}</div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
           <MessagesContainer>

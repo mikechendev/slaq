@@ -11,7 +11,7 @@ export const MessagesWrapper = styled.div`
 export const MessagesFooterContainer = styled.div`
   margin-top: -8px;
   position: relative;
-  z-index: 200;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -34,4 +34,20 @@ export const MessageBody = styled.div`
   margin: 0;
   line-height: 1.46668;
   text-align: left;
+`;
+
+export const MessageFormField = styled.input`
+  width: 90%;
+  align-content: center;
+  height: 40px;
+  padding-left: 11px;
+  line-height: 1.33333333;
+  font-size: 18px;
+  border-radius: 4px;
+  &:focus {
+    border-color: #0000;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;
+    outline: none;
+  }
 `;

@@ -305,7 +305,7 @@ export const DmListItemDiv = styled.div`
   border-radius: 0;
   cursor: pointer;
   display: flex;
-  &:active {
+  /* &:active {
     background-color: #1164a3;
-  }
+  } */
 `;

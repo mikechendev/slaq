@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { MessageFormField } from '../styles/message.style';
 
 const MessageForm = (props) => {
   const [state, setState] = useState({
@@ -32,18 +33,9 @@ const MessageForm = (props) => {
   };
 
   return (
-    <div style={{ marginLeft: '5%', paddingBottom: '2%' }}>
+    <div style={{ marginLeft: '5%' }}>
       <form onSubmit={handleSubmit}>
-        <input
-          style={{
-            width: '90%',
-            alignContent: 'center',
-            height: '40px',
-            paddingLeft: '11px',
-            lineHeight: '1.33333333',
-            fontSize: '18px',
-            borderRadius: '4px',
-          }}
+        <MessageFormField
           type="text"
           value={state.body}
           onChange={update('body')}

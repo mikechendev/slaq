@@ -74,9 +74,9 @@ const SelectWorkspaceModal = (props) => {
       >
         <div
           style={{
-            fontSize: '22px',
+            fontSize: '28px',
             fontWeight: '900',
-            lineHeight: '1.36365',
+            lineHeight: '1.2143',
             padding: '2% 2% 3% 2%',
             display: 'flex',
             justifyContent: 'space-between',
@@ -92,7 +92,9 @@ const SelectWorkspaceModal = (props) => {
           style={{
             padding: '2% 2% 2% 2%',
             fontSize: '15px',
-            fontWeight: '800',
+            fontWeight: '600',
+            marginBottom: '5px',
+            borderBottom: '1px solid',
           }}
         >
           workspaces

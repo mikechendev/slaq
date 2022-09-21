@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChatHeaderContainer = styled.div`
   background: rgba(var(255, 255, 255), 1);
-  z-index: 202;
+  z-index: 1;
   display: flex;
   flex-shrink: 0;
   height: 49px;
