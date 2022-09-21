@@ -41,6 +41,7 @@ import { FiPlus } from 'react-icons/fi';
 import ChannelModal from '../chats/channel_modal';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
 
 const WorkspaceSidebar = (props) => {
   const [wsModal, setWsModal] = useState({
@@ -112,7 +113,7 @@ const WorkspaceSidebar = (props) => {
                 </div> */}
               </SideBarTeamName>
             </div>
-            <SideBarCompose>
+            <SideBarCompose data-tip data-for="composeMessage">
               <svg data-ddp="true" viewBox="0 0 20 20">
                 <g fill="none">
                   <path
@@ -128,6 +129,9 @@ const WorkspaceSidebar = (props) => {
                   ></path>
                 </g>
               </svg>
+              <ReactTooltip id="composeMessage" place="right" effect="solid">
+                To be updated!
+              </ReactTooltip>
             </SideBarCompose>
           </SideBarHeaderDiv>
         </SideBarHeaderContainer>

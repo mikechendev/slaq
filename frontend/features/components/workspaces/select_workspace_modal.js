@@ -65,7 +65,13 @@ const SelectWorkspaceModal = (props) => {
       closetimeMS={100}
       ariaHideApp={false}
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px 28px',
+        }}
+      >
         <div
           style={{
             fontSize: '22px',
