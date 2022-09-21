@@ -20,6 +20,7 @@ import { ActionCableContext } from '../root';
 import { fetchUsers } from '../../../util/user_api_util';
 import { receiveUsers } from '../../../actions/user_actions';
 import ChatUsersModal from './chat_users_modal';
+import ReactTooltip from 'react-tooltip';
 
 const Chat = (props) => {
   const dispatch = useDispatch();
@@ -75,6 +76,30 @@ const Chat = (props) => {
     );
   }, [currentChannel, cable.subscriptions, dispatch]);
 
+  const channelMembersButton =
+    currentChannel.chat_type == 'channel' ? (
+      <button
+        onClick={openModal}
+        style={{
+          backgroundColor: '#541554',
+          color: 'white',
+          borderColor: 'white',
+          padding: '0.5rem 0.75rem',
+          fontSize: '15px',
+          fontWeight: '600',
+        }}
+        data-tip
+        data-for="channelMembers"
+      >
+        Channel Members
+        <ReactTooltip id="channelMembers" place="bottom" effect="solid">
+          Message a channel member
+        </ReactTooltip>
+      </button>
+    ) : (
+      <div></div>
+    );
+
   return currentChannel ? (
     <div>
       <div>
@@ -100,25 +125,20 @@ const Chat = (props) => {
                         ></path>
                       </svg>
                     </div>
-                    <HeaderText># {channelName() && channelName()}</HeaderText>
+                    <HeaderText data-tip data-for="editChannel">
+                      # {channelName() && channelName()}
+                      <ReactTooltip
+                        id="editChannel"
+                        place="bottom"
+                        effect="solid"
+                      >
+                        Edit {channelName() && channelName()}
+                      </ReactTooltip>
+                    </HeaderText>
                   </HeaderTextContainer>
                 </ChatHeadTextButton>
               </div>
-              <div>
-                <button
-                  onClick={openModal}
-                  style={{
-                    backgroundColor: '#541554',
-                    color: 'white',
-                    borderColor: 'white',
-                    padding: '0.5rem 0.75rem',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                  }}
-                >
-                  Channel Members
-                </button>
-              </div>
+              <div>{channelMembersButton}</div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
           <MessagesContainer>

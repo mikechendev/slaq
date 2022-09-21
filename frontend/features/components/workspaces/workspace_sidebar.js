@@ -99,8 +99,19 @@ const WorkspaceSidebar = (props) => {
           <SideBarHeaderDiv>
             <div>
               <SideBarTeamName>
-                <SideBarTeamNameText onClick={openWsModal}>
+                <SideBarTeamNameText
+                  onClick={openWsModal}
+                  data-tip
+                  data-for="editWorkspace"
+                >
                   {props.currentWorkspace.name}
+                  <ReactTooltip
+                    id="editWorkspace"
+                    place="bottom"
+                    effect="solid"
+                  >
+                    Edit {props.currentWorkspace.name}
+                  </ReactTooltip>
                 </SideBarTeamNameText>
                 {/* <div>
                   <AiOutlineDown

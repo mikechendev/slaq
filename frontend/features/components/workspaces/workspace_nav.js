@@ -17,6 +17,10 @@ import ReactTooltip from 'react-tooltip';
 import { useSelector } from 'react-redux';
 
 const WorkspaceNav = (props) => {
+  let currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
+
   return (
     <TopNav>
       <LeftDiv>
@@ -81,7 +85,7 @@ const WorkspaceNav = (props) => {
         <UserButton data-tip data-for="userIcon">
           <img src={window.user} width={'26px'} height={'26px'} />
           <ReactTooltip id="userIcon" place="bottom" effect="solid">
-            testing
+            {currentUser.email}
           </ReactTooltip>
         </UserButton>
       </RightDiv>
