@@ -39,11 +39,28 @@ export const MessageBody = styled.div`
 export const MessageFormField = styled.input`
   width: 90%;
   align-content: center;
-  height: 40px;
+  height: 50px;
   padding-left: 11px;
   line-height: 1.33333333;
   font-size: 18px;
   border-radius: 4px;
+  &:focus {
+    border-color: #0000;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;
+    outline: none;
+  }
+`;
+
+export const EditMessageFormField = styled.input`
+  width: 90%;
+  align-content: center;
+  height: 40px;
+  font-size: 15;
+  padding-left: 11px;
+  line-height: 1.33333333;
+  border-radius: 4px;
+  margin-left: 4px;
   &:focus {
     border-color: #0000;
     border-radius: 4px;

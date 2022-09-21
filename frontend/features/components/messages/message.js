@@ -31,6 +31,10 @@ const Message = (props) => {
     setIsHovering(false);
   };
 
+  const editOrEditing = () => {
+    return messageEdit ? 'Editing' : 'Edit';
+  };
+
   return (
     <MessageDiv onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div
@@ -71,12 +75,16 @@ const Message = (props) => {
           props.message.body
         )}
         {isHovering && props.currentUser.id === props.message.user_id && (
-          <button
+          <div
             onClick={() => setMessageEdit(!messageEdit)}
-            style={{ marginRight: '5%' }}
+            style={{
+              marginRight: '4%',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
           >
-            Edit
-          </button>
+            {editOrEditing()}
+          </div>
         )}
       </MessageBody>
     </MessageDiv>

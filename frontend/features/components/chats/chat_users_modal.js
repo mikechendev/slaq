@@ -59,7 +59,6 @@ const ChatUsersModal = (props) => {
           addUser(user);
           handleSubmit(e);
         }}
-        style={{ marginRight: '2%' }}
       >
         Message
       </button>

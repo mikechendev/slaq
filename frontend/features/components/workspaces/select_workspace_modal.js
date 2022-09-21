@@ -25,6 +25,10 @@ const SelectWorkspaceModal = (props) => {
     (workspace) => workspace.id !== currentWorkspace.id
   );
 
+  const currentUser = useSelector(
+    (state) => state.entities.users[state.session.id]
+  );
+
   const handleEdit = () => {
     return history.push(`/client/${currentWorkspace.id}/setup-workspace`);
   };
@@ -33,6 +37,21 @@ const SelectWorkspaceModal = (props) => {
     let deleted = await deleteWorkspace(currentWorkspace.id);
     dispatch(removeWorkspace(deleted.data));
     return history.push('/');
+  };
+
+  const editDeleteButtons = () => {
+    return currentUser.id === currentWorkspace.admin_id ? (
+      <div
+        style={{
+          justifyContent: 'flex-end',
+        }}
+      >
+        <CreateButton onClick={handleEdit}>Edit</CreateButton>
+        <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
+      </div>
+    ) : (
+      <div></div>
+    );
   };
 
   const workspacesList = otherWorkspaces.map((workspace) => {
@@ -109,14 +128,7 @@ const SelectWorkspaceModal = (props) => {
           }}
         >
           <div></div>
-          <div
-            style={{
-              justifyContent: 'flex-end',
-            }}
-          >
-            <CreateButton onClick={handleEdit}>Edit</CreateButton>
-            <DeleteButton onClick={handleDelete}>DELETE</DeleteButton>
-          </div>
+          {editDeleteButtons() && editDeleteButtons()}
         </div>
       </div>
     </ReactModal>
