@@ -16,9 +16,12 @@
  @import url(reset.css);
  @import url(navbar/nav.scss);
  @import url(sessionform.scss);
+ @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat&family=Noto+Sans&display=swap');
 
  button {
   cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+  border-radius: 5px;
  }
 
  button:hover {

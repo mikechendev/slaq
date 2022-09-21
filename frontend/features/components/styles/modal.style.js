@@ -57,25 +57,41 @@ export const FormFieldContainer = styled.form`
 `;
 
 export const FormField = styled.input`
-  --saf-0: rgba(var(29, 28, 29), 0.3);
-  background-color: rgba(var(255, 255, 255), 1);
   border: 1px solid;
   border-radius: 4px;
   box-sizing: border-box;
-  color: rgba(var(29, 28, 29), 1);
-  font-size: 15px;
-  line-height: normal;
   margin: 0 0 20px;
+  margin-top: 10px;
   transition: border 80ms ease-out, box-shadow 80ms ease-out;
   width: 100%;
   font-size: 18px;
   height: 44px;
   line-height: 1.33333333;
   padding: 11px 12px 13px;
-  padding-right: 46px;
+  padding-right: 11px;
   &:focus {
-    --saf-0: rgba(var(18, 100, 163), 1);
-    -webkit-appearance: none;
+    border-color: #0000;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;
+    outline: none;
+  }
+`;
+
+export const FormTextArea = styled.textarea`
+  resize: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 88px;
+  margin: 0 0 20px;
+  margin-top: 10px;
+  font: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 11px 11px 13px 12px;
+  line-height: 1.33333333;
+  &:focus {
     border-color: #0000;
     border-radius: 4px;
     box-shadow: 0 0 0 1px, 0 0 0 5px #1d9bd14d;

@@ -19,6 +19,7 @@ import {
   CreateButton,
   DeleteButton,
   CloseButton,
+  FormTextArea,
 } from '../styles/modal.style';
 import { useEffect } from 'react';
 
@@ -109,11 +110,10 @@ const EditChannelModal = (props) => {
                         </div>
                         <NameLabel>Description (optional)</NameLabel>
                         <div>
-                          <FormField
-                            type="text"
+                          <FormTextArea
                             value={channel.description}
                             onChange={update('description')}
-                          ></FormField>
+                          ></FormTextArea>
                         </div>
                       </div>
                     </div>

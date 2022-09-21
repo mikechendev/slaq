@@ -20,6 +20,10 @@ const ChatUsersModal = (props) => {
     setDm({ dmUsers: dm.dmUsers.push(user) });
   };
 
+  const resetDM = () => {
+    setDm({ dmUsers: [props.currentUser] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let newChat = {};
@@ -27,16 +31,14 @@ const ChatUsersModal = (props) => {
     dm.dmUsers.forEach((user) => {
       newChat.users[user.id] = user;
     });
-    console.log('dmUsers', dm.dmUsers);
     newChat.chat_type = 'dm';
     newChat.workspace_id = props.currentWorkspace.id;
     newChat.admin_id = props.currentUser.id;
-    console.log(newChat);
     let res = await createChat(newChat);
-    console.log(res);
     let response = dispatch(receiveChat(res.data));
     let workspaces = await fetchWorkspaces();
     dispatch(receiveWorkspaces(workspaces.data));
+    resetDM();
     props.closeModal();
     history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
@@ -72,29 +74,37 @@ const ChatUsersModal = (props) => {
       closetimeMS={100}
       ariaHideApp={false}
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px 28px',
+        }}
+      >
         <div
           style={{
             fontSize: '22px',
             fontWeight: '900',
             lineHeight: '1.36365',
-            padding: '2% 2% 3% 2%',
+            // padding: '2% 2% 3% 2%',
           }}
         >
           #{`${props.currentChannel.name}`}
         </div>
         <div
           style={{
-            padding: '2% 2% 2% 2%',
+            // padding: '2% 2% 2% 2%',
             fontSize: '15px',
             fontWeight: '800',
+            marginTop: '5px',
+            marginBottom: '5px',
           }}
         >
           members
         </div>
         <div
           style={{
-            paddingLeft: '5%',
+            paddingLeft: '20px',
           }}
         >
           <ul>{usersList}</ul>

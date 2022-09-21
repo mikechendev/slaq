@@ -35,7 +35,15 @@ const MessageForm = (props) => {
     <div style={{ marginLeft: '5%', paddingBottom: '2%' }}>
       <form onSubmit={handleSubmit}>
         <input
-          style={{ width: '90%', alignContent: 'center', height: '40px' }}
+          style={{
+            width: '90%',
+            alignContent: 'center',
+            height: '40px',
+            paddingLeft: '11px',
+            lineHeight: '1.33333333',
+            fontSize: '18px',
+            borderRadius: '4px',
+          }}
           type="text"
           value={state.body}
           onChange={update('body')}

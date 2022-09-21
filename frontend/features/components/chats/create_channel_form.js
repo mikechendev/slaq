@@ -18,6 +18,7 @@ import {
   ModalFooterContainer,
   CreateButton,
   CloseButton,
+  FormTextArea
 } from '../styles/modal.style';
 
 export const CreateChannelForm = (props) => {
@@ -79,11 +80,10 @@ export const CreateChannelForm = (props) => {
                       </div>
                       <NameLabel>Description (optional)</NameLabel>
                       <div>
-                        <FormField
-                          type="text"
+                        <FormTextArea
                           value={channel.description}
                           onChange={update('description')}
-                        ></FormField>
+                        ></FormTextArea>
                       </div>
                     </div>
                   </div>

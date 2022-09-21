@@ -105,7 +105,19 @@ const Chat = (props) => {
                 </ChatHeadTextButton>
               </div>
               <div>
-                <button onClick={openModal}>Channel Members</button>
+                <button
+                  onClick={openModal}
+                  style={{
+                    backgroundColor: '#541554',
+                    color: 'white',
+                    borderColor: 'white',
+                    padding: '0.5rem 0.75rem',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                  }}
+                >
+                  Channel Members
+                </button>
               </div>
             </ChatHeadWrapper>
           </ChatHeaderContainer>
