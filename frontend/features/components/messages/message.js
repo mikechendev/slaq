@@ -46,7 +46,7 @@ const Message = (props) => {
       >
         <div
           style={{
-            fontWeight: '900',
+            fontWeight: 'bold',
             flexDirection: 'flex-start',
             paddingRight: '5px',
           }}
