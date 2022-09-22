@@ -57,6 +57,7 @@ const SelectWorkspaceModal = (props) => {
 
   const workspacesList = otherWorkspaces.map((workspace) => {
     let wsLink = () => {
+      props.closeModal();
       return history.push(`/client/${workspace.id}/${workspace.chats[0].id}`);
     };
     return (
