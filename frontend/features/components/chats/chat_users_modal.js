@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createChat } from '../../../util/chat_api_util';
 import { receiveChat } from '../../../actions/chat_actions';
 import { fetchWorkspaces } from '../../../util/workspace_api_util';
 import { receiveWorkspaces } from '../../../actions/workspace_actions';
+import { CloseButton } from '../styles/modal.style';
 
 const ChatUsersModal = (props) => {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const ChatUsersModal = (props) => {
   const resetDM = () => {
     setDm({ dmUsers: [props.currentUser] });
   };
+
+  const users = useSelector((state) => Object.values(state.entities.users));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +46,9 @@ const ChatUsersModal = (props) => {
     history.push(`/client/${props.currentWorkspace.id}/${response.payload.id}`);
   };
 
-  const usersList = props.users.map((user) => (
+  let otherUsers = users.filter((user) => user.id !== props.currentUser.id);
+
+  const usersList = otherUsers.map((user) => (
     <div
       key={user.id}
       style={{
@@ -109,6 +114,17 @@ const ChatUsersModal = (props) => {
         >
           <ul>{usersList}</ul>
         </div>
+        <CloseButton onClick={props.closeModal}>
+          <svg data-q98="true" viewBox="0 0 20 20" className="">
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeWidth="1.5"
+              d="m5.227 5.227 9.546 9.546m0-9.546-9.546 9.546"
+            ></path>
+          </svg>
+        </CloseButton>
       </div>
     </ReactModal>
   );

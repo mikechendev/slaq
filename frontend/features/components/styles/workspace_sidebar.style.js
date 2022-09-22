@@ -300,11 +300,12 @@ export const DmListItemDiv = styled.div`
   top: 40px;
   height: 28px;
   line-height: 28px;
-  padding: 0 16px;
+  padding: 0 43px;
   align-items: center;
   border-radius: 0;
   cursor: pointer;
   display: flex;
+  position: relative;
   /* &:active {
     background-color: #1164a3;
   } */

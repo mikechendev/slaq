@@ -85,7 +85,7 @@ const WorkspaceNav = (props) => {
         <UserButton data-tip data-for="userIcon">
           <img src={window.user} width={'26px'} height={'26px'} />
           <ReactTooltip id="userIcon" place="bottom" effect="solid">
-            {currentUser.email}
+            Signed in as {currentUser.email}
           </ReactTooltip>
         </UserButton>
       </RightDiv>

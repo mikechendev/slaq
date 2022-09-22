@@ -7,6 +7,7 @@ import { CreateButton, DeleteButton } from '../styles/modal.style';
 import { deleteWorkspace } from '../../../util/workspace_api_util';
 import { removeWorkspace } from '../../../actions/workspace_actions';
 import { useDispatch } from 'react-redux';
+import { CloseButton } from '../styles/modal.style';
 
 const SelectWorkspaceModal = (props) => {
   const history = useHistory();
@@ -130,6 +131,17 @@ const SelectWorkspaceModal = (props) => {
           <div></div>
           {editDeleteButtons() && editDeleteButtons()}
         </div>
+        <CloseButton onClick={props.closeModal}>
+          <svg data-q98="true" viewBox="0 0 20 20" className="">
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeWidth="1.5"
+              d="m5.227 5.227 9.546 9.546m0-9.546-9.546 9.546"
+            ></path>
+          </svg>
+        </CloseButton>
       </div>
     </ReactModal>
   );

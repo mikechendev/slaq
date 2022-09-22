@@ -128,9 +128,6 @@ const Splash = (props) => {
       Object.values(state.entities.workspaces)
     );
 
-    console.log(workspaces);
-    console.log('props', Object.values(props.currentUser.workspaces));
-
     let workspaceListItems = workspaces.map((workspace) => {
       return (
         <li className="workspace-list-items" key={workspace.id}>

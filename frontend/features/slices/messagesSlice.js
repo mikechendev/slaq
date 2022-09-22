@@ -28,7 +28,8 @@ const messagesSlice = createSlice({
         });
       })
       .addCase(removeMessage, (state, action) => {
-        delete state[action.payload];
+        const { messageId } = action.payload;
+        delete state[messageId];
         return state;
       });
   },

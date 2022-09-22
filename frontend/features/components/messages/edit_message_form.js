@@ -6,14 +6,14 @@ import {
   receiveUpdatedMessage,
   removeMessage,
 } from '../../../actions/message_actions';
-import { useHistory } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { EditMessageFormField } from '../styles/message.style';
+import { fetchMessages } from '../../../util/message_api_util';
+import { receiveMessages } from '../../../actions/message_actions';
 
 const EditMessageForm = (props) => {
   const [body, setBody] = useState(props.message.body);
   const dispatch = useDispatch();
-  const history = useHistory();
   const match = useRouteMatch();
 
   let currentWorkspace = useSelector(
@@ -41,8 +41,10 @@ const EditMessageForm = (props) => {
     let messageId = props.message.id;
     let deleted = await deleteMessage(messageId);
     dispatch(removeMessage(deleted.data));
-    // props.setMessageEdit(!props.messageEdit);
-    history.go(`/client/${currentWorkspace.id}/${currentChannel.id}`);
+    props.setMessageEdit(!props.messageEdit);
+    fetchMessages(currentChannel.id).then((messages) => {
+      dispatch(receiveMessages(messages));
+    });
   };
 
   return (
