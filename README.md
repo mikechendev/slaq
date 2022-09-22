@@ -1,24 +1,9 @@
-# README
+# SlaQ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+SlaQ is a comprehensive clone of popular messaging application, Slack. Users are able to create both workspaces, channels, and of course, send messages.
 
-* Ruby version
+[Live Demo](https://slaq-mc.herokuapp.com/)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Main Features
