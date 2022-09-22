@@ -165,7 +165,16 @@ const WorkspaceSidebar = (props) => {
                                     color="white"
                                   ></BsThreeDotsVertical>
                                 </PageDrawer>
-                                <BrowseText>Browse SlaQ</BrowseText>
+                                <BrowseText data-tip data-for="browseSlaq">
+                                  Browse SlaQ
+                                  <ReactTooltip
+                                    id="browseSlaq"
+                                    place="bottom"
+                                    effect="solid"
+                                  >
+                                    To be updated!
+                                  </ReactTooltip>
+                                </BrowseText>
                               </BrowseContainer> */}
                               <BrowseDivider></BrowseDivider>
                               <ChannelList>

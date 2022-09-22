@@ -24,17 +24,20 @@ const WorkspaceNav = (props) => {
   return (
     <TopNav>
       <LeftDiv>
-        {/* <ClockContainer>
+        <ClockContainer data-tip data-for="clockIcon">
           <svg data-ddp="true" viewBox="0 0 20 20">
             <g fill="none" stroke="currentColor" strokeWidth="1.5">
               <circle cx="10" cy="10" r="8.25"></circle>
               <path strokeLinecap="round" d="M10 5.75v4.75h3.75"></path>
             </g>
           </svg>
-        </ClockContainer> */}
+          <ReactTooltip id="clockIcon" place="bottom" effect="solid">
+            To be updated!
+          </ReactTooltip>
+        </ClockContainer>
       </LeftDiv>
       <CenterDiv>
-        {/* <TopNavSearch>
+        <TopNavSearch data-tip data-for="searchBar">
           <div>
             <svg data-ddp="true" viewBox="0 0 20 20">
               <path
@@ -46,6 +49,9 @@ const WorkspaceNav = (props) => {
           <TopNavSearchText>
             Search {props.currentWorkspace.name}
           </TopNavSearchText>
+          <ReactTooltip id="searchBar" place="bottom" effect="solid">
+            To be updated!
+          </ReactTooltip>
         </TopNavSearch>
         <TopNavSearchFilter>
           <svg data-ddp="true" viewBox="0 0 20 20">
@@ -57,12 +63,12 @@ const WorkspaceNav = (props) => {
               d="M15.25 4.25a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm0 0h2.5m-15.5 0h9m3 11.5a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm0 0h3.5m-15.5 0h8m-2-5.75a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm0 0h9.5M4.5 10H2.25"
             ></path>
           </svg>
-        </TopNavSearchFilter> */}
+        </TopNavSearchFilter>
       </CenterDiv>
       <RightDiv>
         <div>
-          {/* <ToolTipContainer>
-            <ToolTipButton>
+          <ToolTipContainer>
+            <ToolTipButton data-tip data-for="helpIcon">
               <svg data-ddp="true" viewBox="0 0 20 20">
                 <g fill="none">
                   <circle
@@ -79,8 +85,11 @@ const WorkspaceNav = (props) => {
                   <circle cx="10" cy="14" r="1" fill="white"></circle>
                 </g>
               </svg>
+              <ReactTooltip id="helpIcon" place="left" effect="solid">
+                To be updated!
+              </ReactTooltip>
             </ToolTipButton>
-          </ToolTipContainer> */}
+          </ToolTipContainer>
         </div>
         <UserButton data-tip data-for="userIcon">
           <img src={window.user} width={'26px'} height={'26px'} />
