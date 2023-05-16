@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 config();
 
 import { Configuration, OpenAIApi } from 'openai';
+import React, { useState } from 'react';
 
 const openai = new OpenAIApi(
   new Configuration({ apiKey: process.env.OPENAI_API_KEY })
@@ -15,3 +16,17 @@ openai
   .then((response) => {
     console.log(response.data.choices[0].message.content);
   });
+
+const ChatBot = () => {
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+};
+
+return(
+  <div>
+  </div>
+)
