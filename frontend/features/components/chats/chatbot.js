@@ -2,36 +2,43 @@ import { config } from 'dotenv';
 config();
 
 import { Configuration, OpenAIApi } from 'openai';
-import React, { useState } from 'react';
+import readline from 'readline';
+// import React, { useState } from 'react';
 
 const openai = new OpenAIApi(
   new Configuration({ apiKey: process.env.OPENAI_API_KEY })
 );
 
-// openai
-//   .createChatCompletion({
-//     model: 'gpt-3.5-turbo',
-//     messages: [{ role: 'user', content: 'Hello, how are you?' }],
-//   })
-//   .then((response) => {
-//     console.log(response.data.choices[0].message.content);
-//   });
+const userInterface = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-const ChatBot = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+userInterface.prompt();
+userInterface.on('line', async (input) => {
+  const res = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    messages: [{ role: 'user', content: input }],
+  });
+  console.log(res.data.choices[0].message.content);
+  userInterface.prompt();
+});
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+// const ChatBot = () => {
+//   const [messages, setMessages] = useState([]);
+//   const [inputValue, setInputValue] = useState('');
 
-  const sendMessage = async () => {
-    if (inputValue.trim() === '') return;
+//   const handleInputChange = (e) => {
+//     setInputValue(e.target.value);
+//   };
 
-    setMessages([...messages, { text: inputValue, user: true }]);
-    setInputValue('');
-    
-  };
-};
+//   const sendMessage = async () => {
+//     if (inputValue.trim() === '') return;
 
-return <div></div>;
+//     setMessages([...messages, { text: inputValue, user: true }]);
+//     setInputValue('');
+
+//   };
+// };
+
+// return <div></div>;
