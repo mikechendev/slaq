@@ -37,8 +37,29 @@ const ChatBot = () => {
 
     setMessages([...messages, { text: inputValue, user: true }]);
     setInputValue('');
-
   };
-};
 
-return <div></div>;
+  return (
+    <div>
+      <div className="chat-window">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`message ${message.user ? 'user' : 'bot'}`}
+          >
+            {message.text}
+          </div>
+        ))}
+      </div>
+      <div className="input-container">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Type your message..."
+        />
+        <button onClick={sendMessage}>Send</button>
+      </div>
+    </div>
+  );
+};
