@@ -37,6 +37,28 @@ const ChatBot = () => {
 
     setMessages([...messages, { text: inputValue, user: true }]);
     setInputValue('');
+
+    try {
+      // Send user message to the OpenAI API
+      const response = await fetch('/api/openai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: inputValue }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch response from the server.');
+      }
+
+      const data = await response.json();
+
+      // Add bot response to the state
+      setMessages([...messages, { text: data.message, user: false }]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
