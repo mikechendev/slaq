@@ -24,5 +24,13 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '*'],
+    fallback: {
+      fs: false,
+      os: false,
+      path: false,
+    },
+  },
+  experiments: {
+    topLevelAwait: true,
   },
 };

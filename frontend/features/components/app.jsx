@@ -8,6 +8,7 @@ import SplashContainer from './splash/splash_container';
 import GetStarted from './workspaces/get_started';
 import SetupWorkspace from './workspaces/setup_workspace';
 import Workspace from './workspaces/workspace';
+import ChatBot from './chats/chatbot';
 import Favicon from 'react-favicon';
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/" component={SplashContainer} />
+      <Route exact path="/chatbot" component={ChatBot} />
       <ProtectedRoute path="/get-started" component={GetStarted} />
       <ProtectedRoute
         path="/client/:workspaceId/setup-workspace"
