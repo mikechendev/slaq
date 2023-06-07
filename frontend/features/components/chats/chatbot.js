@@ -17,10 +17,6 @@ import { Configuration, OpenAIApi } from 'openai';
 //   max_tokens: 7,
 // });
 
-const openai = new OpenAIApi(
-  new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-);
-
 // const userInterface = readline.createInterface({
 //   input: process.stdin,
 //   output: process.stdout,
