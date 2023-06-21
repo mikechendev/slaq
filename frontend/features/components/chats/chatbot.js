@@ -3,7 +3,50 @@
 
 // import readline from 'readline';
 import React, { useState } from 'react';
-import { Configuration, OpenAIApi } from 'openai';
+import axios from 'axios';
+
+const ChatBot = () => {
+  const [prompt, setPrompt] = useState('');
+  const [response, setResponse] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(prompt);
+
+    await axios
+      .post('http://localhost:3001/chatbot', { prompt })
+      .then((res) => {
+        console.log(res);
+        setResponse(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Just ask something</label>
+        </div>
+        <div>
+          <input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+          />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+      <div>
+        <p>{response}</p>
+      </div>
+    </div>
+  );
+};
 
 // const { Configuration, OpenAIApi } = require('openai');
 // const configuration = new Configuration({
@@ -32,66 +75,66 @@ import { Configuration, OpenAIApi } from 'openai';
 //   userInterface.prompt();
 // });
 
-const ChatBot = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+// const ChatBot = () => {
+//   const [messages, setMessages] = useState([]);
+//   const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+//   const handleInputChange = (e) => {
+//     setInputValue(e.target.value);
+//   };
 
-  const sendMessage = async () => {
-    if (inputValue.trim() === '') return;
+//   const sendMessage = async () => {
+//     if (inputValue.trim() === '') return;
 
-    setMessages([...messages, { text: inputValue, user: true }]);
-    setInputValue('');
+//     setMessages([...messages, { text: inputValue, user: true }]);
+//     setInputValue('');
 
-    try {
-      // Send user message to the OpenAI API
-      const response = await fetch('/api/openai', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: inputValue }),
-      });
+//     try {
+//       // Send user message to the OpenAI API
+//       const response = await fetch('/api/openai', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ message: inputValue }),
+//       });
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch response from the server.');
-      }
+//       if (!response.ok) {
+//         throw new Error('Failed to fetch response from the server.');
+//       }
 
-      const data = await response.json();
+//       const data = await response.json();
 
-      // Add bot response to the state
-      setMessages([...messages, { text: data.message, user: false }]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//       // Add bot response to the state
+//       setMessages([...messages, { text: data.message, user: false }]);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  return (
-    <div>
-      <div className="chat-window">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`message ${message.user ? 'user' : 'bot'}`}
-          >
-            {message.text}
-          </div>
-        ))}
-      </div>
-      <div className="input-container">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Type your message..."
-        />
-        <button onClick={sendMessage}>Send</button>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <div className="chat-window">
+//         {messages.map((message, index) => (
+//           <div
+//             key={index}
+//             className={`message ${message.user ? 'user' : 'bot'}`}
+//           >
+//             {message.text}
+//           </div>
+//         ))}
+//       </div>
+//       <div className="input-container">
+//         <input
+//           type="text"
+//           value={inputValue}
+//           onChange={handleInputChange}
+//           placeholder="Type your message..."
+//         />
+//         <button onClick={sendMessage}>Send</button>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default ChatBot;

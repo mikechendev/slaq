@@ -1,25 +1,37 @@
-import axios from 'axios';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-const apiKey = process.env.OPENAI_API_KEY;
+const { Configuration, OpenAIApi } = require('openai');
 
-const client = axios.create({
-  headers: {
-    Authorization: 'Bearer ' + apiKey,
-  },
+const config = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-const params = {
-  model: 'gpt-3.5-turbo',
-  prompt: 'How are you?',
-  temperature: 0,
-  max_tokens: 10,
-};
+const openai = new OpenAIApi(config);
 
-client
-  .post('https://api.openai.com/v1/completions', params)
-  .then((result) => {
-    console.log(result.data.choices[0].text);
-  })
-  .catch((error) => {
-    console.log(error);
+// setup express
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+// endpoint for api
+
+app.post('/chatbot', async (req, res) => {
+  const { message } = req.body;
+
+  const completion = await openai.createCompletion({
+    model: 'text-davinci-003',
+    message: [{ role: 'user', content: `${message}` }],
+    temperature: 0,
+    max_tokens: 10,
   });
+
+  res.send(completion.data.choices[0].text);
+});
+
+const port = 3001;
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
